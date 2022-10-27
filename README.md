@@ -1,8 +1,13 @@
-# LA-SCALONETA-2022
+# 2° PARCIAL - PP
 
-# Foobar
+# Grupo
+LA SCALONETA 2022
 
-Foobar is a Python library for dealing with word pluralization.
+# Integrantes
+Gabriel Lopez Gasal
+Alejandra Escubilla Texis
+Valentín Laplume
+
 
 ## Installation
 
@@ -32,5 +37,3 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropriate.
 
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
