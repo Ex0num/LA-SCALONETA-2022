@@ -1,21 +1,14 @@
 # 2° PARCIAL - PP
 
 # Grupo
-LA SCALONETA 2022
+LA SCALONETA 2022<br>
 
 # Integrantes
 Gabriel Lopez Gasal <br>
 Alejandra Escubilla Texis <br>
 Valentín Laplume <br>
 
-
-## Installation
-
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
-
-```bash
-pip install foobar
-```
+## Tareas
 
 ## Usage
 
