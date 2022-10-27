@@ -1,7 +1,4 @@
-# 2° PARCIAL - PP
-
-# Grupo
-LA SCALONETA 2022<br>
+# 2° PARCIAL PP - LA SCALONETA 2022
 
 # Integrantes
 Gabriel Lopez Gasal <br>
