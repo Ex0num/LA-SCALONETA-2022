@@ -6,10 +6,10 @@ Alejandra Escubilla Texis - https://github.com/aletexis <strong>Beta<strong> <br
 Valentín Laplume - https://github.com/valentinlaplume <strong>Gamma<strong> <br> 
 
 ### Tareas generales
-1 - [Diseño externo] (#diseño-interno)
-2 - [Diseño interno] (#diseño-externo)
-3 - [Persistencia] (#persistencia)
-4 - [Documentación] (#documentación)
+1 - [Diseño externo] (#diseño-interno) <br>
+2 - [Diseño interno] (#diseño-externo) <br>
+3 - [Persistencia] (#persistencia) <br>
+4 - [Documentación] (#documentación) <br>
 
 ### Fechas de actualizacion
 26/10 
@@ -19,6 +19,8 @@ Valentín Laplume - https://github.com/valentinlaplume <strong>Gamma<strong> <br
 27/10
 - Se diseñó un nombre, ícono y splash para la aplicación.
 
+  
+  
 ### Manual de uso de la aplicación
 
 
