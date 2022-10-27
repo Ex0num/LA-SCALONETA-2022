@@ -9,7 +9,7 @@
 5) [Integrantes](#integrantes)
 
 ***
-# Integrantes
+### Integrantes
 <a href="https://github.com/ex0num">Gabriel Lopez Gasal</a> - <strong>Alpha</strong> <br>
 <a href="https://github.com/valentinlaplume">Valentín Laplume</a> - <strong>Beta</strong> <br>
 <a href="https://github.com/aletexis">Alejandra Escubilla</a> - <strong>Gamma</strong> <br>
@@ -34,7 +34,7 @@ A continuación se detalla de qué forma los integrantes se concentrarán en el 
 - Se diseñó un nombre, ícono y splash para la aplicación. <br>
   
 ***
-# Profesores y ayudantes
+### Profesores
 <a href="https://github.com/agmorelli">Augusto Morelli</a> - <strong>Ayudante</strong> <br>
 <a href="https://github.com/naferrero-utnfra">Nicolás Ferrero</a> - <strong>Ayudante</strong> <br>
 <a href="https://github.com/maxineinerutn">Maximiliano Neiner</a> - <strong>Profesor</strong> <br>
@@ -45,7 +45,7 @@ Lograr una aplicación utilizando el hardware del dispositivo móvil para la ges
 El enfoque va a estar dado por los usuarios de un RESTAURANT, el cual apunta todos sus esfuerzos en mejorar la utilización de su servicio por medio de una aplicación para celulares. <br>
 
 ***
-<h1 Requerimientos excluyentes
+### Requerimientos excluyentes
 - Splash animado con ícono de la aplicación y los apellidos y nombres de los integrantes del grupo. <br>
 - Todo en español. (¡TODO EN ESPAÑOL, los acentos pertenecen al idioma!). <br>
 - Todo error o información mostrarlo con distintas ventanas. (DISTINTAS, ¡NO alerts!). <br>
@@ -71,7 +71,6 @@ El enfoque va a estar dado por los usuarios de un RESTAURANT, el cual apunta tod
 
 ***
 ### Requerimientos por fechas de entrega
-
 <strong>Requerimientos 1era fecha (segundo parcial):</strong>
 
 - Datos cargados de tres (3) semanas de operaciones (simuladas). <br>
