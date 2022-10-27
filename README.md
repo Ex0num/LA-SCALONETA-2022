@@ -17,7 +17,7 @@
 
 ***
 <h3 id="tareasGenerales">Tareas generales</h3>
-A continuación se detalla de qué forma los integrantes se concentrarán en el proyecto, sin embargo, es importante aclarar que tanto Alpha, Beta y Gamma compartirán la responsabilidad primorial de que el mismo cumpla con los requerimimientos solicitados, siendo estos detallados <a href="#requerimientosExcluyentes">Acá</a> <br>
+A continuación se detalla de qué forma los integrantes se concentrarán en el proyecto, sin embargo, es importante aclarar que tanto Alpha, Beta y Gamma compartirán la responsabilidad primorial de que el mismo cumpla con los requerimimientos solicitados, siendo estos detallados <a href="#requerimientosExcluyentes">Acá</a>. <br><br>
 1 - <strong>Diseño externo</strong> - Aplha <br>
 2 - <strong>Diseño interno</strong> - Beta <br>
 3 - <strong>Persistencia</strong> - Gamma <br>
