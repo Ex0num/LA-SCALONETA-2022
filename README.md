@@ -5,7 +5,7 @@ Gabriel Lopez Gasal <br>
 Alejandra Escubilla Texis <br>
 Valentín Laplume <br>
 
-## Tareas
+## Tareas asignadas
 
 ## Usage
 
