@@ -3,7 +3,7 @@
 # Integrantes
 Gabriel Lopez Gasal <br>
 Alejandra Escubilla Texis <br>
-Valentín Laplume <br>
+Valentín Laplume <br> - https://github.com/valentinlaplume
 
 ## Tareas asignadas
 
