@@ -45,17 +45,17 @@ $ ionic cap sync
 $ npx cap open android
 ```
 
-Agregar la carpeta android (Generada desde 0).
+Agregar la carpeta android (Generada desde 0)
 ```
 $ npx cap add android
 ```
 
-Levantar un servidor local del proyecto.
+Levantar un servidor local del proyecto
 ```
 $ ionic serve
 ```
  
-Crear el proyecto.
+Crear el proyecto
 ```
 $ ionic start Ribato blank --type=angular
 $ cd Ribato
