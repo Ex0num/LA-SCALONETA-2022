@@ -2,16 +2,16 @@
 ***
 ### Listado de contenidos
 1) [Objetivo](#objetivo)
-2) [Requerimientos excluyentes](#technologies)
-3) [Requerimientos por fechas](#installation)
-4) [Collaboration](#collaboration)
+2) [Requerimientos excluyentes](#requerimientos excluyentes)
+3) [Requerimientos por fechas](#Requerimientos por fechas de entrega)
+4) [Profesores](#profesores y ayudantes)
 5) [Integrantes](#integrantes)
 
 ***
 # Integrantes
 Gabriel Lopez Gasal - https://github.com/ex0num - <strong>Alpha</strong> <br>
-Valentín Laplume - https://github.com/valentinlaplume <strong>Beta</strong> <br> 
-Alejandra Escubilla Texis - https://github.com/aletexis <strong>Gamma</strong> <br>
+Valentín Laplume - https://github.com/valentinlaplume - <strong>Beta</strong> <br> 
+Alejandra Escubilla Texis - https://github.com/aletexis - <strong>Gamma</strong> <br>
 
 ***
 ### Tareas generales
@@ -31,6 +31,12 @@ A continuación se detalla de qué forma los integrantes se concentrarán en el 
 <br>
 <strong> 27/10/22 </strong> 
 - Se diseñó un nombre, ícono y splash para la aplicación. <br>
+  
+***
+# Profesores y ayudantes
+<a href="https://github.com/agmorelli">Augusto Morelli</a> - <strong>Ayudante</strong> <br>
+<a href="https://github.com/naferrero-utnfra">Nicolás Ferrero</a> - <strong>Ayudante</strong> <br>
+<a href="https://github.com/maxineinerutn">Maximiliano Neiner</a> - <strong>Profesor</strong> <br>
   
 ***
 ### Objetivo
@@ -57,9 +63,29 @@ El enfoque va a estar dado por los usuarios de un RESTAURANT, el cual apunta tod
 - Cargado de datos por medio de un archivo (JSON / EXCEL). <br>
 - Gráficos estadísticos (torta, barra, etc.). <br>
 - Los perfiles de usuarios deben ser: <br>
-   ● Dueño <br>
-   ● Supervisor <br>
-   ● Empleado (tipos: metre, mozo, cocinero, bartender) <br>
-   ● Cliente (tipos: registrado o anónimo) <br>
+   + Dueño <br>
+   + Supervisor <br>
+   + Empleado (tipos: metre, mozo, cocinero, bartender) <br>
+   + Cliente (tipos: registrado o anónimo) <br>
 
+***
+### Requerimientos por fechas de entrega
+Requerimientos 1era fecha (segundo parcial):
+- Datos cargados de tres (3) semanas de operaciones (simuladas).
+- Todas las altas completas por integrante.
+- Todos los Qr completos por integrante.
+- Al menos siete (7) responsabilidades completas por alumno (incluyendo las tareas de gestión a definir).
+- Icono de la empresa.
+- Splash con animación (detallando apellidos y nombres de los integrantes del grupo).
+- Sonidos, con posibilidad de desactivarlos desde la aplicación.
+- Despacho automático de correos electrónicos.
+- Push notification.
+
+Requerimientos 2da fecha (primera fecha de finales):
+- Al menos nueve (9) responsabilidades completas por alumno (incluyendo todas las tareas de gestión).
+- Todas las encuestas realizadas.
+- Login con redes sociales (Facebook, Google+, etc.).
+
+Requerimientos 3era fecha o posterior
+- A definir.
 
