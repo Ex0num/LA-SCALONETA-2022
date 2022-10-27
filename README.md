@@ -1,17 +1,18 @@
-# 2° PARCIAL PP - LA SCALONETA 2022
+<h1> 2° PARCIAL PP - LA SCALONETA 2022 </h1>
+
 ***
 ### Listado de contenidos
 1) [Objetivo](#objetivo)
-2) [Requerimientos excluyentes](#requerimientos excluyentes)
-3) [Requerimientos por fechas](#Requerimientos por fechas de entrega)
-4) [Profesores](#profesores y ayudantes)
+2) [Requerimientos excluyentes](#requerimientosExcluyentes)
+3) [Requerimientos por fechas](#requerimientosPorFecha)
+4) [Profesores](#profesores)
 5) [Integrantes](#integrantes)
 
 ***
 # Integrantes
-Gabriel Lopez Gasal - https://github.com/ex0num - <strong>Alpha</strong> <br>
-Valentín Laplume - https://github.com/valentinlaplume - <strong>Beta</strong> <br> 
-Alejandra Escubilla Texis - https://github.com/aletexis - <strong>Gamma</strong> <br>
+<a href="https://github.com/ex0num">Gabriel Lopez Gasal</a> - <strong>Alpha</strong> <br>
+<a href="https://github.com/valentinlaplume">Valentín Laplume</a> - <strong>Beta</strong> <br>
+<a href="https://github.com/aletexis">Alejandra Escubilla</a> - <strong>Gamma</strong> <br>
 
 ***
 ### Tareas generales
@@ -44,7 +45,7 @@ Lograr una aplicación utilizando el hardware del dispositivo móvil para la ges
 El enfoque va a estar dado por los usuarios de un RESTAURANT, el cual apunta todos sus esfuerzos en mejorar la utilización de su servicio por medio de una aplicación para celulares. <br>
 
 ***
-### Requerimientos excluyentes
+<h1 Requerimientos excluyentes
 - Splash animado con ícono de la aplicación y los apellidos y nombres de los integrantes del grupo. <br>
 - Todo en español. (¡TODO EN ESPAÑOL, los acentos pertenecen al idioma!). <br>
 - Todo error o información mostrarlo con distintas ventanas. (DISTINTAS, ¡NO alerts!). <br>
@@ -70,22 +71,25 @@ El enfoque va a estar dado por los usuarios de un RESTAURANT, el cual apunta tod
 
 ***
 ### Requerimientos por fechas de entrega
-Requerimientos 1era fecha (segundo parcial):
-- Datos cargados de tres (3) semanas de operaciones (simuladas).
-- Todas las altas completas por integrante.
-- Todos los Qr completos por integrante.
-- Al menos siete (7) responsabilidades completas por alumno (incluyendo las tareas de gestión a definir).
+
+<strong>Requerimientos 1era fecha (segundo parcial):</strong>
+
+- Datos cargados de tres (3) semanas de operaciones (simuladas). <br>
+- Todas las altas completas por integrante. <br>
+- Todos los Qr completos por integrante. <br>
+- Al menos siete (7) responsabilidades completas por alumno (incluyendo las tareas de gestión a definir). <br>
 - Icono de la empresa.
-- Splash con animación (detallando apellidos y nombres de los integrantes del grupo).
-- Sonidos, con posibilidad de desactivarlos desde la aplicación.
-- Despacho automático de correos electrónicos.
-- Push notification.
+- Splash con animación (detallando apellidos y nombres de los integrantes del grupo). <br>
+- Sonidos, con posibilidad de desactivarlos desde la aplicación. <br>
+- Despacho automático de correos electrónicos. <br>
+- Push notification. <br>
 
-Requerimientos 2da fecha (primera fecha de finales):
-- Al menos nueve (9) responsabilidades completas por alumno (incluyendo todas las tareas de gestión).
-- Todas las encuestas realizadas.
-- Login con redes sociales (Facebook, Google+, etc.).
+<strong>Requerimientos 2da fecha (primera fecha de finales):</strong>
 
-Requerimientos 3era fecha o posterior
-- A definir.
+- Al menos nueve (9) responsabilidades completas por alumno (incluyendo todas las tareas de gestión). <br>
+- Todas las encuestas realizadas. <br>
+- Login con redes sociales (Facebook, Google+, etc.). <br>
+
+<strong>Requerimientos 3era fecha o posterior</strong>
+- A definir. <br>
 
