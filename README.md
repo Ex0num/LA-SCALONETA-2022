@@ -37,6 +37,35 @@ A continuación se detalla de qué forma los integrantes se concentrarán en el 
 - Se creó el template del proyecto.  
   
 ***
+<h3 id="comandos">Comandos utilizados</h3>
+
+Actualizar la carpeta android con los archivos de Angular
+```
+$ ionic cap sync
+$ npx cap open android
+```
+
+Agregar la carpeta android (Generada desde 0).
+```
+$ npx cap add android
+```
+
+Levantar un servidor local del proyecto.
+```
+$ ionic serve
+```
+ 
+Crear el proyecto.
+```
+$ ionic start Ribato blank --type=angular
+$ cd Ribato
+$ npm install @capacitor/core
+$ npm install @capacitor/cli --save-dev
+$ npm install @capacitor/android
+$ npx cap init
+```
+ 
+***
 <h3 id="profesores">Profesores</h3>
 
 <a href="https://github.com/agmorelli">Augusto Morelli</a> - <strong>Ayudante</strong> <br>
