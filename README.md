@@ -4,9 +4,9 @@
 LA SCALONETA 2022
 
 # Integrantes
-Gabriel Lopez Gasal
-Alejandra Escubilla Texis
-Valentín Laplume
+Gabriel Lopez Gasal <br>
+Alejandra Escubilla Texis <br>
+Valentín Laplume <br>
 
 
 ## Installation
