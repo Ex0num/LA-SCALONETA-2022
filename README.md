@@ -33,7 +33,7 @@ A continuación se detalla de qué forma los integrantes se concentrarán en el 
 - Se inicia la documentación de toda acción realizada en el proyecto <br>
 <br>
 <strong> 27/10/22 </strong> <br>
-- Se pensó y diseñó un nombre, ícono y splash para la aplicación. <br>
+- Se pensó y diseñó un nombre, ícono y splash para la aplicación. "Ribato" - "Come, rico y barato". <br>
 - Se creó el template del proyecto.  
   
 ***
