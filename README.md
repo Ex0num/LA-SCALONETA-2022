@@ -17,12 +17,13 @@
 ***
 ### Tareas generales
 A continuación se detalla de qué forma los integrantes se concentrarán en el proyecto, sin embargo, es importante aclarar que tanto Alpha, Beta y Gamma compartirán la responsabilidad primorial de que el mismo cumpla con los requerimimientos solicitados, siendo estos detallados [Acá](#Requerimientos excluyentes).
-1 - [Diseño externo] - Aplha <br>
-2 - [Diseño interno] - Beta <br>
-3 - [Persistencia] - Gamma <br>
-4 - [Documentación] - Alpha <br>
-5 - [Testing y validaciones] - Beta <br>
-6 - [Mantenimiento] - Gamma <br>
+1 - <strong>Diseño externo</strong> - Aplha <br>
+2 - <strong>Diseño interno</strong> - Beta <br>
+3 - <strong>Persistencia</strong> - Gamma <br>
+4 - <strong>Documentación</strong> - Alpha <br>
+5 - <strong>Testing y validaciones</strong> - Beta <br>
+6 - <strong>Mantenimiento</strong> - Gamma <br>
+7 - <strong>Código</strong> - Aplha, Beta y Gamma <br>
 
 ***
 ### Fechas de actualizacion - Bitácora
@@ -70,7 +71,7 @@ El enfoque va a estar dado por los usuarios de un RESTAURANT, el cual apunta tod
    + Cliente (tipos: registrado o anónimo) <br>
 
 ***
-### Requerimientos por fechas de entrega
+<h3 id="requerimientosExcluyentes"> Requerimientos por fechas de entrega </h3>
 <strong>Requerimientos 1era fecha (segundo parcial):</strong>
 
 - Datos cargados de tres (3) semanas de operaciones (simuladas). <br>
