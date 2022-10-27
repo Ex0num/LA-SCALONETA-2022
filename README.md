@@ -1,22 +1,28 @@
 # 2° PARCIAL PP - LA SCALONETA 2022
 ***
 # Integrantes
-Gabriel Lopez Gasal - https://github.com/ex0num <br>
-Alejandra Escubilla Texis - https://github.com/aletexis <br>
-Valentín Laplume - https://github.com/valentinlaplume <br> 
+Gabriel Lopez Gasal - https://github.com/ex0num - <strong>Alpha<strong> <br>
+Alejandra Escubilla Texis - https://github.com/aletexis <strong>Beta<strong> <br>
+Valentín Laplume - https://github.com/valentinlaplume <strong>Gamma<strong> <br> 
 
-## Tareas generales
+### Tareas generales
 1 - [Diseño externo] (#diseño-interno)
 2 - [Diseño interno] (#diseño-externo)
 3 - [Persistencia] (#persistencia)
 4 - [Documentación] (#documentación)
 
-## Fechas de actualizacion
+### Fechas de actualizacion
+26/10 
+- Se dió a la luz al repositorio. <br>
+- Se inicia la documentación de toda acción realizada en el proyecto <br>
+***
+27/10
+- Se diseñó un nombre, ícono y splash para la aplicación.
 
-## Manual de uso de la aplicación
+### Manual de uso de la aplicación
 
 
-## Table of Contents
+### Table of Contents
 1. [General Info](#general-info)
 2. [Technologies](#technologies)
 3. [Installation](#installation)
