@@ -32,10 +32,10 @@ A continuación se detalla de qué forma los integrantes se concentrarán en el 
 ### Manual de uso de la aplicación
 
 
-### Table of Contents
-1. [General Info](#general-info)
-2. [Technologies](#technologies)
-3. [Installation](#installation)
+### Listado de contenidos
+1. [Objetivo](#general-info)
+2. [Requerimientos excluyentes](#technologies)
+3. [Requerimientos por fechas](#installation)
 4. [Collaboration](#collaboration)
-5. [FAQs](#faqs)
+5. [Integrantes](#integrantes)
 
