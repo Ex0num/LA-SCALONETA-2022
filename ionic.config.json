@@ -1,0 +1,9 @@
+{
+  "name": "Ribato",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    }
+  },
+  "type": "angular"
+}

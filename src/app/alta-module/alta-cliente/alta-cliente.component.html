@@ -1,0 +1,75 @@
+<body id="body">
+  <ion-card id="main-card">
+   <ion-card id="main-card-2">
+
+      <ion-card-header id="main-card-header">
+        <label id="titulo-principal">Registro de cliente</label><br>
+      </ion-card-header>
+
+    <ion-card id="selector-registro-normal" (click)="mostrarRegistro('normal')" *ngIf="fotosHabilitadas == true">
+      <img src="../../../assets/files/cliente-normal.png" width="100%" height="100%">
+    </ion-card>
+
+    <ion-card id="selector-registro-anonimo"  (click)="mostrarRegistro('anonimo')" *ngIf="fotosHabilitadas == true">
+      <img src="../../../assets/files/cliente-anonimo.png" width="100%" height="100%">
+    </ion-card>
+
+    <div id="seccion-form-cliente-normal" *ngIf="esRegistroAnonimo == false">
+      <input class="input-cliente" id="correo-cliente-normal" [(ngModel)]="correo_clienteNormal" type="text" placeholder="Correo">
+      <input class="input-cliente" id="password-cliente-normal" [(ngModel)]="password_clienteNormal" type="password" placeholder="Contraseña">
+      <input class="input-cliente" id="passwordConfirm-cliente-normal" [(ngModel)]="passwordConfirmada_clienteNormal" type="password" placeholder="Confirmación de contraseña">
+      <input class="input-cliente" id="nombre-cliente-normal" [(ngModel)]="nombre_clienteNormal" type="text" placeholder="Nombre">
+      <input class="input-cliente" id="apellido-cliente-normal" [(ngModel)]="apellidos_clienteNormal" type="text" placeholder="Apellidos">
+      <input class="input-cliente" id="dni-cliente-normal" [(ngModel)]="dni_clienteNormal" type="number" placeholder="DNI">
+      <button class="input-cliente" id="qrScanner-cliente-normal" (click)="escenarDNI()" ><ion-icon id="icono-sonido" name="qr-code-outline"></ion-icon></button>
+
+      <div class="inputfile-box">
+        <input type="file" id="file1" class="inputfile" accept="image/png,image/jpeg,image/jpg" (change)="archivoClienteSubido($event,'normal')">
+        <label for="file1">
+          <span id="file-name-CliNormal" class="file-box"></span>
+          <span class="file-button">
+            <i id="file-order-CliNormal" aria-hidden="true">
+              <label id="lbl-file-CliNormal">Añada<br>foto</label>
+            </i>
+          </span>
+        </label>
+      </div>
+
+      <button id="btn-enviar-cliente-normal" (click)="registarClienteNormal()">Enviar</button>
+
+    </div>
+
+    <div id="seccion-form-cliente-anonimo" *ngIf="esRegistroAnonimo == true"> 
+      
+      <div id="container-imagen-form-cliente-anonimo">
+        <img src="../../../assets/files/cliente-anonimo.png" width="100%" height="100%">
+      </div>
+
+      <input class="input-cliente" id="nombre-cliente-anonimo" [(ngModel)]="nombre_clienteAnonimo" type="text" placeholder="Nombre">
+
+      <div class="inputfile-box">
+        <input type="file" id="file2" class="inputfile" accept="image/png,image/jpeg,image/jpg" (change)="archivoClienteSubido($event,'anonimo')">
+        <label for="file2">
+          <span id="file-name-CliAnon" class="file-box"></span>
+          <span class="file-button">
+            <i id="file-order-CliAnon" aria-hidden="true">
+              <label id="lbl-file-CliAnon">Añada<br>foto</label>
+            </i>
+          </span>
+        </label>
+      </div>
+
+      <button id="btn-enviar-cliente-anonimo">Enviar</button>
+
+    </div>
+
+   </ion-card>
+  </ion-card>
+</body>
+
+<ion-fab id="indicador-de-sonido" vertical="bottom" horizontal="start" slot="fixed" color="light">
+  <ion-fab-button color="light" (click)="switchearEstadoSonido()">
+    <ion-icon id="icono-sonido-altaCli" name="volume-mute"></ion-icon>
+  </ion-fab-button>
+ 
+</ion-fab>
