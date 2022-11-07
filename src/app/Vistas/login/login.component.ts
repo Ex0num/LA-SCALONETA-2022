@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {ToastController} from '@ionic/angular';
 import { AltaClienteComponent } from 'src/app/alta-module/alta-cliente/alta-cliente.component';
+import { AuthService } from 'src/app/Servicios/auth.service';
 import { SonidosPersonalizadosService } from 'src/app/Servicios/sonidos-personalizados.service';
 import { ToastMsgService } from 'src/app/Servicios/toast-msg.service';
 
@@ -15,25 +16,46 @@ export class LoginComponent implements OnInit {
   constructor(
     public srvToast:ToastMsgService, 
     public srvSonidos:SonidosPersonalizadosService,
-    public router:Router) 
+    public router:Router,
+    public srvAuth:AuthService) 
   {}
 
   ngOnInit() 
   {
-   this.asignarAnimaciones();
+    setTimeout(() => 
+    {
+      this.asignarAnimaciones();
+    }, 100);
   }
 
 //------------------------ Atributos ----------------------------
 
-  mailIngresado:string;
-  passwordIngresada:string;
+  mailIngresado:string = "";
+  passwordIngresada:string = "";
 
   sonidoActivado:boolean = true;
 
 //----------------------- Login y register ---------------------
   login()
   {
-
+    //Validacion precaria para evitar errores
+    if (this.mailIngresado != "" && this.mailIngresado.includes("@") == true && this.passwordIngresada != "" && this.passwordIngresada.length > 3 && this.passwordIngresada.length < 60)
+    {
+      this.srvAuth.login(this.mailIngresado,this.passwordIngresada,this.sonidoActivado);
+    } 
+    else
+    {
+      if (this.mailIngresado == "" || this.mailIngresado == undefined || this.mailIngresado.includes("@") == false)
+      {
+        this.srvToast.mostrarToast("bottom","Verifique el mail ingresado.",3000,"danger");
+        this.srvSonidos.reproducirSonido("error",this.sonidoActivado);
+      }
+      else if (this.passwordIngresada == "" || this.passwordIngresada.length < 3 || this.passwordIngresada.length > 60)
+      {
+        this.srvToast.mostrarToast("bottom","Verifique la contraseña ingresada.",3000,"danger");
+        this.srvSonidos.reproducirSonido("error",this.sonidoActivado);
+      }
+    }
   }
 
   register()

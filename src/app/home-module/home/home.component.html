@@ -1,0 +1,16 @@
+<ion-content>
+    
+  <!-- Hay que agregar NFIF EN CUESTION DEL AUTHSRV.tipoUsuario -->
+  <app-home-dueno-supervisor *ngIf="tipoUsuarioLogeado == 'supervisor' || tipoUsuarioLogeado == 'dueno'"></app-home-dueno-supervisor>
+  <app-home-cocinero *ngIf="tipoUsuarioLogeado == 'cocinero'"></app-home-cocinero>
+  <app-home-metre *ngIf="tipoUsuarioLogeado == 'metre'"></app-home-metre>
+  <app-home-mozo *ngIf="tipoUsuarioLogeado == 'mozo'"></app-home-mozo>   
+  <app-home-bartender *ngIf="tipoUsuarioLogeado == 'bartender'"></app-home-bartender>
+
+  <app-home-cliente *ngIf="(tipoUsuarioLogeado == 'cliente' && dataUsuarioLogeado.estado == 'aprobado') || tipoUsuarioLogeado == 'anonimo'"></app-home-cliente>
+  
+  <div *ngIf="tipoUsuarioLogeado == 'cliente' && dataUsuarioLogeado.estado == 'desaprobado'">
+    Su cuenta debe ser aprobada por los administradores del sistema. Intente más tarde.
+  </div>
+
+</ion-content> 

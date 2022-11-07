@@ -22,20 +22,44 @@ A continuación se detalla de qué forma los integrantes se concentrarán en el 
 2 - <strong>Diseño interno</strong> - Beta <br>
 3 - <strong>Persistencia</strong> - Gamma <br>
 4 - <strong>Documentación</strong> - Alpha <br>
-5 - <strong>Testing y validaciones</strong> - Beta <br>
-6 - <strong>Mantenimiento</strong> - Gamma <br>
+5 - <strong>Testing y validaciones</strong> - Gamma <br>
+6 - <strong>Mantenimiento</strong> - Beta <br>
 7 - <strong>Código</strong> - Aplha, Beta y Gamma <br>
 
 ***
-<h3 id="fechasActualizaciones">Fechas de actualización / Bitácora de cambios</h3>
+<h3 id="fechasActualizaciones">Fechas de actualización / Bitácora de cambios específica</h3>
 <strong> 26/10/22 </strong> <br>
-- Se dió a la luz al repositorio. <br>
-- Se inicia la documentación de toda acción realizada en el proyecto <br>
+<label>- Se dió a la luz al repositorio.</label> <br>
+<label>- Se inicia la documentación de toda acción realizada en el proyecto.</label> <br>
 <br>
 <strong> 27/10/22 </strong> <br>
-- Se pensó y diseñó un nombre, ícono y splash para la aplicación. "Ribato" - "Come, rico y barato". <br>
-- Se creó el template del proyecto.  
-  
+<label>- Se pensó y diseñó un nombre, ícono y splash para la aplicación. "Ribato" - "Come, rico y barato". </label><br>
+<label>- Se creó el template del proyecto.</label><br>
+<br>
+<strong> 07/11/22 </strong> <br>
+<label>- Se diseñó un ícono para la aplicación.</label><br>
+<label>- Se diseñaron las animaciones de la splashscreeen.</label><br>
+<label>- Se estructuró el proyecto en su totalidad (Modularización de homes/altas) para su buena optimización y carga.</label><br>
+<label>- Se crearon y desarrollaron los servicios necesarios (QR, Auth, Firestorage, Sending-Mail).<br>
+<label>- Se creó y diseñó el <strong>Alta de cliente</strong> (tanto anónimo como normal).</label><br>
+<label>- Se creó y diseñó el <strong>Home de cliente</strong> (tanto anónimo como normal).</label><br>
+<label>- Se implementaron sonidos (activación y desactivación) y mensajes de error/satisfacción.</label><br>
+<label>- Se implementaron animaciones adicionales a botones e inputs.</label><br>
+
+***
+<h3 id="fechasActualizaciones">Fechas de actualización / Bitácora de cambios general</h3>
+
+<strong> 26/10/22 </strong> <br>
+<label>- Se creó el proyecto. - Alpha</label> <br>
+<br>
+<strong> 27/10/22 </strong> <br>
+<label>- Se diseñó el ícono - Alpha</label> <br>
+<br>
+<strong> 07/11/22 </strong> <br>
+<label>- Se diseñó el splash estático y animado. - Alpha</label> <br>
+<label>- Se diseñaron las animaciones de la splashscreeen. - Alpha</label> <br>
+<label>- Se creó y diseñó el <strong>Alta de cliente (Anónimo y normal)</strong> - Alpha</label> <br>
+
 ***
 <h3 id="comandos">Comandos utilizados</h3>
 
@@ -136,6 +160,6 @@ El enfoque va a estar dado por los usuarios de un RESTAURANT, el cual apunta tod
   Requerimientos 3era fecha o posterior
 </strong>
 
- <br>
+<br>
 
 - A definir. <br>

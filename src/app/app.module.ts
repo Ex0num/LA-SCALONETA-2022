@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './Vistas/login/login.component';
 import { FormsModule } from '@angular/forms';
-import {ToastController} from '@ionic/angular';
 
 @NgModule({
   declarations: [AppComponent,LoginComponent],

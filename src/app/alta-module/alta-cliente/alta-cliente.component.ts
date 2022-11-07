@@ -46,7 +46,148 @@ export class AltaClienteComponent implements OnInit {
   
   //#endregion -------------------------------------------------------------
 
-  //#region ------------------ Funciones generales ---------------------
+  //------------------ Funciones generales ---------------------
+  public registarClienteNormal()
+  {
+    if (this.correo_clienteNormal != undefined && this.correo_clienteNormal != "")
+    {
+      //Valido datos.
+      let datoInvalido = this.srvFirebase.validarClienteNormalDB(
+      this.correo_clienteNormal,
+      this.password_clienteNormal,
+      this.passwordConfirmada_clienteNormal,
+      this.nombre_clienteNormal,
+      this.apellidos_clienteNormal,
+      this.dni_clienteNormal,
+      this.foto_clienteNormal);
+      
+      //Me fijo resultado y actuo en consecuencia
+      if (datoInvalido == "ninguno")
+      {
+        console.log("Datos validos");
+  
+        let resultadoRegistro = this.srvAuth.register(this.correo_clienteNormal, this.password_clienteNormal);
+        //let resultadoRegistro = "ok";
+  
+        if (resultadoRegistro == "ok")
+        {
+          this.srvFirebase.subirClienteNormalDB(
+          this.correo_clienteNormal,
+          this.password_clienteNormal,
+          this.nombre_clienteNormal,
+          this.apellidos_clienteNormal,
+          this.dni_clienteNormal,
+          this.foto_clienteNormal); 
+        
+          this.srvToast.mostrarToast("bottom","La cuenta fue creada satisfactoriamente.",3000,"success");
+          this.srvAuth.logOut();
+          this.srvSonidos.reproducirSonido("slide",this.sonidoActivado);
+          this.limpiarDatosClienteNormal();
+          this.router.navigateByUrl("login");
+        }
+        else
+        {
+          switch (resultadoRegistro) 
+          {
+            case "auth/invalid-email":
+            {
+              this.srvToast.mostrarToast("bottom","El mail ingresado es inválido.",3000,"danger");;
+              break;
+            }
+            case "auth/internal-error":
+            {
+              this.srvToast.mostrarToast("bottom","Hubo un error interno de procesamiento.",3000,"danger");
+              break;
+            }
+            case "auth/weak-password":
+            {
+              this.srvToast.mostrarToast("bottom","La contraseña ingresada es débil. Mínimo 6 caracteres.",3000,"danger");
+              break;
+            }
+            case "auth/missing-email":
+            {
+              this.srvToast.mostrarToast("bottom","No se ha detectado un mail.",3000,"danger");
+              break;
+            }
+            case "auth/email-already-in-use":
+            {
+              this.srvToast.mostrarToast("bottom","Ya existe una cuenta con el mail ingresado.",3000,"danger");
+              break;
+            }
+            case "auth/network-request-failed":
+            {
+              this.srvToast.mostrarToast("bottom","Hubo un problema de conexión. Verifica tu conexión.",3000,"danger");
+              break;
+            }
+            default:
+            {
+              this.srvToast.mostrarToast("bottom","Ocurrió un error inesperado. Por favor comunícate con el soporte.",3000,"danger");
+              break;
+            }
+          }
+  
+          this.srvSonidos.reproducirSonido("error",this.sonidoActivado);
+        } 
+      }
+      else
+      {
+        console.log("Datos invalidos");
+        this.srvToast.mostrarToast("bottom","El/la " + datoInvalido + " es un dato invalido. Verifiquelo por favor.",3000,"danger");
+        this.srvSonidos.reproducirSonido("error",this.sonidoActivado);
+      } 
+    }
+    else
+    {
+      console.log("Datos incompletos");
+      this.srvToast.mostrarToast("bottom","Hay datos incompletos. Revise lo que ingresó.",3000,"danger");
+      this.srvSonidos.reproducirSonido("error",this.sonidoActivado);
+    }
+  }
+
+  public async registarClienteAnonimo()
+  {
+    if (this.nombre_clienteAnonimo != undefined && this.nombre_clienteAnonimo != "")
+    {   
+      //Me fijo resultado y actuo en consecuencia
+      if (this.foto_clienteAnonimo != undefined)
+      {
+        console.log("Datos validos");
+      
+        let resultadoExistencia = await this.srvFirebase.existeClienteAnonimo(this.nombre_clienteAnonimo);
+
+        if (resultadoExistencia == false)
+        {
+          await this.srvFirebase.subirClienteAnonimoDB(this.nombre_clienteAnonimo, this.foto_clienteAnonimo);
+
+          await this.srvToast.mostrarToast("bottom","La cuenta fue creada satisfactoriamente.",3000,"success");
+          this.srvSonidos.reproducirSonido("slide",this.sonidoActivado);
+          this.limpiarDatosClienteAnonimo();
+          this.srvAuth.logOut();
+
+          //Debo de ir al home como cliente anonimo PERO DESLOGEARME A TODA COSTA
+          await this.router.navigateByUrl("home");  
+        }
+        else
+        {
+          await this.srvToast.mostrarToast("bottom","Ya existe una cuenta anónima con ese nombre. Probá con otro.",3500,"danger");
+          this.srvSonidos.reproducirSonido("error",this.sonidoActivado);
+        }
+      }
+      else
+      {
+        console.log("Datos invalidos");
+        this.srvToast.mostrarToast("bottom","La foto adjuntada es un dato invalido. Verifiquelo por favor.",3000,"danger");
+        this.srvSonidos.reproducirSonido("error",this.sonidoActivado);
+      } 
+    }
+    else
+    {
+      console.log("Datos incompletos");
+      this.srvToast.mostrarToast("bottom","Hay datos incompletos. Revise lo que ingresó",3000,"danger");
+      this.srvSonidos.reproducirSonido("error",this.sonidoActivado);
+    }
+  }
+
   private limpiarDatosClienteNormal()
   {
     this.correo_clienteNormal = "";
@@ -60,13 +201,19 @@ export class AltaClienteComponent implements OnInit {
     document.getElementById("file-name-CliNormal").innerHTML = "";
   }
 
+  private limpiarDatosClienteAnonimo()
+  {
+    this.nombre_clienteAnonimo = "";
+
+    //Se "limpia" el archivo subido tmb.
+    document.getElementById("file-name-CliAnon").innerHTML = "";
+  }
+
   //Muestra el formulario correspondiente en cuestion de lo que se selecciono al principio de la pag. (Cliente normal o anon)
   public mostrarRegistro(tipoRegistroRecibido:string)
   {
-    if(this.sonidoActivado == true)
-    {
-      this.srvSonidos.reproducirSonido("slide",true);
-    }
+
+    this.srvSonidos.reproducirSonido("slide",this.sonidoActivado);
 
     let imagenRegistroEmpleadoNormal = document.getElementById("selector-registro-normal");
     let imagenRegistroEmpleadoAnonimo = document.getElementById("selector-registro-anonimo");
@@ -107,14 +254,14 @@ export class AltaClienteComponent implements OnInit {
       this.srvLectorQR.stopScan();
     });
   }
-  //#endregion -------------------------------------------------------------
+  //-------------------------------------------------------------
 
-  //#region ------------- Funcionamiento de sonido ----------------------
+  // ------------- Funcionamiento de sonido ----------------------//
   public switchearEstadoSonido()
   {
     this.sonidoActivado = !this.sonidoActivado;
     let iconoSonido = document.getElementById("icono-sonido-altaCli");
-
+    
     if (this.sonidoActivado == true)
     {
       iconoSonido.setAttribute("name","volume-mute");
@@ -125,9 +272,9 @@ export class AltaClienteComponent implements OnInit {
     }
   }
 
-  //#endregion -------------------------------------------------------------
+  //-------------------------------------------------------------
 
-  //#region --------- Uploads de archivos (en los inputs) ---------------
+  // --------- Uploads de archivos (en los inputs) ---------------
   public archivoClienteSubido(event:any, tipoRegistroRecibido:string)
   {
     let fileList = event.target.files;
@@ -138,7 +285,8 @@ export class AltaClienteComponent implements OnInit {
       if (fileList[0] != undefined)
       {
         //Se setea al atributo del cliente normal
-        this.foto_clienteNormal = document.getElementById("file-name-CliNormal").innerHTML = fileList[0]; 
+        this.foto_clienteNormal = fileList[0]; 
+        document.getElementById("file-name-CliNormal").innerHTML =  fileList[0].name; 
       }
       else
       {
@@ -151,7 +299,8 @@ export class AltaClienteComponent implements OnInit {
       if (fileList[0] != undefined)
       {
         //Se setea al atributo del cliente anonimo
-        this.foto_clienteAnonimo = document.getElementById("file-name-CliAnon").innerHTML = fileList[0].name; 
+        this.foto_clienteAnonimo = fileList[0]; 
+        document.getElementById("file-name-CliAnon").innerHTML = fileList[0].name;
       }
       else
       {
@@ -160,91 +309,6 @@ export class AltaClienteComponent implements OnInit {
       }
     }
   }
-
-  public registarClienteNormal()
-  {
-    //Valido datos.
-    let datoInvalido = this.srvFirebase.validarClienteNormalDB(
-    this.correo_clienteNormal,
-    this.password_clienteNormal,
-    this.passwordConfirmada_clienteNormal,
-    this.nombre_clienteNormal,
-    this.apellidos_clienteNormal,
-    this.dni_clienteNormal,
-    this.foto_clienteNormal);
-    
-    //Me fijo resultado y actuo en consecuencia
-    if (datoInvalido == "ninguno")
-    {
-      console.log("Datos validos");
-
-      let resultadoRegistro = this.srvAuth.register(this.correo_clienteNormal, this.password_clienteNormal);
-
-      if (resultadoRegistro == "ok")
-      {
-        this.srvFirebase.subirClienteNormalDB(
-        this.correo_clienteNormal,
-        this.password_clienteNormal,
-        this.nombre_clienteNormal,
-        this.apellidos_clienteNormal,
-        this.dni_clienteNormal,
-        this.foto_clienteNormal); 
-      
-        this.srvToast.mostrarToast("bottom","La cuenta fue creada satisfactoriamente.",3000,"success");
-
-        this.limpiarDatosClienteNormal();
-      }
-      else
-      {
-        switch (resultadoRegistro) 
-        {
-          case "auth/invalid-email":
-          {
-            this.srvToast.mostrarToast("bottom","El mail ingresado es inválido.",3000,"danger");;
-            break;
-          }
-          case "auth/internal-error":
-          {
-            this.srvToast.mostrarToast("bottom","Hubo un error interno de procesamiento.",3000,"danger");
-            break;
-          }
-          case "auth/weak-password":
-          {
-            this.srvToast.mostrarToast("bottom","La contraseña ingresada es débil. Mínimo 6 caracteres.",3000,"danger");
-            break;
-          }
-          case "auth/missing-email":
-          {
-            this.srvToast.mostrarToast("bottom","No se ha detectado un mail.",3000,"danger");
-            break;
-          }
-          case "auth/email-already-in-use":
-          {
-            this.srvToast.mostrarToast("bottom","Ya existe una cuenta con el mail ingresado.",3000,"danger");
-            break;
-          }
-          case "auth/network-request-failed":
-          {
-            this.srvToast.mostrarToast("bottom","Hubo un problema de conexión. Verifica tu conexión.",3000,"danger");
-            break;
-          }
-          default:
-          {
-            this.srvToast.mostrarToast("bottom","Ocurrió un error inesperado. Por favor comunícate con el soporte.",3000,"danger");
-            break;
-          }
-        }
-
-        this.srvSonidos.reproducirSonido("error",this.sonidoActivado);
-      } 
-    }
-    else
-    {
-      console.log("Datos invalidos");
-      this.srvToast.mostrarToast("bottom","El/la " + datoInvalido + " es un dato invalido. Verifiquelo por favor.",3000,"danger");
-      this.srvSonidos.reproducirSonido("error",this.sonidoActivado);
-    } 
-    
-  }
-  //#endregion -------------------------------------------------------------
+  //-------------------------------------------------------------
+ 
 }
