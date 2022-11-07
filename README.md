@@ -59,15 +59,13 @@
 <label> Nuestro restaurante, es de tipo urbano/juvenil, nocturno, con un "look and feel" moderno y alejado de la elegancia.</label><br>
 <img src="src/assets/icon/Ribato.png" width="300px" height="300px">
 <br>
-<strong> Pantalla de LOGIN. </strong>
-<img src="src/assets/readme-files/menu-login.PNG" width="50%" height="450px"><br>
+<strong> Pantalla de LOGIN. y de selección de registro </strong><br>
+<img src="src/assets/readme-files/menu-login.PNG" width="360px" height="740px">
+<img src="src/assets/readme-files/menu-registro.PNG" width="360px" height="740px"><br>
 
-<strong> Pantalla de selección de registro. </strong>
-<img src="src/assets/readme-files/menu-registro.PNG" width="50%" height="450px"><br>
-
-<strong> Pantalla de ALTA CLIENTE (anónimo y normal).</strong>
-<img src="src/assets/readme-files/alta-cliente.PNG" width="50%" height="450px">
-<img src="src/assets/readme-files/alta-anonimo.PNG" width="50%" height="450px"><br>
+<strong> Pantalla de ALTA CLIENTE (anónimo y normal).</strong><br>
+<img src="src/assets/readme-files/alta-cliente.PNG" width="360px" height="740px">
+<img src="src/assets/readme-files/alta-anonimo.PNG" width="360px" height="740px"><br>
 
 <!-- <img src="src/assets/readme-files/menu-login.gif" width="50%" height="450px">
 <img src="src/assets/readme-files/registro-usuario-normal.gif" width="50%" height="450px">
