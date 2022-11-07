@@ -36,12 +36,20 @@ export class LoginComponent implements OnInit {
   sonidoActivado:boolean = true;
 
 //----------------------- Login y register ---------------------
-  login()
+  async login()
   {
     //Validacion precaria para evitar errores
     if (this.mailIngresado != "" && this.mailIngresado.includes("@") == true && this.passwordIngresada != "" && this.passwordIngresada.length > 3 && this.passwordIngresada.length < 60)
     {
-      this.srvAuth.login(this.mailIngresado,this.passwordIngresada,this.sonidoActivado);
+      let loginSalioBien = await this.srvAuth.login(this.mailIngresado, this.passwordIngresada, this.sonidoActivado);
+
+      if (loginSalioBien == true) 
+      {
+        this.limpiarControlesLogin(); 
+        this.srvToast.mostrarToast("bottom","Bienvenido/a",2000,"success");
+        this.srvSonidos.reproducirSonido("ingreso", this.sonidoActivado);
+        this.router.navigateByUrl("home");
+      };
     } 
     else
     {
@@ -84,7 +92,7 @@ export class LoginComponent implements OnInit {
       {
         console.log("Logeo rapido de dueño");
 
-        txtBoxMail.setAttribute("value","dueño@gmail.com");
+        txtBoxMail.setAttribute("value","dueno@gmail.com");
         txtBoxPassword.setAttribute("value","123123");
 
         break;
@@ -144,6 +152,12 @@ export class LoginComponent implements OnInit {
         break;
       }
     }
+  }
+
+  private limpiarControlesLogin()
+  {
+    this.mailIngresado = "";
+    this.passwordIngresada = "";
   }
 
 //------------- Funcionamiento de sonido ----------------------

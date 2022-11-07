@@ -23,11 +23,13 @@ export class AuthService {
     public estaAprobadoEnElSistema;
     //#endregion -------------------------------------------------------------
   
-  public login(mailRecibido:string, passwordRecibida:string, sonidoActivadoRecibido:boolean)
+  public async login(mailRecibido:string, passwordRecibida:string, sonidoActivadoRecibido:boolean)
   {
+    let loginSalioBien = false;
+
     const auth = getAuth();
     
-    signInWithEmailAndPassword(auth, mailRecibido, passwordRecibida).then(async (userCredential) =>
+    await signInWithEmailAndPassword(auth, mailRecibido, passwordRecibida).then(async (userCredential) =>
     {
       console.log("-------------------------------------------------");
       console.log("El inicio de sesión fue satisfactorio. Bienvenido/a.");
@@ -39,9 +41,7 @@ export class AuthService {
       // this.isLoged = true;
       this.userLogedMail = userLoged.email;
 
-      this.srvToast.mostrarToast("bottom","Bienvenido/a",2000,"light");
-      this.srvSonidos.reproducirSonido("ingreso",sonidoActivadoRecibido);
-      this.router.navigateByUrl("home");
+      loginSalioBien = true;
 
     }).catch((error) => 
     {
@@ -94,6 +94,8 @@ export class AuthService {
 
       this.srvSonidos.reproducirSonido("error",sonidoActivadoRecibido);
     });
+
+    return loginSalioBien;
   }
 
   public register(mailRecibido:string, passwordRecibida:string)

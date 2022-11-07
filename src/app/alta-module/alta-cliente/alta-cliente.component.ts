@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Servicios/auth.service';
 import { FirebaseService } from 'src/app/Servicios/firebase.service';
+import { MailSendingService } from 'src/app/Servicios/mail-sending.service';
 import { ScannerQRService } from 'src/app/Servicios/scanner-qr.service';
 import { SonidosPersonalizadosService } from 'src/app/Servicios/sonidos-personalizados.service';
 import { ToastMsgService } from 'src/app/Servicios/toast-msg.service';
@@ -19,7 +20,8 @@ export class AltaClienteComponent implements OnInit {
     public router:Router,
     public srvLectorQR:ScannerQRService,
     public srvFirebase:FirebaseService,
-    public srvAuth:AuthService) 
+    public srvAuth:AuthService,
+    public srvMailSending:MailSendingService) 
   {}
 
   ngOnInit() {}
@@ -79,9 +81,20 @@ export class AltaClienteComponent implements OnInit {
           this.dni_clienteNormal,
           this.foto_clienteNormal); 
         
+          //---- Aca aviso al mail ingresado y validado que su cuenta está pendiente de ser aprobada por un supervisor/dueño -----------
+          this.srvMailSending.enviarMail(
+            this.correo_clienteNormal, 
+            "Su cuenta está pendiente de ser aprobada. Nuestro equipo la verificará y aprobará lo antes posible.");
+          //---------------------------------------------------------------------------------------------------------------------------
+
+          //Aca envio el push notification
+          // TO DO
+          //----------------------------
+
+          //Acciones finales
           this.srvToast.mostrarToast("bottom","La cuenta fue creada satisfactoriamente.",3000,"success");
           this.srvAuth.logOut();
-          this.srvSonidos.reproducirSonido("slide",this.sonidoActivado);
+          this.srvSonidos.reproducirSonido("slide",this.sonidoActivado);  
           this.limpiarDatosClienteNormal();
           this.router.navigateByUrl("login");
         }

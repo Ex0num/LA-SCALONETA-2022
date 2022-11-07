@@ -7,7 +7,9 @@
 3) <a href="#requerimientosPorFecha">Requerimientos por fecha</a> <br>
 4) <a href="#profesores">Profesores</a> <br>
 5) <a href="#integrantes">Integrantes</a> <br>
-6) <a href="#tareasGenerales">Tareas generales</a> <br>
+6) <a href="#fechasActualizacionesEspecificas">Bitácora tareas específicas</a> <br>
+7) <a href="#fechasActualizacionesGenerales">Bitácora tareas generales</a> <br>
+7) <a href="#visualizacionProyecto">Visualización del proyecto</a> <br>
 
 ***
 <h3 id="integrantes">Integrantes</h3>
@@ -16,18 +18,7 @@
 <a href="https://github.com/aletexis">Alejandra Escubilla</a> - <strong>Gamma</strong> <br>
 
 ***
-<h3 id="tareasGenerales">Tareas generales</h3>
-A continuación se detalla de qué forma los integrantes se concentrarán en el proyecto, sin embargo, es importante aclarar que tanto Alpha, Beta y Gamma compartirán la responsabilidad primorial de que el mismo cumpla con los requerimimientos solicitados, siendo estos detallados <a href="#requerimientosExcluyentes">Acá</a>. <br><br>
-1 - <strong>Diseño externo</strong> - Aplha <br>
-2 - <strong>Diseño interno</strong> - Beta <br>
-3 - <strong>Persistencia</strong> - Gamma <br>
-4 - <strong>Documentación</strong> - Alpha <br>
-5 - <strong>Testing y validaciones</strong> - Gamma <br>
-6 - <strong>Mantenimiento</strong> - Beta <br>
-7 - <strong>Código</strong> - Aplha, Beta y Gamma <br>
-
-***
-<h3 id="fechasActualizaciones">Fechas de actualización / Bitácora de cambios específica</h3>
+<h3 id="fechasActualizacionesEspecificas">Fechas de actualización / Bitácora de cambios específica</h3>
 <strong> 26/10/22 </strong> <br>
 <label>- Se dió a la luz al repositorio. - Alpha</label> <br>
 <label>- Se inicia la documentación de toda acción realizada en el proyecto.- Alpha</label> <br>
@@ -46,9 +37,10 @@ A continuación se detalla de qué forma los integrantes se concentrarán en el 
 <label>- Se implementaron sonidos (activación y desactivación) y mensajes de error/satisfacción. - Alpha</label><br>
 <label>- Se implementaron animaciones adicionales a botones e inputs. - Alpha</label><br>
 <label>- Se estructuró el <strong>Todos los homes</strong> - Alpha</label> <br>
+<label>- Se muestra el home correspondiente al usuario logeado - Alpha</label> <br>
 
 ***
-<h3 id="fechasActualizaciones">Fechas de actualización / Bitácora de cambios general</h3>
+<h3 id="fechasActualizacionesGenerales">Fechas de actualización / Bitácora de cambios general</h3>
 
 <strong> 26/10/22 </strong> <br>
 <label>- Se creó el proyecto. - Alpha</label> <br>
@@ -62,12 +54,35 @@ A continuación se detalla de qué forma los integrantes se concentrarán en el 
 <label>- Se creó y diseñó el <strong>Alta de cliente (Anónimo y normal)</strong> - Alpha</label> <br>
 
 ***
+<h3 id="visualizacionProyecto">Visualización del proyecto</h3><br>
+
+<label> Nuestro restaurante, es de tipo urbano/juvenil, nocturno, con un "look and feel" moderno y alejado de la elegancia.</label><br>
+<img src="src/assets/icon/Ribato.png" width="300px" height="300px">
+<br>
+<strong> Pantalla de LOGIN. </strong>
+<img src="src/assets/readme-files/menu-login.PNG" width="50%" height="450px"><br>
+
+<strong> Pantalla de selección de registro. </strong>
+<img src="src/assets/readme-files/menu-registro.PNG" width="50%" height="450px"><br>
+
+<strong> Pantalla de ALTA CLIENTE (anónimo y normal).</strong>
+<img src="src/assets/readme-files/alta-cliente.PNG" width="50%" height="450px">
+<img src="src/assets/readme-files/alta-anonimo.PNG" width="50%" height="450px"><br>
+
+<!-- <img src="src/assets/readme-files/menu-login.gif" width="50%" height="450px">
+<img src="src/assets/readme-files/registro-usuario-normal.gif" width="50%" height="450px">
+<br>
+<img src="src/assets/readme-files/splash-animado.gif" width="50%" height="450px">
+<img src="src/assets/readme-files/splash-estatico.jpg" width="50%" height="450px"> -->
+
+***
 <h3 id="comandos">Comandos utilizados</h3>
 
 Actualizar la carpeta android con los archivos de Angular
 ```
-$ ionic cap sync
-$ npx cap open android
+$ ng build
+$ ionic capacitor add android
+$ cordova-res android --skip-config --copy
 ```
 
 Agregar la carpeta android (Generada desde 0)
