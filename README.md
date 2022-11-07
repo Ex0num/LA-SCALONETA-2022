@@ -1,24 +1,25 @@
 <h1> 2° PARCIAL PP - LA SCALONETA 2022 </h1>
 
 ***
-<h3 id="indice">Índice</h3>
-1) <a href="#objetivo">Objetivo</a> <br>
-2) <a href="#requerimientosExcluyentes">Requerimientos excluyentes</a> <br>
-3) <a href="#requerimientosPorFecha">Requerimientos por fecha</a> <br>
-4) <a href="#profesores">Profesores</a> <br>
-5) <a href="#integrantes">Integrantes</a> <br>
-6) <a href="#fechasActualizacionesEspecificas">Bitácora tareas específicas</a> <br>
-7) <a href="#fechasActualizacionesGenerales">Bitácora tareas generales</a> <br>
-7) <a href="#visualizacionProyecto">Visualización del proyecto</a> <br>
+<h3 id="indice">🧾 Índice</h3>
+1) <a href="#objetivo">📈 Objetivo</a> <br>
+2) <a href="#requerimientosExcluyentes">📍 Requerimientos excluyentes</a> <br>
+3) <a href="#requerimientosPorFecha">🗓 Requerimientos por fecha</a> <br>
+4) <a href="#profesores">👨🏼‍🎓 Profesores</a> <br>
+5) <a href="#integrantes">👨‍👧‍👦 Integrantes</a> <br>
+6) <a href="#fechasActualizacionesEspecificas">✏️ Bitácora tareas específicas</a> <br>
+7) <a href="#fechasActualizacionesGenerales">🖍 Bitácora tareas generales</a> <br>
+7) <a href="#visualizacionProyecto">📲 Visualización del proyecto</a> <br>
+8) <a href="#comandos">👨🏻‍💻 Comandos</a> <br>
 
 ***
-<h3 id="integrantes">Integrantes</h3>
+<h3 id="integrantes">👨‍👧‍👦 Integrantes</h3>
 <a href="https://github.com/ex0num">Gabriel Lopez Gasal</a> - <strong>Alpha</strong> <br>
 <a href="https://github.com/valentinlaplume">Valentín Laplume</a> - <strong>Beta</strong> <br>
 <a href="https://github.com/aletexis">Alejandra Escubilla</a> - <strong>Gamma</strong> <br>
 
 ***
-<h3 id="fechasActualizacionesEspecificas">Fechas de actualización / Bitácora de cambios específica</h3>
+<h3 id="fechasActualizacionesEspecificas">✏️ Fechas de actualización / Bitácora de cambios específica</h3>
 <strong> 26/10/22 </strong> <br>
 <label>- Se dió a la luz al repositorio. - Alpha</label> <br>
 <label>- Se inicia la documentación de toda acción realizada en el proyecto.- Alpha</label> <br>
@@ -40,7 +41,7 @@
 <label>- Se muestra el home correspondiente al usuario logeado - Alpha</label> <br>
 
 ***
-<h3 id="fechasActualizacionesGenerales">Fechas de actualización / Bitácora de cambios general</h3>
+<h3 id="fechasActualizacionesGenerales">🖍 Fechas de actualización / Bitácora de cambios general</h3>
 
 <strong> 26/10/22 </strong> <br>
 <label>- Se creó el proyecto. - Alpha</label> <br>
@@ -54,7 +55,7 @@
 <label>- Se creó y diseñó el <strong>Alta de cliente (Anónimo y normal)</strong> - Alpha</label> <br>
 
 ***
-<h3 id="visualizacionProyecto">Visualización del proyecto</h3><br>
+<h3 id="visualizacionProyecto">📲 Visualización del proyecto</h3><br>
 
 <label> Nuestro restaurante, es de tipo urbano/juvenil, nocturno, con un "look and feel" moderno y alejado de la elegancia.</label><br>
 <img src="src/assets/icon/Ribato.png" width="300px" height="300px">
@@ -74,7 +75,7 @@
 <img src="src/assets/readme-files/splash-estatico.jpg" width="50%" height="450px"> -->
 
 ***
-<h3 id="comandos">Comandos utilizados</h3>
+<h3 id="comandos">👨🏻‍💻 Comandos utilizados</h3>
 
 Actualizar la carpeta android con los archivos de Angular
 ```
@@ -104,19 +105,19 @@ $ npx cap init
 ```
  
 ***
-<h3 id="profesores">Profesores</h3>
+<h3 id="profesores">👨🏼‍🎓 Profesores</h3>
 
 <a href="https://github.com/agmorelli">Augusto Morelli</a> - <strong>Ayudante</strong> <br>
 <a href="https://github.com/naferrero-utnfra">Nicolás Ferrero</a> - <strong>Ayudante</strong> <br>
 <a href="https://github.com/maxineinerutn">Maximiliano Neiner</a> - <strong>Profesor</strong> <br>
   
 ***
-<h3 id="objetivo">Objetivo</h3>
+<h3 id="objetivo">📈 Objetivo</h3>
 Lograr una aplicación utilizando el hardware del dispositivo móvil para la gestión de información, enfocada en la experiencia de usuario. <br>
 El enfoque va a estar dado por los usuarios de un RESTAURANT, el cual apunta todos sus esfuerzos en mejorar la utilización de su servicio por medio de una aplicación para celulares. <br>
 
 ***
-<h3 id="requerimientosExcluyentes">Requerimientos excluyentes</h3>
+<h3 id="requerimientosExcluyentes">📍 Requerimientos excluyentes</h3>
 
 - Splash animado con ícono de la aplicación y los apellidos y nombres de los integrantes del grupo. <br>
 - Todo en español. (¡TODO EN ESPAÑOL, los acentos pertenecen al idioma!). <br>
@@ -142,7 +143,7 @@ El enfoque va a estar dado por los usuarios de un RESTAURANT, el cual apunta tod
    + Cliente (tipos: registrado o anónimo) <br>
 
 ***
-<h3 id="requerimientosPorFecha">Requerimientos por fechas de entrega</h3>
+<h3 id="requerimientosPorFecha">🗓 Requerimientos por fechas de entrega</h3>
 
 <strong>
   Requerimientos 1era fecha (segundo parcial):
