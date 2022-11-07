@@ -29,22 +29,23 @@ A continuación se detalla de qué forma los integrantes se concentrarán en el 
 ***
 <h3 id="fechasActualizaciones">Fechas de actualización / Bitácora de cambios específica</h3>
 <strong> 26/10/22 </strong> <br>
-<label>- Se dió a la luz al repositorio.</label> <br>
-<label>- Se inicia la documentación de toda acción realizada en el proyecto.</label> <br>
+<label>- Se dió a la luz al repositorio. - Alpha</label> <br>
+<label>- Se inicia la documentación de toda acción realizada en el proyecto.- Alpha</label> <br>
 <br>
 <strong> 27/10/22 </strong> <br>
-<label>- Se pensó y diseñó un nombre, ícono y splash para la aplicación. "Ribato" - "Come, rico y barato". </label><br>
-<label>- Se creó el template del proyecto.</label><br>
+<label>- Se pensó y diseñó un nombre, ícono y splash para la aplicación. "Ribato" - "Come, rico y barato". - Alpha</label><br>
+<label>- Se creó el template del proyecto. - Alpha</label><br>
 <br>
 <strong> 07/11/22 </strong> <br>
-<label>- Se diseñó un ícono para la aplicación.</label><br>
-<label>- Se diseñaron las animaciones de la splashscreeen.</label><br>
-<label>- Se estructuró el proyecto en su totalidad (Modularización de homes/altas) para su buena optimización y carga.</label><br>
-<label>- Se crearon y desarrollaron los servicios necesarios (QR, Auth, Firestorage, Sending-Mail).<br>
-<label>- Se creó y diseñó el <strong>Alta de cliente</strong> (tanto anónimo como normal).</label><br>
-<label>- Se creó y diseñó el <strong>Home de cliente</strong> (tanto anónimo como normal).</label><br>
-<label>- Se implementaron sonidos (activación y desactivación) y mensajes de error/satisfacción.</label><br>
-<label>- Se implementaron animaciones adicionales a botones e inputs.</label><br>
+<label>- Se diseñó un ícono para la aplicación. - Alpha</label><br>
+<label>- Se diseñaron las animaciones de la splashscreeen. - Alpha</label><br>
+<label>- Se estructuró el proyecto en su totalidad (Modularización de homes/altas) para su buena optimización y carga. - Alpha</label><br>
+<label>- Se crearon y desarrollaron los servicios necesarios (QR, Auth, Firestorage, Sending-Mail). - Alpha<br>
+<label>- Se creó y diseñó el <strong>Alta de cliente</strong> (tanto anónimo como normal). - Alpha</label><br>
+<label>- Se creó y diseñó el <strong>Home de cliente</strong> (tanto anónimo como normal). - Alpha</label><br>
+<label>- Se implementaron sonidos (activación y desactivación) y mensajes de error/satisfacción. - Alpha</label><br>
+<label>- Se implementaron animaciones adicionales a botones e inputs. - Alpha</label><br>
+<label>- Se estructuró el <strong>Todos los homes</strong> - Alpha</label> <br>
 
 ***
 <h3 id="fechasActualizaciones">Fechas de actualización / Bitácora de cambios general</h3>
