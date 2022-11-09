@@ -7,8 +7,8 @@
 3) <a href="#requerimientosPorFecha">🗓 Requerimientos por fecha</a> <br>
 4) <a href="#profesores">👨🏼‍🎓 Profesores</a> <br>
 5) <a href="#integrantes">👨‍👧‍👦 Integrantes</a> <br>
-6) <a href="#fechasActualizacionesEspecificas">✏️ Bitácora tareas específicas</a> <br>
-7) <a href="#fechasActualizacionesGenerales">🖍 Bitácora tareas generales</a> <br>
+<!-- 6) <a href="#fechasActualizacionesEspecificas">✏️ Bitácora tareas específicas</a> <br> -->
+6) <a href="#fechasActualizacionesGenerales">🖍 Bitácora tareas generales</a> <br>
 7) <a href="#visualizacionProyecto">📲 Visualización del proyecto</a> <br>
 8) <a href="#comandos">👨🏻‍💻 Comandos</a> <br>
 
@@ -19,7 +19,7 @@
 <a href="https://github.com/aletexis">Alejandra Escubilla</a> - <strong>Gamma</strong> <br>
 
 ***
-<h3 id="fechasActualizacionesEspecificas">✏️ Fechas de actualización / Bitácora de cambios específica</h3>
+<!-- <h3 id="fechasActualizacionesEspecificas">✏️ Fechas de actualización / Bitácora de cambios específica</h3>
 <strong> 26/10/22 </strong> <br>
 <label>- Se dió a la luz al repositorio. - Alpha</label> <br>
 <label>- Se inicia la documentación de toda acción realizada en el proyecto.- Alpha</label> <br>
@@ -39,7 +39,10 @@
 <label>- Se implementaron animaciones adicionales a botones e inputs. - Alpha</label><br>
 <label>- Se estructuró el <strong>Todos los homes</strong> - Alpha</label> <br>
 <label>- Se muestra el home correspondiente al usuario logeado - Alpha</label> <br>
-
+<br>
+<strong> 08/11/22 </strong> <br>
+<label>- Se diseñaron visualmente todas las pantallas faltantes sin funcionalidad</label><br>
+<label>- Se implementaron servicios escenciales para el funcionamiento de las altas. ("GeneradorQR, Camara-fotos")</label><br> -->
 ***
 <h3 id="fechasActualizacionesGenerales">🖍 Fechas de actualización / Bitácora de cambios general</h3>
 
@@ -53,6 +56,14 @@
 <label>- Se diseñó el splash estático y animado. - Alpha</label> <br>
 <label>- Se diseñaron las animaciones de la splashscreeen. - Alpha</label> <br>
 <label>- Se creó y diseñó el <strong>Alta de cliente (Anónimo y normal)</strong> - Alpha</label> <br>
+<br>
+<strong> 08/11/22 </strong> <br>
+<label>- Se creó y diseñó el <strong>Alta de supervisor y dueño (</strong> - Alpha</label> <br>
+<label>- Se creó y diseñó el <strong>Alta de empleados</strong> - Alpha</label> <br>
+<label>- Se creó y diseñó el <strong>Alta de mesa</strong> - Alpha</label> <br>
+<br>
+<strong> 09/11/22 </strong> <br>
+
 
 ***
 <h3 id="visualizacionProyecto">📲 Visualización del proyecto</h3><br>
