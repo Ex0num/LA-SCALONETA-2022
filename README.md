@@ -69,7 +69,7 @@
 <h3 id="visualizacionProyecto">📲 Visualización del proyecto</h3><br>
 
 <label> Nuestro restaurante, es de tipo <strong>urbano/juvenil, nocturno, con un "look and feel" moderno y alejado de la elegancia.</strong></label><br>
-<img src="src/assets/icon/Ribato.png" width="300px" height="300px">
+<img src="src/assets/icon/Ribato-big.png" width="300px" height="300px">
 <br>
 <strong> Pantalla de LOGIN. y de selección de registro </strong><br>
 <img src="src/assets/readme-files/menu-login.PNG" width="360px" height="740px">
