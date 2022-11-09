@@ -18,7 +18,6 @@
 <a href="https://github.com/valentinlaplume">Valentín Laplume</a> - <strong>Beta</strong> <br>
 <a href="https://github.com/aletexis">Alejandra Escubilla</a> - <strong>Gamma</strong> <br>
 
-***
 <!-- <h3 id="fechasActualizacionesEspecificas">✏️ Fechas de actualización / Bitácora de cambios específica</h3>
 <strong> 26/10/22 </strong> <br>
 <label>- Se dió a la luz al repositorio. - Alpha</label> <br>
@@ -43,6 +42,7 @@
 <strong> 08/11/22 </strong> <br>
 <label>- Se diseñaron visualmente todas las pantallas faltantes sin funcionalidad</label><br>
 <label>- Se implementaron servicios escenciales para el funcionamiento de las altas. ("GeneradorQR, Camara-fotos")</label><br> -->
+
 ***
 <h3 id="fechasActualizacionesGenerales">🖍 Fechas de actualización / Bitácora de cambios general</h3>
 
@@ -58,7 +58,7 @@
 <label>- Se creó y diseñó el <strong>Alta de cliente (Anónimo y normal)</strong> - Alpha</label> <br>
 <br>
 <strong> 08/11/22 </strong> <br>
-<label>- Se creó y diseñó el <strong>Alta de supervisor y dueño (</strong> - Alpha</label> <br>
+<label>- Se creó y diseñó el <strong>Alta de supervisor y dueño</strong> - Alpha</label> <br>
 <label>- Se creó y diseñó el <strong>Alta de empleados</strong> - Alpha</label> <br>
 <label>- Se creó y diseñó el <strong>Alta de mesa</strong> - Alpha</label> <br>
 <br>
