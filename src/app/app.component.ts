@@ -18,6 +18,7 @@ export const clientes = collection(db, "clientes");
 export const anonimos = collection(db, "anonimos");
 export const empleados = collection(db, "empleados");
 export const autoridades = collection(db, "autoridades");
+export const mesas = collection(db, "mesas");
 
 @Component({
   selector: 'app-root',
@@ -36,7 +37,8 @@ export class AppComponent {
     this.platform.ready().then(()=>
     {
       SplashScreen.hide();
-      this.router.navigateByUrl("splash");
+      //this.router.navigateByUrl("splash");
+      this.router.navigateByUrl("login");
     })
   }
 }

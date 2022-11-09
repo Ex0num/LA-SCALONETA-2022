@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AltaClienteComponent } from './alta-module/alta-cliente/alta-cliente.component';
 import { AltaDuenoSupervisorComponent } from './alta-module/alta-dueno-supervisor/alta-dueno-supervisor.component';
+import { AltaEmpleadoComponent } from './alta-module/alta-empleado/alta-empleado.component';
 import { AltaMesaComponent } from './alta-module/alta-mesa/alta-mesa.component';
 import { AltaProductoComponent } from './alta-module/alta-producto/alta-producto.component';
 import { HomeBartenderComponent } from './home-module/home/home-bartender/home-bartender.component';
@@ -23,7 +24,7 @@ const routes: Routes = [
   //Modulo de alta (Tipos de usuarios)
   {path: 'alta-cliente',component:AltaClienteComponent, loadChildren: () => import('./alta-module/alta-module.module').then(m => m.AltaModuleModule)},
   {path: 'alta-dueno-supervisor',component:AltaDuenoSupervisorComponent, loadChildren: () => import('./alta-module/alta-module.module').then(m => m.AltaModuleModule)},
-  
+  {path: 'alta-empleado',component:AltaEmpleadoComponent, loadChildren: () => import('./alta-module/alta-module.module').then(m => m.AltaModuleModule)},
   //Modulo de alta (Objetos)
   {path: 'alta-mesa',component:AltaMesaComponent, loadChildren: () => import('./alta-module/alta-module.module').then(m => m.AltaModuleModule)},
   {path: 'alta-producto',component:AltaProductoComponent, loadChildren: () => import('./alta-module/alta-module.module').then(m => m.AltaModuleModule)},

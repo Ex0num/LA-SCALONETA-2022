@@ -98,18 +98,58 @@ export class AuthService {
     return loginSalioBien;
   }
 
-  public register(mailRecibido:string, passwordRecibida:string)
+  public async register(mailRecibido:string, passwordRecibida:string)
   {
     let resultadoRegistro = "ok";
 
     const auth = getAuth();
     
-    createUserWithEmailAndPassword(auth, mailRecibido, passwordRecibida).then(async (userCredential) => 
+    await createUserWithEmailAndPassword(auth, mailRecibido, passwordRecibida).then(async (userCredential) => 
     {
       console.log("-------------------------------------------------");
       console.log("El registro de usuario fue satisfactorio. Bienvenido/a.");
       console.log("-------------------------------------------------");
-      resultadoRegistro = "ok";
+    })
+    .catch((error) => 
+    {
+      resultadoRegistro = error.code;
+    });
+
+    return resultadoRegistro;
+  }
+
+  public async registerSinLogearse(mailRecibido:string, passwordRecibida:string, sonidoActivado:boolean)
+  {
+    let resultadoRegistro = "ok";
+
+    const auth = getAuth();
+
+    //----- Busco la data del usuario logeado actualmente para despues del register re-logearlo ---
+    await this.sesionActual();
+    let usuarioEncontrado = await this.srvFirebase.buscarUsuarioPorMail(await this.userLogedMail);
+    //---------------------------------------------------------------------------------------------
+    
+    await createUserWithEmailAndPassword(auth, mailRecibido, passwordRecibida).then(async (userCredential) => 
+    {
+      console.log("-------------------------------------------------");
+      console.log("El registro de usuario fue satisfactorio. Bienvenido/a.");
+      console.log("-------------------------------------------------");
+
+      setTimeout(async () => 
+      {
+        await this.logOut();
+
+        if (usuarioEncontrado != undefined)
+        {
+          await this.login(usuarioEncontrado.correo, usuarioEncontrado.password, sonidoActivado);
+        }
+        else
+        {
+          this.router.navigateByUrl("login");
+        }
+        
+      }, 1500);
+      
     })
     .catch((error) => 
     {

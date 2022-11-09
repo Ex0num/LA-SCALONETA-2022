@@ -49,7 +49,7 @@ export class AltaClienteComponent implements OnInit {
   //#endregion -------------------------------------------------------------
 
   //------------------ Funciones generales ---------------------
-  public registarClienteNormal()
+  public async registarClienteNormal()
   {
     if (this.correo_clienteNormal != undefined && this.correo_clienteNormal != "")
     {
@@ -68,7 +68,7 @@ export class AltaClienteComponent implements OnInit {
       {
         console.log("Datos validos");
   
-        let resultadoRegistro = this.srvAuth.register(this.correo_clienteNormal, this.password_clienteNormal);
+        let resultadoRegistro = await this.srvAuth.register(this.correo_clienteNormal, this.password_clienteNormal);
         //let resultadoRegistro = "ok";
   
         if (resultadoRegistro == "ok")

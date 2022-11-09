@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AltaMesaComponent } from 'src/app/alta-module/alta-mesa/alta-mesa.component';
+import { AuthService } from 'src/app/Servicios/auth.service';
 
 @Component({
   selector: 'app-home-dueno-supervisor',
@@ -7,8 +10,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeDuenoSupervisorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, public srvAuth:AuthService) { }
 
-  ngOnInit() {}
+  async ngOnInit() 
+  {}
+
+  altaEmpleado()
+  {
+    this.router.navigateByUrl("alta-empleado");
+  }
+
+  altaSupervisorDueno()
+  {
+    this.router.navigateByUrl("alta-dueno-supervisor");
+  }
+
+  altaMesa()
+  {
+    // //Apenas se toca el boton de "alta mesa", ya le indico al componente que va a tener que iniciar la generacion QR.
+    // AltaMesaComponent.prototype.generacionQR = true;
+    this.router.navigateByUrl("alta-mesa");
+  }
+
+  aprobacionClientes()
+  {
+    // this.router.navigateByUrl("");
+  }
 
 }
