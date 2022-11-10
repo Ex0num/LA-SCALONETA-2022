@@ -66,8 +66,8 @@ export class AltaEmpleadoComponent implements OnInit {
         {
           console.log("Datos validos");
     
-          //let resultadoRegistro = await this.srvAuth.registerSinLogearse(this.correo_empleado, this.password_empleado, this.sonidoActivado);
-          let resultadoRegistro = "ok";
+          let resultadoRegistro = await this.srvAuth.registerSinLogearse(this.correo_empleado, this.password_empleado, this.sonidoActivado);
+          //let resultadoRegistro = "ok";
     
           if (resultadoRegistro == "ok")
           {

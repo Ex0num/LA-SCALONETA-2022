@@ -13,13 +13,17 @@ import { HomeMetreComponent } from './home-module/home/home-metre/home-metre.com
 import { HomeMozoComponent } from './home-module/home/home-mozo/home-mozo.component';
 import { HomeComponent } from './home-module/home/home.component';
 import { SplashComponent } from './splash/splash/splash.component';
+import { AprobarClienteComponent } from './Vistas/aprobar-cliente/aprobar-cliente.component';
+import { ClientesEsperandoMesaComponent } from './Vistas/clientes-esperando-mesa/clientes-esperando-mesa.component';
 import { LoginComponent } from './Vistas/login/login.component';
 
 const routes: Routes = [
 
-  //Paginas iniciales
+  //Paginas iniciales/normales
   {path: 'splash',component:SplashComponent,  loadChildren: () => import('./splash/splash.module').then(m => m.SplashModule)},
   {path: 'login',component:LoginComponent},
+  {path: 'aprobar-clientes',component:AprobarClienteComponent},
+  {path: 'clientes-esperando-mesa',component:ClientesEsperandoMesaComponent},
 
   //Modulo de alta (Tipos de usuarios)
   {path: 'alta-cliente',component:AltaClienteComponent, loadChildren: () => import('./alta-module/alta-module.module').then(m => m.AltaModuleModule)},

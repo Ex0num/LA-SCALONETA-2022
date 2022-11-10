@@ -1,0 +1,131 @@
+#contenedor-ingreso-local
+{
+    margin-top: 1rem;
+}
+
+#lbl-helper-qr-ingreso
+{
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    margin-bottom: 0.2rem;
+    padding: 0.3rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 19px;
+}
+
+#qr-ingreso-local
+{
+    width: 80%;
+    margin-top: 0.5rem;
+    margin-left: 1%;
+    height: 32%;
+}
+
+#qrScanner-ingreso-local
+{
+    width: 15%;
+    border-radius: 4px;
+    margin-top: 0.7rem;
+    margin-left: 1%;
+    height: 2.5rem;
+}
+
+.emoji-ingreso-local
+{
+    font-size: 24px;
+    margin-bottom: 1rem;
+}
+
+#icono-qr-ingreso-local
+{
+    width: 2rem;
+    height: 100%;
+}
+
+
+// LISTA DE ESPERA
+
+#mensaje-cliente-esperando
+{
+    font-size: 23px;
+    color: white;
+    background-color: black;
+    border-radius: 6px;
+    padding: 1.2rem;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 25%;
+}
+
+// SPINNER - STYLE
+
+.wrapper
+{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%); 
+    margin-top: 70%;
+  }
+  .circle
+  {
+    display: inline-block;
+    width: 15px;
+    margin-left: 0.2rem;
+    height: 15px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    animation: loading 1.5s cubic-bezier(.8, .5, .2, 1.4) infinite;
+    transform-origin: bottom center;
+    position: relative;
+  }
+  @keyframes loading
+  {
+    0%{
+      transform: translateY(0px);
+      background-color: #958a7a;
+    }
+    50%{
+      transform: translateY(50px);
+      background-color: #000000;
+    }
+    100%{
+      transform: translateY(0px);
+      background-color: #ffffff;
+    }
+  }
+  .circle-1
+  {
+    animation-delay: 0.1s;
+  }
+  .circle-2
+  {
+    animation-delay: 0.2s;
+  }
+  .circle-3
+  {
+    animation-delay: 0.3s;
+  }
+  .circle-4
+  {
+    animation-delay: 0.4s;
+  }
+  .circle-5
+  {
+    animation-delay: 0.5s;
+  }
+  .circle-6
+  {
+    animation-delay: 0.6s;
+  }
+  .circle-7
+  {
+    animation-delay: 0.7s;
+  }
+  .circle-8
+  {
+    animation-delay: 0.8s;
+  }
+
+  //--

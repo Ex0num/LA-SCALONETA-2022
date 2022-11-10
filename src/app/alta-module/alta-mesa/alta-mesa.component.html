@@ -6,7 +6,7 @@
         <label id="titulo-principal">Registro de mesa</label><br>
       </ion-card-header>
 
-      <label>El próximo número de mesa en el Ribato es...</label>
+      <label id="lbl-helper-numeroMesa">El próximo número de mesa en Ribato es...</label>
       <input readonly class="input-mesa" id="numero-mesa" [(ngModel)]="numeroGenerado_mesa" type="number" placeholder="Próximo número de mesa">
 
       <select (change)="actualizarTipoMesa($event)" class="input-mesa" id="selector-tipo-mesa">
@@ -33,7 +33,7 @@
         </div>
 
         <div class="imagen-formulario" id="imagen-qr-deleteable">
-          <qrcode [qrdata]='infoQR' id="my-qr"></qrcode>
+          <qrcode [qrdata]="infoQR" [allowEmptyString]="true" id="my-qr"></qrcode>
         </div>
         
         <img class="imagen-formulario" id="imagen-qr" src="../../../assets/files/example-foto.PNG" width="100%" height="100%" hidden> 

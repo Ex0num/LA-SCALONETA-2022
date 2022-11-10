@@ -1,0 +1,31 @@
+<body id="body">
+  <ion-card id="main-card">
+   <ion-card id="main-card-2">
+
+      <ion-card-header id="main-card-header">
+        <label id="titulo-principal">Aprobación de clientes</label><br>
+      </ion-card-header>
+
+    <div id="seccion-clientes-pendientes">
+      <ul id="listado-cliente-pendientes">
+        <li *ngFor="let clienteDesaprobado of arrayClientesPendientes; index as i" class="item-cliente-pendiente">
+          <img src="{{clienteDesaprobado.foto}}" class="foto-cliente-pendiente"> <br>
+          <label class="data-cliente-pendiente">Nombre: {{clienteDesaprobado.nombre}}</label><br>
+          <label class="data-cliente-pendiente">Apellido: {{clienteDesaprobado.apellido}}</label><br>
+          <label class="data-cliente-pendiente">DNI: {{clienteDesaprobado.dni}}</label><br>
+          <label class="data-cliente-pendiente">Correo: {{clienteDesaprobado.correo}}</label><br>
+          <button class="btn-aceptar-cli" (click)="accionarCliente(clienteDesaprobado,true, i)"><ion-icon name="checkmark-outline"></ion-icon></button>
+          <button class="btn-rechazar-cli" (click)="accionarCliente(clienteDesaprobado,false, i)"><ion-icon name="close-outline"></ion-icon></button>
+        </li>
+      </ul>
+    </div>
+
+   </ion-card>
+  </ion-card>
+</body>
+
+<ion-fab id="indicador-de-sonido" vertical="bottom" horizontal="start" slot="fixed" color="light">
+  <ion-fab-button color="light" (click)="switchearEstadoSonido()">
+    <ion-icon id="icono-sonido-aprobacionCli" name="volume-mute"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

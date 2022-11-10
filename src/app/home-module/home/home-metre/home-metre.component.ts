@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-metre',
@@ -7,8 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeMetreComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public router:Router,
+  ) { }
 
   ngOnInit() {}
+
+  altaCliente()
+  {
+    this.router.navigateByUrl("alta-cliente");
+  }
+
+  listaEspera()
+  {
+    this.router.navigateByUrl("clientes-esperando-mesa");
+  }
 
 }

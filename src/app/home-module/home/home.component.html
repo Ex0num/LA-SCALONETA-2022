@@ -23,7 +23,12 @@
         <app-home-cliente *ngIf="(tipoUsuarioLogeado == 'cliente' && dataUsuarioLogeado.estado == 'aprobado') || tipoUsuarioLogeado == 'anonimo'"></app-home-cliente>
         
         <div *ngIf="tipoUsuarioLogeado == 'cliente' && dataUsuarioLogeado.estado == 'desaprobado'" id="mensaje-cliente-desaprobado">
-          Su cuenta debe ser aprobada por los administradores del sistema. <br> Intente más tarde.
+          Su cuenta fue rechazada por los dueños y administradores del sistema. Lo sentimos mucho. <br>
+        </div>
+
+        <div *ngIf="tipoUsuarioLogeado == 'cliente' && dataUsuarioLogeado.estado == 'pendiente'" id="mensaje-cliente-pendiente">
+          Su cuenta está pendiente de ser aprobada, !Lo haremos lo antes posible!<br> 
+          Le notificaremos a su correo nuestra respuesta.
         </div>
 
         <div class="wrapper" *ngIf="spinnerMostrandose == true">

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { collection, doc, Firestore, getDocs, getFirestore, setDoc, updateDoc } from 'firebase/firestore/lite';
+import { collection, doc, Firestore, getDocs, getFirestore, setDoc, updateDoc, } from 'firebase/firestore/lite';
 import { getDownloadURL, ref, uploadBytes, uploadString, getStorage } from '@firebase/storage'
 import { anonimos, autoridades, clientes, db, empleados, mesas, storage } from '../app.component';
 import { QRCode} from '../../../node_modules/qrcode';
@@ -26,7 +26,7 @@ export class FirebaseService {
       nombre: nombreRecibido,
       apellido: apellidoRecibido,
       dni: dniRecibido,
-      estado: 'desaprobado',
+      estado: 'pendiente',
       foto: fotoRecibida
     }
 
@@ -202,7 +202,7 @@ export class FirebaseService {
     return flagMax;
   }
 
-  private async leerClientesDB()
+  public async leerClientesDB()
   {
     let arrayClientes = new Array();
 
@@ -228,6 +228,43 @@ export class FirebaseService {
     return arrayClientes;
   }
 
+  public async leerClientesPendientesDB()
+  {
+    let arrayClientes = new Array();
+
+    const querySnapshot = await getDocs(clientes);
+    querySnapshot.forEach((doc) => 
+    {
+      let user = 
+      {
+        correo: doc.data()['correo'],
+        password: doc.data()['password'],
+        nombre: doc.data()['nombre'],
+        apellido: doc.data()['apellido'],
+        dni: doc.data()['dni'],
+        tipo: 'cliente',
+        estado: doc.data()['estado'],
+        foto: doc.data()['foto'],
+      }
+
+      arrayClientes.push(user);
+    });
+
+    arrayClientes = await arrayClientes.filter( (element)=> 
+    {
+      //Filtro solo por los clientes con estado pendiente
+      if (element.estado == "pendiente"){return -1}
+      else {return 0};
+    });
+
+    return arrayClientes;
+  }
+
+  // public async leerClientesPendientesSubDB():Observable<any[]>
+  // {
+  //   return collectionData(this.pacientesCollectionReference,{idField: 'id'}) as Observable<any[]>;
+  // }
+
   private async leerAnonimosDB()
   {
     let arrayAnonimos = new Array();
@@ -247,6 +284,41 @@ export class FirebaseService {
     console.log(arrayAnonimos);
     return arrayAnonimos;
   }
+
+  public async setearEstadoCliente(clienteRecibido:any, estadoCuentaRecibido:string)
+  {
+    //Obtengo el id del doc
+    let idDoc = await this.obtenerIDClientePorMail(clienteRecibido.correo);
+
+    //Piso el estado viejo x el nuevo estado
+    clienteRecibido.estado = estadoCuentaRecibido;
+
+    this.modificarCliente(clienteRecibido, idDoc);
+  }
+
+  public async obtenerIDClientePorMail(mailClienteRecibido:string)
+  {
+    const querySnapshot = await getDocs(clientes);
+
+    let idEncontrada = -1;
+
+    querySnapshot.forEach((doc) => 
+    {
+        if (doc.data()["correo"] == mailClienteRecibido)
+        {
+          idEncontrada = parseInt(doc.id);
+        }
+    });
+
+    return idEncontrada;
+  }
+
+  modificarCliente(clienteEstructuradoRecibido:any, idClienteRecibido:number)
+  {
+    let docRef = doc(db, `clientes/${idClienteRecibido}`);
+    return updateDoc(docRef, clienteEstructuradoRecibido);
+  }
+
   //#endregion -------------------------------------------------------------
 
   //#region ---------------------- EMPLEADOS ---------------------------//
@@ -555,6 +627,57 @@ export class FirebaseService {
   //#endregion -------------------------------------------------------------
   
   //#region ---------------------- MESAS ---------------------------//
+
+  subirMesaDB(numeroMesaRecibido:string, cantidadComensalesRecibida:number, tipoMesaRecibido:string, fotoQRRecibida:any, fotoMesaRecibida:any)
+  {
+    //Estructuro la mesa
+    let mesaEstructurada = 
+    {
+      numeroMesa: numeroMesaRecibido,
+      comensales: cantidadComensalesRecibida,
+      fotoQR: fotoQRRecibida,
+      fotoMesa: fotoMesaRecibida,
+      tipo: tipoMesaRecibido
+    }
+
+    this.subirFotoMesa(mesaEstructurada.fotoQR, mesaEstructurada.fotoMesa, mesaEstructurada);
+  }
+
+  private async subirFotoMesa(fotoQR:any, fotoMesa:any, mesaEstructuradaRecibida:any)
+  {
+    let numeroMesaYaGenerado = mesaEstructuradaRecibida.numeroMesa.split("_");
+    let numeroMesaCorrespondiente = parseInt(numeroMesaYaGenerado[1]);
+
+    let fechaValidaActual = new Date().toLocaleDateString();
+    let horaValidaActual = new Date().toLocaleTimeString();
+    do { fechaValidaActual = fechaValidaActual.replace("/",":"); } while(fechaValidaActual.includes("/"));
+
+    //---------------
+    let referenciaPathStorage1 = ref(storage, `images/mesas/${mesaEstructuradaRecibida.numeroMesa + "/" + fechaValidaActual + "-" + horaValidaActual + "-qr"} `);
+    let referenciaPathStorage2 = ref(storage, `images/mesas/${mesaEstructuradaRecibida.numeroMesa + "/" + fechaValidaActual + "-" + horaValidaActual + "-foto"} `);
+    //---------------
+
+    await uploadBytes(referenciaPathStorage1, fotoQR).then(async (snapshot)=>
+    {
+      await getDownloadURL(referenciaPathStorage1).then(async (url)=>
+      { 
+        mesaEstructuradaRecibida.fotoQR = url;
+      });
+    }).catch( () => { console.log("Error");})
+    
+    await uploadBytes(referenciaPathStorage2, fotoMesa).then(async (snapshot)=>
+    {
+      await getDownloadURL(referenciaPathStorage2).then(async (url)=>
+      { 
+        mesaEstructuradaRecibida.fotoMesa = url;
+      });
+    }).catch( () => { console.log("Error");})
+
+    console.log(mesaEstructuradaRecibida);
+    
+    let newDocument = doc(db, "mesas", numeroMesaCorrespondiente.toString());
+    await setDoc(newDocument, mesaEstructuradaRecibida);
+  }
 
   public async getLastIDMesas()
   {

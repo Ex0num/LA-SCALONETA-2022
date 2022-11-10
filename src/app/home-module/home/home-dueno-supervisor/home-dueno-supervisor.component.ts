@@ -34,7 +34,7 @@ export class HomeDuenoSupervisorComponent implements OnInit {
 
   aprobacionClientes()
   {
-    // this.router.navigateByUrl("");
+    this.router.navigateByUrl("aprobar-clientes");
   }
 
 }

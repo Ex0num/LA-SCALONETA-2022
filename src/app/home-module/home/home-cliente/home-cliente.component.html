@@ -1,3 +1,26 @@
-<p>
-  home-cliente works!
-</p>
+<div id="contenedor-ingreso-local" *ngIf="clienteEnListaDeEspera == false">
+
+  <label id="lbl-helper-qr-ingreso">¡Escanea el QR de ingreso al local!</label><br>
+  <img src="../../../../assets/files/qr/ingreso-local.png" id="qr-ingreso-local"><br>
+  <label class="emoji-ingreso-local">👉🏻</label><button id="qrScanner-ingreso-local" (click)="escenarQR_Ingreso()"><ion-icon id="icono-qr-ingreso-local" name="camera-outline"></ion-icon></button><label class="emoji-ingreso-local">👈🏻</label>
+  <button (click)="testing()">testing</button>
+</div>
+
+<div *ngIf="clienteEnListaDeEspera == true">
+  <div id="mensaje-cliente-esperando">
+    Usted fue añadido correctamente a la lista de espera para ingresar al local. <br>
+    Aguarde, nuestro metre le asignará una mesa lo antes posible.
+  </div>
+
+  <div class="wrapper" *ngIf="clienteEnListaDeEspera == true">
+    <span class="circle circle-1"></span>
+    <span class="circle circle-2"></span>
+    <span class="circle circle-3"></span>
+    <span class="circle circle-4"></span>
+    <span class="circle circle-5"></span>
+    <span class="circle circle-6"></span>
+    <span class="circle circle-7"></span>
+    <span class="circle circle-8"></span>
+  </div>
+
+</div>

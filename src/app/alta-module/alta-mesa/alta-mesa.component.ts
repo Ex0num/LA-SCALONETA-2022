@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CamaraFotosService } from 'src/app/Servicios/camara-fotos.service';
 import { FirebaseService } from 'src/app/Servicios/firebase.service';
 import { GeneradorQrService } from 'src/app/Servicios/generador-qr.service';
+import { SonidosPersonalizadosService } from 'src/app/Servicios/sonidos-personalizados.service';
+import { ToastMsgService } from 'src/app/Servicios/toast-msg.service';
 
 @Component({
   selector: 'app-alta-mesa',
@@ -13,36 +16,22 @@ export class AltaMesaComponent implements OnInit {
   constructor(
     public srvCamara:CamaraFotosService,
     public srvGeneradorQR:GeneradorQrService,
-    public srvFirebase:FirebaseService
+    public srvFirebase:FirebaseService,
+    public srvToast:ToastMsgService, 
+    public srvSonidos:SonidosPersonalizadosService,
+    public router:Router
   ) {}
-
-  infoQR
 
   async ngOnInit() 
   {
-    let lastID = await this.srvFirebase.getLastIDMesas();
-    lastID++;
-
-    this.numeroGenerado_mesa = lastID;
-    this.infoQR = "mesa_" + lastID.toString();
+   
+    await this.setearDataQR();
 
     setTimeout( async () => 
     {
 
-      let b = document.getElementById("imagen-qr-deleteable");
-      let urlPublic = await this.srvGeneradorQR.crearImagen(b);
+      await this.obtenerSetearImagenQR();
       
-      this.cargaQrFinalizada = true;
-      
-      let a = document.getElementById("imagen-qr");
-      a.style.animation = "puff-in-center 1.2s cubic-bezier(0.470, 0.000, 0.745, 0.715) both";
-      a.setAttribute("src",urlPublic);
-      a.removeAttribute("hidden");
-
-      document.getElementById("imagen-qr-deleteable").setAttribute("hidden","true");
-
-      // let resultadoImg = await this.srvGeneradorQR.generarQR("probadnoQR");
-      // document.getElementById("imagen-qr").setAttribute("src", await resultadoImg); 
     }, 800);  
   }
 
@@ -53,12 +42,17 @@ export class AltaMesaComponent implements OnInit {
   public cantidadComensales_mesa;
   public tipo_mesa = "estandar";
   public foto_mesa;
+  public foto_mesaQR;
 
   //Este numero se carga en cuestion del ultimo numero de mesa detectado en la DB.
   //El usuario no puede interactuar.
   public numeroGenerado_mesa;
 
   cargaQrFinalizada = false;
+
+  //Atributos necesario para el <qrcode>
+  public infoQR;
+  public emptyString = true;
 
   //#endregion -------------------------------------------------------------------
 
@@ -75,6 +69,7 @@ export class AltaMesaComponent implements OnInit {
     if (await image != undefined)
     {
       elementoHTML_fotoCamara.setAttribute("src", await imageURL);
+      this.foto_mesa = await image;
     }
     else
     {
@@ -109,9 +104,109 @@ export class AltaMesaComponent implements OnInit {
       console.log(this.tipo_mesa);
   }
 
-  registrarMesa()
+  async registrarMesa()
   {
-    console.log("SUBIENDO MESA");
+    if (this.cantidadComensales_mesa < 40 && this.foto_mesa != undefined && this.cantidadComensales_mesa > 0 && this.cantidadComensales_mesa != undefined)
+    {
+        // let fileFotoMesa = this.srvGeneradorQR.convertURLToImageData(this.foto_mesa);
+        // let fileFotoQR = this.srvGeneradorQR.convertURLToImageData(this.foto_mesaQR);
+
+        // let fileGenerated1 = await this.srvGeneradorQR.convertURLtoFile(this.foto_mesa);
+        // this.foto_mesa = fileGenerated1;
+
+        let fileGenerated2 = await this.srvGeneradorQR.convertURLToImageData(this.foto_mesa);
+        this.foto_mesaQR = fileGenerated2;
+
+        console.log(this.foto_mesa);
+        console.log(this.foto_mesaQR);
+
+        setTimeout(() => 
+        {
+          this.srvFirebase.subirMesaDB(
+          this.numero_mesa,
+          this.cantidadComensales_mesa,
+          this.tipo_mesa,
+          this.foto_mesaQR,
+          this.foto_mesa); 
+  
+          //Acciones finales
+          this.srvToast.mostrarToast("bottom","La mesa fue creada satisfactoriamente.",3000,"success");
+          this.srvSonidos.reproducirSonido("slide",this.sonidoActivado);  
+          this.limpiarDatosMesa();
+          
+          setTimeout(() => 
+          {
+            this.router.navigateByUrl("home");
+          }, 800);
+
+        }, 2500);   
+    }
+    else
+    {
+      console.log("Datos inválidos");
+
+      if (this.cantidadComensales_mesa > 40)
+      {
+        this.srvToast.mostrarToast("bottom","La cantidad de comensales no puede ser superior a 40 en una mesa. Revise lo que ingresó.",3000,"danger");
+      }
+      else if (this.cantidadComensales_mesa < 1)
+      {
+        this.srvToast.mostrarToast("bottom","La cantidad de comensales no puede ser menor a 1 en una mesa. Revise lo que ingresó.",3000,"danger");
+      }
+      else if (this.cantidadComensales_mesa == undefined)
+      {
+        this.srvToast.mostrarToast("bottom","La cantidad de comensales no puede ser inexistente. Revise lo que ingresó.",3000,"danger");
+      }
+      else if (this.foto_mesa == undefined)
+      {
+        this.srvToast.mostrarToast("bottom","La foto de la mesa no puede ser inexistente.",3000,"danger");
+      }
+
+      this.srvSonidos.reproducirSonido("error",this.sonidoActivado);
+    }
+  }
+
+  public async setearDataQR()
+  {
+    let lastID = await this.srvFirebase.getLastIDMesas();
+    lastID++;
+
+    this.numeroGenerado_mesa = lastID;
+
+    let stringNumeroMesa = "mesa_" + lastID.toString();
+
+    //Info para el QR y para la mesa
+    this.infoQR = stringNumeroMesa;
+    this.numero_mesa = stringNumeroMesa;
+  }
+
+  public async obtenerSetearImagenQR()
+  {
+      //Luego de que el QR se haya generado saco la foto rapidamente y lo cargo al HTMLElement IMG escondiendo el elemento <qrcode>
+      let elementoHTMLQR = document.getElementById("imagen-qr-deleteable");
+      let urlPublic = await this.srvGeneradorQR.crearImagen(elementoHTMLQR);
+      
+      this.cargaQrFinalizada = true;
+      
+      let elementoHTMLImagenQR = document.getElementById("imagen-qr");
+      elementoHTMLImagenQR.style.animation = "puff-in-center 1.2s cubic-bezier(0.470, 0.000, 0.745, 0.715) both";
+      elementoHTMLImagenQR.setAttribute("src",urlPublic);
+      elementoHTMLImagenQR.removeAttribute("hidden");
+
+      this.foto_mesaQR = urlPublic;
+
+      document.getElementById("imagen-qr-deleteable").setAttribute("hidden","true");
+  }
+
+  private limpiarDatosMesa()
+  {
+    this.cantidadComensales_mesa = undefined;
+    
+    //Se "limpia" el archivo subido tmb
+    this.foto_mesa = undefined;
+
+    let elementoHTMLImagenQR = document.getElementById("imagen-qr");
+    elementoHTMLImagenQR.setAttribute("src","../../../assets/files/example-foto.PNG");
   }
 
   // ------------- Funcionamiento de sonido ----------------------//

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {ToastController} from '@ionic/angular';
 import { AltaClienteComponent } from 'src/app/alta-module/alta-cliente/alta-cliente.component';
 import { AuthService } from 'src/app/Servicios/auth.service';
 import { SonidosPersonalizadosService } from 'src/app/Servicios/sonidos-personalizados.service';
