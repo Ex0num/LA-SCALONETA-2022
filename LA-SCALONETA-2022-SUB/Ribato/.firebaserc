@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "parcial-2-pp-sub": {
+      "hosting": {
+        "app": [
+          "parcial-2-pp-sub"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "parcial-2-pp-sub"
+  }
+}

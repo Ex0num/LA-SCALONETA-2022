@@ -1,0 +1,58 @@
+
+<body id="body-home">
+  <ion-card id="main-card-home">
+   <ion-card id="main-card-2-home">
+
+      <ion-card-header id="main-card-header-home">
+        <label id="titulo-principal-home">Sección Home</label><br>
+      </ion-card-header>
+
+      <div id="container-mensaje-bienvenida" *ngIf="spinnerMostrandose == false">
+        <label id="mensaje-mail">{{mailUsuarioLogeado}}</label><br>
+        <label id="mensaje-rango">Rango: </label>
+        <label id="mensaje-rango-actual">{{rangoUsuarioLogeado}}</label>
+      </div>
+
+        <app-home-dueno-supervisor *ngIf="tipoUsuarioLogeado == 'supervisor' || tipoUsuarioLogeado == 'dueno'"></app-home-dueno-supervisor>
+        <app-home-cocinero *ngIf="tipoUsuarioLogeado == 'cocinero'"></app-home-cocinero>
+        <app-home-metre *ngIf="tipoUsuarioLogeado == 'metre'"></app-home-metre>
+        <app-home-mozo *ngIf="tipoUsuarioLogeado == 'mozo'"></app-home-mozo>   
+        <app-home-bartender *ngIf="tipoUsuarioLogeado == 'bartender'"></app-home-bartender>
+
+         <app-home-cliente *ngIf="(tipoUsuarioLogeado == 'cliente' && dataUsuarioLogeado.estado == 'aprobado') || tipoUsuarioLogeado == 'anonimo'"></app-home-cliente>
+         
+        <div *ngIf="tipoUsuarioLogeado == 'cliente' && dataUsuarioLogeado.estado == 'desaprobado'" id="mensaje-cliente-desaprobado">
+          Su cuenta fue rechazada por los dueños y administradores del sistema. Lo sentimos mucho. <br>
+        </div>
+
+        <div *ngIf="tipoUsuarioLogeado == 'cliente' && dataUsuarioLogeado.estado == 'pendiente'" id="mensaje-cliente-pendiente">
+          Su cuenta está pendiente de ser aprobada, !Lo haremos lo antes posible!<br> 
+          Le notificaremos a su correo nuestra respuesta.
+        </div>
+
+        <div class="wrapper" *ngIf="spinnerMostrandose == true">
+          <span class="circle circle-1"></span>
+          <span class="circle circle-2"></span>
+          <span class="circle circle-3"></span>
+          <span class="circle circle-4"></span>
+          <span class="circle circle-5"></span>
+          <span class="circle circle-6"></span>
+          <span class="circle circle-7"></span>
+          <span class="circle circle-8"></span>
+        </div>
+
+   </ion-card>
+  </ion-card>
+</body>
+
+<ion-fab id="indicador-de-sonido-home" vertical="bottom" horizontal="start" slot="fixed" color="light">
+  <ion-fab-button color="light" (click)="switchearEstadoSonido()">
+    <ion-icon id="icono-sonido-home" name="volume-mute"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<ion-fab id="indicador-de-logOut" vertical="bottom" horizontal="end" slot="fixed" color="light">
+  <ion-fab-button color="light" (click)="deslogearSesion()">
+    <ion-icon id="icono-sonido-home" name="log-in-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

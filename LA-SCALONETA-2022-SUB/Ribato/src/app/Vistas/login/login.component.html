@@ -1,0 +1,42 @@
+<body id="body">
+  <ion-card id="main-card">
+   <ion-card id="main-card-2">
+
+      <ion-card-header id="main-card-header">
+        <label id="titulo-principal">Ribato</label><br>
+        <label id="titulo-secundario">Come, rico y barato.</label><br>
+        <img id="icono-principal" src="../../../assets/files/Ribato.png">
+      </ion-card-header>
+
+    <div id="seccion-form">
+      <ion-input [(ngModel)]="mailIngresado" id="mail" type="text" placeholder="Correo"></ion-input>
+      <ion-input [(ngModel)]="passwordIngresada" id="password" type="password" placeholder="Contraseña"></ion-input>
+
+      <ion-select id="selector-magico" color="light" placeholder="Elija acceso rápido" (ionChange)="onChange($event)">
+        <ion-select-option>Dueño</ion-select-option>
+        <ion-select-option>Supervisor</ion-select-option>
+        <ion-select-option>Metre</ion-select-option>
+        <ion-select-option>Mozo</ion-select-option>
+        <ion-select-option>Cocinero</ion-select-option>
+        <ion-select-option>Bartender</ion-select-option>
+        <ion-select-option>Cliente</ion-select-option>
+      </ion-select>
+
+      <ion-grid>
+        <ion-col>
+          <ion-button id="btnIngresar" color="light" (click)="login()">Ingresar</ion-button>
+          <ion-button id="btnRegistrar" color="light" (click)="register()">Registrarse</ion-button>  
+        </ion-col>
+      </ion-grid>
+      <label id="lbl-copyright">Ribato © Todos los derechos reservados.</label>
+    </div>
+
+   </ion-card>
+  </ion-card>
+</body>
+
+<ion-fab id="indicador-de-sonido" vertical="bottom" horizontal="center" slot="fixed" color="light">
+  <ion-fab-button color="light" (click)="switchearEstadoSonido()">
+    <ion-icon id="icono-sonido" name="volume-mute"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

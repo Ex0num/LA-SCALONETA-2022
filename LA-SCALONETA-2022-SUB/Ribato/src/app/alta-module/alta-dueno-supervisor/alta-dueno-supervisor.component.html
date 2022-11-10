@@ -1,0 +1,42 @@
+<body id="body">
+  <ion-card id="main-card">
+   <ion-card id="main-card-2">
+
+      <ion-card-header id="main-card-header">
+        <label id="titulo-principal">Registro de autoridad</label><br>
+      </ion-card-header>
+
+      <div id="seccion-form-autoridad">
+        <input class="input-autoridad" id="correo-autoridad" [(ngModel)]="correo_autoridad" type="text" placeholder="Correo">
+        <input class="input-autoridad" id="password-autoridad" [(ngModel)]="password_autoridad" type="password" placeholder="Contraseña">
+        <input class="input-autoridad" id="passwordConfirm-autoridad" [(ngModel)]="passwordConfirmada_autoridad" type="password" placeholder="Confirmación de contraseña">
+        <input class="input-autoridad" id="nombre-autoridad" [(ngModel)]="nombre_autoridad" type="text" placeholder="Nombre">
+        <input class="input-autoridad" id="apellido-autoridad" [(ngModel)]="apellidos_autoridad" type="text" placeholder="Apellidos">
+        <input class="input-autoridad" id="dni-autoridad" [(ngModel)]="dni_autoridad" type="number" placeholder="DNI">
+        <input class="input-autoridad" id="cuil-autoridad" [(ngModel)]="cuil_autoridad" type="text" placeholder="CUIL">
+        <button class="input-autoridad" id="qrScanner-autoridad" (click)="escenarDNI()" ><ion-icon id="icono-sonido" name="qr-code-outline"></ion-icon></button>
+      
+        <div class="inputfile-box">
+          <input type="file" id="file-autoridad" class="inputfile" accept="image/png,image/jpeg,image/jpg" (change)="archivoAutoridadSubido($event)">
+          <label for="file-autoridad">
+            <span id="file-name-autoridad" class="file-box-autoridad"></span>
+            <span class="file-button">
+              <i id="file-order-autoridad" aria-hidden="true">
+                <label id="lbl-file-autoridad">Añada<br>foto</label>
+              </i>
+            </span>
+          </label>
+        </div>
+      
+        <button id="btn-enviar-autoridad" (click)="registarAutoridad()">Enviar</button>
+      </div>
+
+   </ion-card>
+  </ion-card>
+</body>
+
+<ion-fab id="indicador-de-sonido" vertical="bottom" horizontal="start" slot="fixed" color="light">
+  <ion-fab-button color="light" (click)="switchearEstadoSonido()">
+    <ion-icon id="icono-sonido-altaAutoridad" name="volume-mute"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

@@ -1,0 +1,52 @@
+<body id="body">
+  <ion-card id="main-card">
+   <ion-card id="main-card-2">
+
+      <ion-card-header id="main-card-header">
+        <label id="titulo-principal">Registro de mesa</label><br>
+      </ion-card-header>
+
+      <label id="lbl-helper-numeroMesa">El próximo número de mesa en Ribato es...</label>
+      <input readonly class="input-mesa" id="numero-mesa" [(ngModel)]="numeroGenerado_mesa" type="number" placeholder="Próximo número de mesa">
+
+      <select (change)="actualizarTipoMesa($event)" class="input-mesa" id="selector-tipo-mesa">
+        <option>Estándar</option>
+        <option>VIP</option>
+        <option>Discapacitados</option>
+      </select>
+
+      <input class="input-mesa" id="comensales-mesa" [(ngModel)]="cantidadComensales_mesa" type="number" placeholder="Cantidad de comensales">
+
+      <div id="contenedor-foto">
+        <div class="container-lbl-helper">
+          <label>Subí la foto de tu mesa.</label><br>
+        </div>
+
+        <button id="btn-abrir-camara" (click)="abrirCamara()"><ion-icon name="camera-outline"></ion-icon></button>
+        <!-- <input type="file" name="archivo-camara" id="archivo-camara"> -->
+        <img class="imagen-formulario" id="imagen-camara" src="../../../assets/files/example-foto.PNG" width="100%" height="100%">
+      </div>
+
+      <div id="contenedor-qr">
+        <div class="container-lbl-helper">
+          <label>QR Generado automáticamente para la próxima mesa n° {{numeroGenerado_mesa}}.</label>
+        </div>
+
+        <div class="imagen-formulario" id="imagen-qr-deleteable">
+          <qrcode [qrdata]="infoQR" [allowEmptyString]="true" id="my-qr"></qrcode>
+        </div>
+        
+        <img class="imagen-formulario" id="imagen-qr" src="../../../assets/files/example-foto.PNG" width="100%" height="100%" hidden> 
+      </div>
+      
+      <button id="btn-enviar-mesa" (click)="registrarMesa()">Enviar</button> 
+
+   </ion-card>
+  </ion-card>
+</body>
+
+<ion-fab id="indicador-de-sonido" vertical="bottom" horizontal="start" slot="fixed" color="light">
+  <ion-fab-button color="light" (click)="switchearEstadoSonido()">
+    <ion-icon id="icono-sonido-altaAutoridad" name="volume-mute"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

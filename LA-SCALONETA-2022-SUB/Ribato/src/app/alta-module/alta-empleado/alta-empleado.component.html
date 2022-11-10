@@ -1,0 +1,50 @@
+<body id="body">
+  <ion-card id="main-card">
+   <ion-card id="main-card-2">
+
+      <ion-card-header id="main-card-header">
+        <label id="titulo-principal">Registro de empleados</label><br>
+      </ion-card-header>
+
+      <div id="seccion-form-empleado">
+        <input class="input-empleado" id="correo-empleado" [(ngModel)]="correo_empleado" type="text" placeholder="Correo">
+        <input class="input-empleado" id="password-empleado" [(ngModel)]="password_empleado" type="password" placeholder="Contraseña">
+        <input class="input-empleado" id="passwordConfirm-empleado" [(ngModel)]="passwordConfirmada_empleado" type="password" placeholder="Confirmación de contraseña">
+        <input class="input-empleado" id="nombre-empleado" [(ngModel)]="nombre_empleado" type="text" placeholder="Nombre">
+        <input class="input-empleado" id="apellido-empleado" [(ngModel)]="apellidos_empleado" type="text" placeholder="Apellidos">
+        <input class="input-empleado" id="dni-empleado" [(ngModel)]="dni_empleado" type="number" placeholder="DNI">
+        <input class="input-empleado" id="cuil-empleado" [(ngModel)]="cuil_empleado" type="text" placeholder="CUIL">
+        <button class="input-empleado" id="qrScanner-empleado" (click)="escenarDNI()" ><ion-icon id="icono-sonido" name="qr-code-outline"></ion-icon></button>
+      
+        <div class="inputfile-box">
+          <input type="file" id="file-empleado" class="inputfile" accept="image/png,image/jpeg,image/jpg" (change)="archivoEmpleadoSubido($event)">
+          <label for="file-empleado">
+            <span id="file-name-empleado" class="file-box-empleado"></span>
+            <span class="file-button">
+              <i id="file-order-empleado" aria-hidden="true">
+                <label id="lbl-file-empleado">Añada<br>foto</label>
+              </i>
+            </span>
+          </label>
+        </div>
+
+        <select (change)="actualizarTipoEmpleado($event)" class="input-empleado" id="selector-tipo-empleado">
+          <option>Metre</option>
+          <option>Mozo</option>
+          <option>Cocinero</option>
+          <option>Bartender</option>
+        </select>
+      
+        <button id="btn-enviar-empleado" (click)="registarEmpleado()">Enviar</button>
+    
+      </div>
+
+   </ion-card>
+  </ion-card>
+</body>
+
+<ion-fab id="indicador-de-sonido" vertical="bottom" horizontal="start" slot="fixed" color="light">
+  <ion-fab-button color="light" (click)="switchearEstadoSonido()">
+    <ion-icon id="icono-sonido-altaEmpleado" name="volume-mute"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
