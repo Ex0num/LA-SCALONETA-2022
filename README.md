@@ -45,43 +45,39 @@
 <h3 id="visualizacionProyecto">📲 Visualización del proyecto</h3><br>
 
 <label> Nuestro restaurante, es de tipo <strong>urbano/juvenil, nocturno, con un "look and feel" moderno y alejado de la elegancia.</strong></label><br><br>
-<img src="src/assets/icon/Ribato-big.png" width="300px" height="300px">
+<img src="expositor/Ribato-big.png" width="300px" height="300px">
 <br><br>
-<strong> Pantalla de LOGIN. y de selección de registro </strong><br>
+<strong> Pantalla de login y de registro </strong><br>
 <img src="expositor/menu-login.PNG" width="360px" height="740px">
 <img src="expositor/menu-registro.PNG" width="360px" height="740px"><br>
 
-<strong> Pantalla de ALTA CLIENTE (anónimo y normal).</strong><br>
+<strong> Pantalla de alta cliente y anónimo.</strong><br>
 <img src="expositor/registro-cliente.PNG" width="360px" height="740px">
 <img src="expositor/registro-anonimo.PNG" width="360px" height="740px"><br>
 
-<strong> Pantalla de ALTA CLIENTE (anónimo y normal).</strong><br>
+<strong> Pantalla de alta (Supervisor/Dueño) y empleados.</strong><br>
 <img src="expositor/alta-autoridad.PNG" width="360px" height="740px">
 <img src="expositor/alta-empleados.PNG" width="360px" height="740px"><br>
 
-<strong> Pantalla de ALTA CLIENTE (anónimo y normal).</strong><br>
+<strong> Pantalla de alta mesa y esperando mesa.</strong><br>
 <img src="expositor/alta-mesa.PNG" width="360px" height="740px">
 <img src="expositor/esperando-mesa.PNG" width="360px" height="740px"><br>
 
-<strong> Pantalla de ALTA CLIENTE (anónimo y normal).</strong><br>
+<strong> Pantalla de home (Supervisor/Dueño) y esperando mesa.</strong><br>
 <img src="expositor/home-autoridad.PNG" width="360px" height="740px">
 <img src="expositor/esperando-mesa.PNG" width="360px" height="740px"><br>
 
-<strong> Pantalla de ALTA CLIENTE (anónimo y normal).</strong><br>
+<strong> Pantalla de aprobación de clientes y cliente rechazado.</strong><br>
 <img src="expositor/aprobacion-clientes.PNG" width="360px" height="740px">
 <img src="expositor/cliente-rechazado.PNG" width="360px" height="740px"><br>
 
-<strong> Pantalla de ALTA CLIENTE (anónimo y normal).</strong><br>
-<img src="expositor/aprobacion-clientes.PNG" width="360px" height="740px">
-<img src="expositor/cliente-rechazado.PNG" width="360px" height="740px"><br>
-
-<strong> Pantalla de ALTA CLIENTE (anónimo y normal).</strong><br>
+<strong> Pantalla de ingreso al local y background.</strong><br>
 <img src="expositor/ingreso-local.PNG" width="360px" height="740px">
 <img src="expositor/background.JPG" width="360px" height="740px"><br>
 
-<strong> Pantalla de ALTA CLIENTE (anónimo y normal).</strong><br>
-<img src="expositor/cuenta-aceptada.PNG" width="360px" height="740px">
-<img src="expositor/cuenta-rechazada.JPG" width="360px" height="740px"><br>
+<strong> Pantalla de mail (cliente aceptado y rechazado).</strong><br>
+<img src="expositor/cuenta-aceptada.PNG" width="600px" height="340px"><br>
+<img src="expositor/cuenta-rechazada.PNG" width="600px" height="340px"><br>
 
 
 <!-- <img src="src/assets/readme-files/menu-login.gif" width="50%" height="450px">
