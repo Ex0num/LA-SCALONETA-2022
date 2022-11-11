@@ -18,7 +18,7 @@
     </div>
 
     <div id="seccion-clientes-pendientes">
-      <ul id="listado-cliente-pendientes">
+      <ul id="listado-cliente-pendientes"*ngIf="spinnerMostrandose == false">
         
         <li *ngFor="let clienteDesaprobado of (arrayClientes | filtradorClientesPendientes); index as i" class="item-cliente-pendiente">
           <div *ngIf="clienteDesaprobado.estado =='pendiente'">

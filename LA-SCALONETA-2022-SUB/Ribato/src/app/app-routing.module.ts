@@ -12,8 +12,10 @@ import { HomeDuenoSupervisorComponent } from './home-module/home/home-dueno-supe
 import { HomeMetreComponent } from './home-module/home/home-metre/home-metre.component';
 import { HomeMozoComponent } from './home-module/home/home-mozo/home-mozo.component';
 import { HomeComponent } from './home-module/home/home.component';
+import { MesaHomeComponent } from './mesa-cliente-module/mesa-home/mesa-home.component';
 import { SplashComponent } from './splash/splash/splash.component';
 import { AprobarClienteComponent } from './Vistas/aprobar-cliente/aprobar-cliente.component';
+import { ClientesEsperandoMesaComponent } from './Vistas/clientes-esperando-mesa/clientes-esperando-mesa.component';
 import { LoginComponent } from './Vistas/login/login.component';
 
 const routes: Routes = [
@@ -22,7 +24,7 @@ const routes: Routes = [
   {path: 'splash',component:SplashComponent,  loadChildren: () => import('./splash/splash.module').then(m => m.SplashModule)},
   {path: 'login',component:LoginComponent},
   {path: 'aprobar-clientes',component:AprobarClienteComponent},
-  // {path: 'clientes-esperando-mesa',component:ClientesEsperandoMesaComponent},
+  {path: 'clientes-esperando-mesa',component:ClientesEsperandoMesaComponent},
 
   // //Modulo de alta (Tipos de usuarios)
   {path: 'alta-cliente',component:AltaClienteComponent, loadChildren: () => import('./alta-module/alta-module.module').then(m => m.AltaModuleModule)},
@@ -32,7 +34,10 @@ const routes: Routes = [
   {path: 'alta-mesa',component:AltaMesaComponent, loadChildren: () => import('./alta-module/alta-module.module').then(m => m.AltaModuleModule)},
   {path: 'alta-producto',component:AltaProductoComponent, loadChildren: () => import('./alta-module/alta-module.module').then(m => m.AltaModuleModule)},
   
-  // //Modulo de homes
+  //Modulo de mesa
+  {path: 'mesa-home',component:MesaHomeComponent, loadChildren: () => import('./mesa-cliente-module/mesa-cliente-module.module').then(m => m.MesaClienteModuleModule)},
+
+  //Modulo de homes
   {path: 'home',component:HomeComponent, loadChildren: () => import('./home-module/home-module.module').then(m => m.HomeModuleModule)},
   {path: 'home-bartender',component:HomeBartenderComponent, loadChildren: () => import('./home-module/home-module.module').then(m => m.HomeModuleModule)},
   {path: 'home-cliente',component:HomeClienteComponent, loadChildren: () => import('./home-module/home-module.module').then(m => m.HomeModuleModule)},

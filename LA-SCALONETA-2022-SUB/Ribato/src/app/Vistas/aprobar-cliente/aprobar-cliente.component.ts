@@ -15,14 +15,20 @@ export class AprobarClienteComponent implements OnInit {
     public srvFirebase:FirebaseService,
     public srvToast:ToastMsgService, 
     public srvSonidos:SonidosPersonalizadosService,
-    public srvMailSending:MailSendingService) {}
+    public srvMailSending:MailSendingService) 
+  {
+    this.srvFirebase.listar_clientesNormales().subscribe((data)=>
+    {
+      this.arrayClientes = data;
+    })
+  }
 
   ngOnInit() 
   {
     setTimeout(() => 
     {
       this.spinnerMostrandose = false;
-      this.leerClientesPendientes()
+
     }, 2500);
   }
 
@@ -89,15 +95,4 @@ export class AprobarClienteComponent implements OnInit {
       iconoSonido.setAttribute("name","radio");
     }
   }
-
-  leerClientesPendientes()
-  {
-    this.arrayClientes = this.srvFirebase.clientes;
-    console.log(this.arrayClientes);
-    
-    setTimeout(() => {
-      console.log(this.arrayClientes);
-    }, 30000);
-  }
-
 }

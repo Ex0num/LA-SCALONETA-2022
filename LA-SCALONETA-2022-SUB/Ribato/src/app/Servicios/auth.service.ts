@@ -20,6 +20,8 @@ export class AuthService
     public srvSonidos:SonidosPersonalizadosService) 
     {}
 
+    public nombreDelAnonimo;
+
   async login(email: string, password:string, sonidoActivadoRecibido:boolean)
   {
     try 

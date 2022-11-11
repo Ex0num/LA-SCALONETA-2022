@@ -1,0 +1,63 @@
+<body id="body">
+  <ion-card id="main-card">
+   <ion-card id="main-card-2">
+
+    <ion-card-header id="main-card-header">
+      <label id="titulo-principal">Asignación de mesas</label><br>
+    </ion-card-header>
+
+    <div class="wrapper" *ngIf="spinnerMostrandose == true">
+      <span class="circle circle-1"></span>
+      <span class="circle circle-2"></span>
+      <span class="circle circle-3"></span>
+      <span class="circle circle-4"></span>
+      <span class="circle circle-5"></span>
+      <span class="circle circle-6"></span>
+      <span class="circle circle-7"></span>
+      <span class="circle circle-8"></span>
+    </div>
+
+    <div id="seccion-consumidores-esperando">
+      <ul id="listado-consumidores-esperando"*ngIf="spinnerMostrandose == false">
+        
+        <li class="item-consumidor-esperando" *ngFor="let consumidorEsperandoMesa of (arrayConsumidores | filtradorConsumidoresEsperando); index as i" (click)="elegirConsumidor(consumidorEsperandoMesa, i)">
+          <div *ngIf="consumidorEsperandoMesa.estado =='esperando_mesa'">
+            <ion-icon name="arrow-forward-outline" id="elegir-consumidor"></ion-icon>
+            <label class="data-consumidor-esperando">{{consumidorEsperandoMesa.nombre}}</label>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+
+    <div id="seccion-asignacion-final">
+      <div *ngIf="nombre_consumidorSeleccionado != '' && numero_mesaSeleccionada != '' ">
+        <div id="lbl-informacion-asignacion">
+          <label >{{nombre_consumidorSeleccionado}} a mesa {{numero_mesaSeleccionada}}</label>
+        </div>
+        <button class="btn-asignar-mesa" (click)="asignarMesa()"><ion-icon id="icono-asignar-mesa" name="send-outline"></ion-icon></button>
+      </div>
+    </div>
+
+    <div id="seccion-mesas-disponibles">
+      <ul id="listado-mesas-disponibles" *ngIf="spinnerMostrandose == false">
+        
+        <li class="item-mesa-disponible" *ngFor="let mesaDisponible of (arrayMesas | filtradorMesasDisponibles); index as i" (click)="elegirMesa(mesaDisponible, i)">
+          <div *ngIf="mesaDisponible.estado =='disponible'">
+            <label class="data-mesa-disponible">Mesa n°: {{mesaDisponible.numeroMesa}}</label>
+            <ion-icon name="arrow-back-outline" id="elegir-mesa"></ion-icon>
+          </div>
+        </li>
+     
+      </ul>
+    </div>
+
+   </ion-card>
+  </ion-card>
+</body>
+
+<ion-fab id="indicador-de-sonido" vertical="bottom" horizontal="start" slot="fixed" color="light">
+  <ion-fab-button color="light" (click)="switchearEstadoSonido()">
+    <ion-icon id="icono-sonido-aprobacionCli" name="volume-mute"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

@@ -71,10 +71,13 @@
 <img src="expositor/aprobacion-clientes.PNG" width="360px" height="740px">‏‏‎ ‎‏‏‎ ‎
 <img src="expositor/cliente-rechazado.PNG" width="360px" height="740px"><br>
 
-<strong> Pantalla de mail (cliente aceptado y rechazado).</strong><br>
-<img src="expositor/cuenta-aceptada.PNG" width="800px" height="340px"><br>
-<img src="expositor/cuenta-rechazada.PNG" width="800px" height="340px"><br>
+<strong> Pantalla de asignación mesa y de bienvenida a la mesa.</strong><br>
+<img src="expositor/asignacion-mesa.PNG" width="360px" height="740px"><br>‏‏‎ ‎‏‏‎ ‎
+<img src="expositor/bienvenida-mesa.PNG" width="360px" height="740px"><br>
 
+<strong> Pantalla de mail (cliente aceptado y rechazado).</strong><br>
+<img src="expositor/cuenta-aceptada.PNG" width="800px" height="340px"><br>‏‏‎ ‎‏‏‎ ‎
+<img src="expositor/cuenta-rechazada.PNG" width="800px" height="340px"><br>
 
 <!-- <img src="src/assets/readme-files/menu-login.gif" width="50%" height="450px">
 <img src="src/assets/readme-files/registro-usuario-normal.gif" width="50%" height="450px">

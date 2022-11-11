@@ -23,9 +23,12 @@ import { LoginComponent } from './Vistas/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { AprobarClienteComponent } from './Vistas/aprobar-cliente/aprobar-cliente.component';
 import { FiltradorClientesPendientesPipe } from './Pipes/filtrador-clientes-pendientes.pipe';
+import { ClientesEsperandoMesaComponent } from './Vistas/clientes-esperando-mesa/clientes-esperando-mesa.component';
+import { FiltradorConsumidoresEsperandoPipe } from './Pipes/filtrador-consumidores-esperando.pipe';
+import { FiltradorMesasDisponiblesPipe } from './Pipes/filtrador-mesas-disponibles.pipe';
 
 @NgModule({
-  declarations: [AppComponent,LoginComponent,AprobarClienteComponent, FiltradorClientesPendientesPipe],
+  declarations: [AppComponent,LoginComponent, AprobarClienteComponent, FiltradorClientesPendientesPipe, ClientesEsperandoMesaComponent, FiltradorConsumidoresEsperandoPipe, FiltradorMesasDisponiblesPipe],
   imports: [BrowserModule, IonicModule.forRoot(), 
     FormsModule,
     AppRoutingModule, 

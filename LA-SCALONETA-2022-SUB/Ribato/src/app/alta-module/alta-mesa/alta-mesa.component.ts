@@ -20,7 +20,13 @@ export class AltaMesaComponent implements OnInit {
     public srvToast:ToastMsgService, 
     public srvSonidos:SonidosPersonalizadosService,
     public router:Router
-  ) {}
+  ) 
+  {
+    this.srvFirebase.listar_mesas().subscribe((data)=>
+    {
+      this.arrayMesas = data;
+    })
+  }
 
   ngOnInit() 
   {
@@ -48,13 +54,13 @@ export class AltaMesaComponent implements OnInit {
   public foto_mesa;
   public foto_mesaQR;
 
-
-
   cargaQrFinalizada = false;
 
   //Atributos necesario para el <qrcode>
   public infoQR;
   public emptyString = true;
+
+  public arrayMesas:any = [];
 
   //#endregion -------------------------------------------------------------------
 
@@ -158,7 +164,7 @@ export class AltaMesaComponent implements OnInit {
   //Busca el ultimo numero de mesa y le hace ++ para asignarlo a esta nueva mesa
   public async setearDataQR()
   {
-    let lenghtMesas = this.srvFirebase.mesas.length;
+    let lenghtMesas = this.arrayMesas.length;
     lenghtMesas++;
 
     //Info para el QR y para la mesa

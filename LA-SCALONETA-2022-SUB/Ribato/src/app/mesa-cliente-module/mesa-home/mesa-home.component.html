@@ -1,0 +1,41 @@
+<body id="body">
+  <ion-card id="main-card">
+   <ion-card id="main-card-2">
+
+      <ion-card-header id="main-card-header">
+        <label id="titulo-principal">Bienvenida/o a su mesa</label><br>
+      </ion-card-header>
+
+      <div *ngIf="mesaEscaneadaSatisfactoriamente == false">
+          <div class="mensaje-informativo" *ngIf="cargaDeConsumidorTerminada == true">
+            <label>Su mesa es la numero {{consumidorActual.mesaAsignada}}. <br> ¡Escaneela por favor!</label>
+          </div>
+
+          <label class="emoji-scaneo-mesa">👉🏻</label><button id="qrScanner-ingreso-local" (click)="escenarQR_Mesa()"><ion-icon id="icono-qr-ingreso-local" name="camera-outline"></ion-icon></button><label class="emoji-scaneo-mesa">👈🏻</label>
+      </div>
+
+      <div *ngIf="mesaEscaneadaSatisfactoriamente == true">
+        <button>Realizar pedido</button>
+        <button>Menú</button>
+      </div>
+
+      <div class="wrapper" *ngIf="cargaDeConsumidorTerminada == false">
+        <span class="circle circle-1"></span>
+        <span class="circle circle-2"></span>
+        <span class="circle circle-3"></span>
+        <span class="circle circle-4"></span>
+        <span class="circle circle-5"></span>
+        <span class="circle circle-6"></span>
+        <span class="circle circle-7"></span>
+        <span class="circle circle-8"></span>
+      </div>
+
+   </ion-card>
+  </ion-card>
+</body>
+
+<ion-fab id="indicador-de-sonido" vertical="bottom" horizontal="start" slot="fixed" color="light">
+  <ion-fab-button color="light" (click)="switchearEstadoSonido()">
+    <ion-icon id="icono-sonido-altaAutoridad" name="volume-mute"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

@@ -22,7 +22,12 @@ export class AltaClienteComponent implements OnInit {
     public srvFirebase:FirebaseService,
     public srvAuth:AuthService,
     public srvMailSending:MailSendingService) 
-  {}
+  {
+    this.srvFirebase.listar_clientesAnonimos().subscribe((data)=>
+    {
+      this.arrayClientesAnonimos = data;
+    })
+  }
 
   ngOnInit() {}
 
@@ -45,6 +50,8 @@ export class AltaClienteComponent implements OnInit {
   // --- DatosClienteAnonimo ---
   public nombre_clienteAnonimo:string;
   public foto_clienteAnonimo:any;
+
+  public arrayClientesAnonimos:any = [];
   
   //#endregion -------------------------------------------------------------
 
@@ -121,7 +128,7 @@ export class AltaClienteComponent implements OnInit {
       {
         console.log("Datos validos");
       
-        let resultadoExistencia = this.srvFirebase.existe_clienteAnonimo(this.nombre_clienteAnonimo);
+        let resultadoExistencia = this.srvFirebase.existe_clienteAnonimo(this.nombre_clienteAnonimo, this.arrayClientesAnonimos);
 
         if (resultadoExistencia == false)
         {
@@ -130,9 +137,12 @@ export class AltaClienteComponent implements OnInit {
           this.srvToast.mostrarToast("bottom","La cuenta de invitado/anónimo fue creada satisfactoriamente.",3000,"success");
           this.srvSonidos.reproducirSonido("slide",this.sonidoActivado);
           this.srvAuth.logOut(false);
-          this.limpiarDatosClienteAnonimo();
 
           //Debo de ir al home como cliente anonimo PERO DESLOGEARME A TODA COSTA
+          this.srvAuth.nombreDelAnonimo = this.nombre_clienteAnonimo;
+          console.log(this.srvAuth.nombreDelAnonimo);
+
+          this.limpiarDatosClienteAnonimo();
           this.router.navigateByUrl("home");  
         }
         else

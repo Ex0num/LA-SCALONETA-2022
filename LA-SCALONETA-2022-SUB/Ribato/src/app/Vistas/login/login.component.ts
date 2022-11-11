@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
         this.limpiarControlesLogin(); 
         this.srvToast.mostrarToast("bottom","Bienvenido/a  " + userCredential.email ,2000,"success");
         this.srvSonidos.reproducirSonido("ingreso", this.sonidoActivado);
+        this.srvAuth.nombreDelAnonimo = undefined;
         this.router.navigateByUrl("home");
       };
     } 

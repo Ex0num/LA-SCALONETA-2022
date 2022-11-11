@@ -16,21 +16,13 @@ export class FirebaseService
   //#region ----------------- Atributos - (Listas de las DB EN VIVO) ---------------------
 
     storage : any;
-    
+  
     anonimosCollectionReference : any;
-    anonimos;
-
     autoridadesCollectionReference : any;
-    autoridades;
-
     clientesCollectionReference : any;
-    clientes;
-
     empleadosCollectionReference : any;
-    empleados;
-
     mesasCollectionReference : any;
-    mesas;
+    consumidoresCollectionReference : any;
 
   //#endregion ---------------------------------------------------------------------------
   
@@ -43,12 +35,7 @@ export class FirebaseService
     this.clientesCollectionReference = collection(this.Firestore, 'clientes');
     this.empleadosCollectionReference = collection(this.Firestore, 'empleados');
     this.mesasCollectionReference = collection(this.Firestore, 'mesas');
-
-    this.listar_clientesNormales();
-    this.listar_clientesAnonimos();
-    this.listar_autoridades();
-    this.listar_mesas();
-    this.listar_empleados();
+    this.consumidoresCollectionReference = collection(this.Firestore, 'consumidores');
   }
 
   //#region ---------------------- CLIENTES NORMALES ---------------------------//
@@ -93,15 +80,7 @@ export class FirebaseService
 
   public listar_clientesNormales():Observable<any[]>
   {
-    
-    let observable = collectionData(this.clientesCollectionReference,{idField: 'id'}) as Observable<any[]>;
-
-    observable.subscribe(clientesLeidos =>
-    {
-      this.clientes = clientesLeidos;
-    })
-
-    return this.clientes;
+    return collectionData(this.clientesCollectionReference,{idField: 'id'}) as Observable<any[]>;
   }
 
   public modificar_clienteNormal(clienteRecibido:any, id:any)
@@ -194,22 +173,14 @@ export class FirebaseService
 
   public listar_clientesAnonimos():Observable<any[]>
   {
-    
-    let observable = collectionData(this.anonimosCollectionReference,{idField: 'id'}) as Observable<any[]>;
-
-    observable.subscribe(anonimosLeidos =>
-    {
-      this.anonimos = anonimosLeidos;
-    })
-
-    return this.anonimos;
+    return collectionData(this.anonimosCollectionReference,{idField: 'id'}) as Observable<any[]>;
   }
 
-  public existe_clienteAnonimo(nombreRecibido):boolean
+  public existe_clienteAnonimo(nombreRecibido, arrayClientesAnonimos):boolean
   {
     let existeClienteAnonConEseNombre = false;
 
-    this.anonimos.forEach( (element) => 
+    arrayClientesAnonimos.forEach( (element) => 
     {
       if (element["nombre"] == nombreRecibido)
       {
@@ -264,15 +235,7 @@ export class FirebaseService
 
   public listar_autoridades():Observable<any[]>
   {
-    
-    let observable = collectionData(this.autoridadesCollectionReference,{idField: 'id'}) as Observable<any[]>;
-
-    observable.subscribe(autoridadesLeidas =>
-    {
-      this.autoridades = autoridadesLeidas;
-    })
-
-    return this.autoridades;
+    return collectionData(this.autoridadesCollectionReference,{idField: 'id'}) as Observable<any[]>
   }
 
   public validar_autoridad(mailRecibido:string, passwordRecibida:string, passwordConfirmRecibida:string ,nombreRecibido:string, apellidoRecibido:string, dniRecibido:number, cuilRecibido:string ,fotoRecibida:any)
@@ -332,7 +295,8 @@ export class FirebaseService
       comensales: cantidadComensalesRecibida,
       fotoQR: fotoQRRecibida,
       fotoMesa: fotoMesaRecibida,
-      tipo: tipoMesaRecibido
+      tipo: tipoMesaRecibido,
+      estado: 'disponible'
     }
 
     //SUBO LA FOTO DE LA ENTIDAD AL STORAGE Y OBTENGO EL LINK PUBLICO. DESP, LO SUBO A LA DB Y CON LA NUEVA ID.
@@ -347,41 +311,41 @@ export class FirebaseService
 
     uploadString(referenciaPathStorage, mesaEstructurada.fotoMesa, 'data_url').then((data)=>
     {
-      getDownloadURL(referenciaPathStorage).then((url)=>
-      {
-        mesaEstructurada.fotoMesa = url;
+        getDownloadURL(referenciaPathStorage).then((url)=>
+        {
+          mesaEstructurada.fotoMesa = url;
+          
+          uploadString(referenciaPathStorage2, mesaEstructurada.fotoQR, 'data_url').then((data)=>
+          {  
+              getDownloadURL(referenciaPathStorage2).then((url)=>
+              {
+                mesaEstructurada.fotoQR = url;
+                return  addDoc(this.mesasCollectionReference, mesaEstructurada);
+        
+              }).catch((error)=>
+              {
+                console.log(error);
+              });
+          
+          });
 
-      }).catch((error)=>
-      {
-        console.log(error);
-      });
+        }).catch((error)=>
+        {
+          console.log(error);
+        });
     });
 
-    uploadString(referenciaPathStorage2, mesaEstructurada.fotoQR, 'data_url').then((data)=>
-    {
-      getDownloadURL(referenciaPathStorage2).then((url)=>
-      {
-        mesaEstructurada.fotoQR = url;
-        return  addDoc(this.mesasCollectionReference, mesaEstructurada);
-
-      }).catch((error)=>
-      {
-        console.log(error);
-      });
-    });
   }
 
   public listar_mesas():Observable<any[]>
   {
-    
-    let observable = collectionData(this.mesasCollectionReference,{idField: 'id'}) as Observable<any[]>;
+    return collectionData(this.mesasCollectionReference,{idField: 'id'}) as Observable<any[]>;
+  }
 
-    observable.subscribe(mesasLeidas =>
-    {
-      this.mesas = mesasLeidas;
-    })
-
-    return this.mesas;
+  public modificar_mesa(mesaRecibida:any, id:any)
+  {
+    let mesaDocRef = doc(this.Firestore, `mesas/${id}`);
+    return updateDoc(mesaDocRef, mesaRecibida);
   }
 
   //#endregion ------------------------------------------------------------------//
@@ -486,69 +450,39 @@ export class FirebaseService
   }
 
   public listar_empleados():Observable<any[]>
-  {
-    
-    let observable = collectionData(this.empleadosCollectionReference,{idField: 'id'}) as Observable<any[]>;
-
-    observable.subscribe(empleadosLeidos =>
-    {
-      this.empleados = empleadosLeidos;
-    })
-
-    return this.empleados;
+  { 
+    return collectionData(this.empleadosCollectionReference,{idField: 'id'}) as Observable<any[]>;
   }
 
   //#endregion ------------------------------------------------------------------//
-  
-  // -- G E N E R A L E S ---
-  public buscar_UsuarioPorMail(mailRecibido:string)
+
+  //#region ----------------------------- CONSUMIDORES ----------------------------//
+
+  public alta_consumidor(nombreRecibido:string)
   {
-    let usuarioEncontrado:any;
-
-    //Leo todas las DB
-    let arrayClientes = this.clientes;
-    let arrayEmpleados = this.empleados;
-    let arrayAutoridades = this.autoridades;
-
-    //Como esto no esto no es tan optimo, no voy a seguir leyendo mas tablas 
-    //si ya encontre un usuario...
-
-    if (usuarioEncontrado == undefined)
+    //----------- Estructuracion de la entidad ---------------/
+    let consumidorEstructurado = 
     {
-      (arrayClientes).forEach((cliente) => 
-      {
-        if (cliente["correo"] != undefined && cliente["correo"].toLowerCase()  == mailRecibido.toLowerCase())
-        {
-          usuarioEncontrado = cliente;
-        }
-      });
+      nombre: nombreRecibido,
+      estado: 'esperando_mesa',
+      mesaAsignada: 'ninguna',
     }
 
-    if (usuarioEncontrado == undefined)
-    {
-      (arrayEmpleados).forEach((empleado) => 
-      {
-        if (empleado["correo"] != undefined && empleado["correo"].toLowerCase()  == mailRecibido.toLowerCase())
-        {
-          usuarioEncontrado = empleado;
-        }
-      });
-    }
-
-    if (usuarioEncontrado == undefined)
-    {
-      (arrayAutoridades).forEach((autoridad) => 
-      {
-        if (autoridad["correo"] != undefined && autoridad["correo"].toLowerCase()  == mailRecibido.toLowerCase())
-        {
-          usuarioEncontrado = autoridad;
-        }
-      });
-    }
-  
-    console.log(usuarioEncontrado);
-    return usuarioEncontrado;
+    return  addDoc(this.consumidoresCollectionReference, consumidorEstructurado);
   }
+  
+  public listar_consumidores():Observable<any[]>
+  { 
+    return collectionData(this.consumidoresCollectionReference,{idField: 'id'}) as Observable<any[]>;
+  }
+
+  public modificar_consumidor(consumidorRecibido:any, id:any)
+  {
+    let consumidorDocRef = doc(this.Firestore, `consumidores/${id}`);
+    return updateDoc(consumidorDocRef, consumidorRecibido);
+  }
+  
+  //#endregion ------------------------------------------------------------------//
   
 }
 

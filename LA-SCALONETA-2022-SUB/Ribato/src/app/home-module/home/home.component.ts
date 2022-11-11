@@ -14,7 +14,17 @@ export class HomeComponent implements OnInit
   constructor(
     public srvAuth:AuthService, 
     public srvFirebase:FirebaseService,
-    public router:Router) {}
+    public router:Router) 
+    {
+      let observableAutoridades = this.srvFirebase.listar_autoridades();
+      observableAutoridades.subscribe( (data) => { this.arrayAutoridades = data});
+
+      let observableEmpleados = this.srvFirebase.listar_empleados();
+      observableEmpleados.subscribe( (data) => { this.arrayEmpleados = data});
+
+      let observableClientes = this.srvFirebase.listar_clientesNormales();
+      observableClientes.subscribe( (data) => { this.arrayClientes = data});
+    }
 
   //------------------------ Atributos ---------------------------- //
   public tipoUsuarioLogeado:any;
@@ -25,11 +35,19 @@ export class HomeComponent implements OnInit
 
   sonidoActivado:boolean = true;
   spinnerMostrandose:boolean = true;
+
+  public arrayClientes:any = [];
+  public arrayEmpleados:any = [];
+  public arrayAutoridades:any = [];
+
   //-------------------------------------------------------------- //
   
   ngOnInit() 
   {
-    this.obtenerSesionActual();
+    setTimeout(() => 
+    {
+      this.obtenerSesionActual();
+    }, 500);
   }
 
   deslogearSesion()
@@ -114,7 +132,8 @@ export class HomeComponent implements OnInit
       {
         if (user != undefined && user != null)
         {
-          this.dataUsuarioLogeado = this.srvFirebase.buscar_UsuarioPorMail(user.email);
+          this.dataUsuarioLogeado = this.buscar_UsuarioPorMail(user.email);
+
           this.tipoUsuarioLogeado = this.dataUsuarioLogeado.tipo;
           
           this.mailUsuarioLogeado = this.dataUsuarioLogeado.correo;
@@ -126,10 +145,13 @@ export class HomeComponent implements OnInit
         else
         {
           this.tipoUsuarioLogeado = 'anonimo';
-    
+
+          //El mail del "logeado" va a ser el nombre del anonimo
+          this.mailUsuarioLogeado = this.srvAuth.nombreDelAnonimo;
+          console.log(this.srvAuth.nombreDelAnonimo);
+
           let tipoAMostrar = this.traducirTipoAFormaVisual(this.tipoUsuarioLogeado);
           this.rangoUsuarioLogeado = tipoAMostrar;
-          this.mailUsuarioLogeado = "Mail inexistente";
     
           this.spinnerMostrandose = false;
         }
@@ -139,4 +161,51 @@ export class HomeComponent implements OnInit
 
     }, 2500);
   }
+
+  // -- G E N E R A L E S ---
+  public buscar_UsuarioPorMail(mailRecibido:string)
+  {
+    let usuarioEncontrado:any;
+
+    //Como esto no esto no es tan optimo, no voy a seguir leyendo mas tablas 
+    //si ya encontre un usuario...
+
+    if (usuarioEncontrado == undefined)
+    {
+      (this.arrayClientes).forEach((cliente) => 
+      {
+        if (cliente["correo"] != undefined && cliente["correo"].toLowerCase()  == mailRecibido.toLowerCase())
+        {
+          usuarioEncontrado = cliente;
+        }
+      });
+    }
+
+    if (usuarioEncontrado == undefined)
+    {
+      (this.arrayEmpleados).forEach((empleado) => 
+      {
+        if (empleado["correo"] != undefined && empleado["correo"].toLowerCase()  == mailRecibido.toLowerCase())
+        {
+          usuarioEncontrado = empleado;
+        }
+      });
+    }
+
+    if (usuarioEncontrado == undefined)
+    {
+      (this.arrayAutoridades).forEach((autoridad) => 
+      {
+        if (autoridad["correo"] != undefined && autoridad["correo"].toLowerCase()  == mailRecibido.toLowerCase())
+        {
+          usuarioEncontrado = autoridad;
+        }
+      });
+    }
+  
+    console.log(usuarioEncontrado);
+    return usuarioEncontrado;
+  }
+
 }
+

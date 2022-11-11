@@ -1,0 +1,80 @@
+#body
+{
+    background-color: black;
+    text-align: center;
+}
+
+#main-card
+{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    height: 97%;
+    background: white;
+}
+
+#main-card-2
+{
+    background-image: url("../../../assets/files/background.jpg");
+    height: 97%;
+    width: 94%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    height: 97%;
+}
+
+#main-card-header
+{
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 600;
+    font-style: oblique;
+    font-variant: small-caps;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+#titulo-principal
+{
+    font-size: 30px;
+}
+
+.mensaje-informativo
+{
+    font-size: 23px;
+    color: white;
+    background-color: black;
+    border-radius: 6px;
+    padding: 1.2rem;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 2rem;
+}
+
+// QR
+
+#qrScanner-ingreso-local
+{
+    width: 15%;
+    border-radius: 4px;
+    margin-top: 0.7rem;
+    margin-left: 1%;
+    height: 2.5rem;
+}
+
+.emoji-scaneo-mesa
+{
+    font-size: 24px;
+    margin-bottom: 1rem;
+}
+
+#icono-qr-ingreso-local
+{
+    width: 2rem;
+    height: 100%;
+}
+
+// 
+
+#indicador-de-sonido
+{
+    margin-bottom: 6%;
+    margin-left: 5%;
+}

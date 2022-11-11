@@ -19,7 +19,7 @@
         <app-home-mozo *ngIf="tipoUsuarioLogeado == 'mozo'"></app-home-mozo>   
         <app-home-bartender *ngIf="tipoUsuarioLogeado == 'bartender'"></app-home-bartender>
 
-         <app-home-cliente *ngIf="(tipoUsuarioLogeado == 'cliente' && dataUsuarioLogeado.estado == 'aprobado') || tipoUsuarioLogeado == 'anonimo'"></app-home-cliente>
+        <app-home-cliente *ngIf="(tipoUsuarioLogeado == 'cliente' && dataUsuarioLogeado.estado == 'aprobado') || tipoUsuarioLogeado == 'anonimo'"></app-home-cliente>
          
         <div *ngIf="tipoUsuarioLogeado == 'cliente' && dataUsuarioLogeado.estado == 'desaprobado'" id="mensaje-cliente-desaprobado">
           Su cuenta fue rechazada por los dueños y administradores del sistema. Lo sentimos mucho. <br>

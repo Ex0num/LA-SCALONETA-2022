@@ -6,14 +6,14 @@
   <button (click)="testing()">testing</button>
 </div>
 
-<div *ngIf="clienteEnListaDeEspera == true">
+<div *ngIf="clienteEnListaDeEspera == true && consumidorActual.estado == 'esperando_mesa'">
   <ion-button class="btnOpcionesHome" color="light">Ver encuestas</ion-button> 
-  <div id="mensaje-cliente-esperando">
+  <div class="mensaje-cliente-esperando">
     Usted fue añadido correctamente a la lista de espera para ingresar al local. <br>
     Aguarde, nuestro metre le asignará una mesa lo antes posible.
   </div>
 
-  <div class="wrapper" *ngIf="clienteEnListaDeEspera == true">
+  <div class="wrapper" *ngIf="clienteEnListaDeEspera == true && consumidorActual.estado == 'esperando_mesa'">
     <span class="circle circle-1"></span>
     <span class="circle circle-2"></span>
     <span class="circle circle-3"></span>
