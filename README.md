@@ -47,12 +47,8 @@ El proyecto anterior casi no tenia <strong>reflejos de cambios en VIVO</strong>.
 En conclusión, una <strong> mejora casi primordial para que funcione el sistema. </strong> <br> Era necesario el cambio, e insostenible seguir utilizando métodos de Snapshop y no Subscribers. Tarde o temprano se iba a tener que cambiar esto... y mejor ahora que con 700 800 más líneas de código con el pasar de los días - Alpha</label> <br>
 
 <strong> 11/11/22 </strong> <br>
-<label>- Se creó y diseñó el menú de <strong>Asignación de mesas a clientes (anónimos y logeados)</strong> - Alpha</label> <br><br>
-
-
-
-<br>
-<strong> 09/11/22 </strong> <br>
+<label>- Se creó y diseñó el menú de <strong>Asignación de mesas a clientes (anónimos y logeados)</strong> - Alpha</label> <br>
+<label> Proximamente <strong> Alta de productos, Push notifications y Listado de productos (Sección Menú para cliente) </strong> </label> <br>
 
 
 ***
