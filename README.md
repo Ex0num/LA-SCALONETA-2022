@@ -72,7 +72,7 @@
 <img src="expositor/cliente-rechazado.PNG" width="360px" height="740px"><br>
 
 <strong> Pantalla de asignación mesa y de bienvenida a la mesa.</strong><br>
-<img src="expositor/asignacion-mesa.PNG" width="360px" height="740px"><br>‏‏‎ ‎‏‏‎ ‎
+<img src="expositor/asignacion-mesa.PNG" width="360px" height="740px">‏‏‎ ‎‏‏‎ ‎
 <img src="expositor/bienvenida-mesa.PNG" width="360px" height="740px"><br>
 
 <strong> Pantalla de mail (cliente aceptado y rechazado).</strong><br>
