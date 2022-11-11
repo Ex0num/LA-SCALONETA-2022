@@ -153,4 +153,38 @@ export class MesaHomeComponent implements OnInit {
       }
     });
   }
+
+  public testing()
+  {
+    //Leo el QR y el contenido devuelto lo cargo al formulario.
+    //this.srvLectorQR.openScan().then((stringObtenido)=>
+    //{
+      //let contenidoLeido = stringObtenido;
+      let contenidoLeido = this.consumidorActual.mesaAsignada;
+      //Detengo el scanner.
+      //this.srvLectorQR.stopScan();
+
+      if (contenidoLeido == this.consumidorActual.mesaAsignada)
+      {
+        this.srvToast.mostrarToast("bottom","El QR pertenece a su mesa. ¡Genial!...",2500,"success");
+        this.srvSonidos.reproducirSonido("bubble", this.sonidoActivado);
+        
+        this.mesaEscaneadaSatisfactoriamente = true;
+
+        //Nuevo estado del consumidor actual
+        this.consumidorActual.estado = 'realizando_pedido';
+        this.srvFirebase.modificar_consumidor(this.consumidorActual, this.consumidorActual.id);
+      }
+      else
+      {
+        this.srvToast.mostrarToast("bottom","El QR analizado no corresponde a su mesa asignada.",2500,"danger");
+        this.srvSonidos.reproducirSonido("error", this.sonidoActivado);
+      }
+    //});
+  }
+
+  consultarMozo()
+  {
+    this.router.navigateByUrl("chat-mozos");
+  }
 }

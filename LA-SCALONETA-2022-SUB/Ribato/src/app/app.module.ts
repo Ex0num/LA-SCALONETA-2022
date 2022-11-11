@@ -17,8 +17,7 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { HttpClientModule } from '@angular/common/http';
-import { Injectable } from '@angular/core'; import { AngularFireAuth } from '@angular/fire/compat/auth'; import { Router } from '@angular/router'
+
 import { LoginComponent } from './Vistas/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { AprobarClienteComponent } from './Vistas/aprobar-cliente/aprobar-cliente.component';
@@ -26,9 +25,10 @@ import { FiltradorClientesPendientesPipe } from './Pipes/filtrador-clientes-pend
 import { ClientesEsperandoMesaComponent } from './Vistas/clientes-esperando-mesa/clientes-esperando-mesa.component';
 import { FiltradorConsumidoresEsperandoPipe } from './Pipes/filtrador-consumidores-esperando.pipe';
 import { FiltradorMesasDisponiblesPipe } from './Pipes/filtrador-mesas-disponibles.pipe';
+import { ChatMozosComponent } from './Vistas/chat-mozos/chat-mozos.component';
 
 @NgModule({
-  declarations: [AppComponent,LoginComponent, AprobarClienteComponent, FiltradorClientesPendientesPipe, ClientesEsperandoMesaComponent, FiltradorConsumidoresEsperandoPipe, FiltradorMesasDisponiblesPipe],
+  declarations: [AppComponent,LoginComponent, AprobarClienteComponent, FiltradorClientesPendientesPipe, ClientesEsperandoMesaComponent, FiltradorConsumidoresEsperandoPipe, FiltradorMesasDisponiblesPipe,ChatMozosComponent],
   imports: [BrowserModule, IonicModule.forRoot(), 
     FormsModule,
     AppRoutingModule, 

@@ -15,6 +15,7 @@ import { HomeComponent } from './home-module/home/home.component';
 import { MesaHomeComponent } from './mesa-cliente-module/mesa-home/mesa-home.component';
 import { SplashComponent } from './splash/splash/splash.component';
 import { AprobarClienteComponent } from './Vistas/aprobar-cliente/aprobar-cliente.component';
+import { ChatMozosComponent } from './Vistas/chat-mozos/chat-mozos.component';
 import { ClientesEsperandoMesaComponent } from './Vistas/clientes-esperando-mesa/clientes-esperando-mesa.component';
 import { LoginComponent } from './Vistas/login/login.component';
 
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'login',component:LoginComponent},
   {path: 'aprobar-clientes',component:AprobarClienteComponent},
   {path: 'clientes-esperando-mesa',component:ClientesEsperandoMesaComponent},
+  {path: 'chat-mozos',component:ChatMozosComponent},
 
   // //Modulo de alta (Tipos de usuarios)
   {path: 'alta-cliente',component:AltaClienteComponent, loadChildren: () => import('./alta-module/alta-module.module').then(m => m.AltaModuleModule)},

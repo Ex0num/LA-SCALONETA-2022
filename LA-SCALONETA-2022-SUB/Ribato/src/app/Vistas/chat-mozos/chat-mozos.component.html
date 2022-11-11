@@ -1,0 +1,66 @@
+<body id="body">
+  <ion-card id="main-card">
+   <ion-card id="main-card-2">
+
+      <ion-card-header id="main-card-header">
+        <label id="titulo-principal">¡Haga su consulta, responderemos a la brevedad!</label><br>
+      </ion-card-header>
+
+      <div class="wrapper" *ngIf="spinnerMostrandose == true">
+        <span class="circle circle-1"></span>
+        <span class="circle circle-2"></span>
+        <span class="circle circle-3"></span>
+        <span class="circle circle-4"></span>
+        <span class="circle circle-5"></span>
+        <span class="circle circle-6"></span>
+        <span class="circle circle-7"></span>
+        <span class="circle circle-8"></span>
+      </div>
+
+      <div id="seccion-mensajes-cargados">
+        <ul id="listado-mensajes"*ngIf="spinnerMostrandose == false">
+          
+          <!-- <li *ngFor="let clienteDesaprobado of (arrayClientes | filtradorClientesPendientes); index as i" class="item-cliente-pendiente">
+            <div *ngIf="clienteDesaprobado.estado =='pendiente'">
+              <img src="{{clienteDesaprobado.foto}}" class="foto-cliente-pendiente"> <br>
+              <label class="data-cliente-pendiente">Nombre: {{clienteDesaprobado.nombre}}</label><br>
+              <label class="data-cliente-pendiente">Apellido: {{clienteDesaprobado.apellido}}</label><br>
+              <label class="data-cliente-pendiente">DNI: {{clienteDesaprobado.dni}}</label><br>
+              <label class="data-cliente-pendiente">Correo: {{clienteDesaprobado.correo}}</label><br>
+              <button class="btn-aceptar-cli" (click)="accionarCliente(clienteDesaprobado,true, i)"><ion-icon name="checkmark-outline"></ion-icon></button>
+              <button class="btn-rechazar-cli" (click)="accionarCliente(clienteDesaprobado,false, i)"><ion-icon name="close-outline"></ion-icon></button>
+            </div>
+          </li> -->
+          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
+          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
+          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
+          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
+          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
+          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
+          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
+          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
+          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
+          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
+          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
+          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
+          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
+          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
+          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
+          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
+          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
+          
+        </ul>
+      </div>
+      
+      <input class="input-mensaje" placeholder="Escríba su mensaje acá">
+      <ion-button class="btnOpcionesHome" color="light">Enviar</ion-button>
+
+   </ion-card>
+  </ion-card>
+</body>
+
+<ion-fab id="indicador-de-sonido-chat" vertical="bottom" horizontal="start" slot="fixed" color="light">
+  <ion-fab-button color="light" (click)="switchearEstadoSonido()">
+    <ion-icon id="icono-sonido-mensajeria" name="volume-mute"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
