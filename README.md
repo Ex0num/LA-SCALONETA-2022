@@ -48,7 +48,7 @@ En conclusión, una <strong> mejora casi primordial para que funcione el sistema
 
 <strong> 11/11/22 </strong> <br>
 <label>- Se creó y diseñó el menú de <strong>Asignación de mesas a clientes (anónimos y logeados)</strong> - Alpha</label> <br>
-<label> Proximamente <strong> Alta de productos, Push notifications y Listado de productos (Sección Menú para cliente) </strong> </label> <br>
+<label>- Proximamente <strong> Alta de productos, Push notifications y Listado de productos (Sección Menú para cliente)- Alpha</strong> </label> <br>
 
 
 ***
