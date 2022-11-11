@@ -37,6 +37,13 @@
 <label>- Se creó y diseñó el <strong>Alta de empleados</strong> - Alpha</label> <br>
 <label>- Se creó y diseñó el <strong>Alta de mesa</strong> - Alpha</label> <br>
 <label>- Se creó y diseñó el menú de <strong>Aprobación/Rechazo de clientes</strong> - Alpha</label> <br>
+<label>- Se creó y diseñó el menú de <strong>Asignación de mesas a clientes (anónimos y logeados)</strong> - Alpha</label> <br>
+<label>- Nota importante: <br>
+(El proyecto fue migrado, creado de 0 con amor y con mucha mucha paciencia, a la carpeta 'LA-SCALONETA-2022-SUB'). <br> 
+Fue refactorizado en su totalidad (internamente, no de forma visual), con implementaciones de Firebase mejores y más actuales (Sólo cambió Firebase Service y Auth Service). <br> 
+El proyecto anterior casi no tenia <strong>reflejos de cambios en VIVO</strong>. Ahora sí. <strong>Todo cambio alguno en tiempo real impacta en el sistema instantaneamente</strong>. (Facilitando y permitiendo la realización del chat en vivo, manejo de estados de cliente, pedido, aceptación del cliente en el sistema).<br> 
+En conclusión, una <strong> mejora casi primordial para que funcione el sistema. </strong> <br> Era necesario el cambio, e insostenible seguir utilizando métodos de Snapshop y no Subscribers. Tarde o temprano se iba a tener que cambiar esto... y mejor ahora que con 700 800 más líneas de código con el pasar de los días - Alpha</label> <br>
+
 <br>
 <strong> 09/11/22 </strong> <br>
 
