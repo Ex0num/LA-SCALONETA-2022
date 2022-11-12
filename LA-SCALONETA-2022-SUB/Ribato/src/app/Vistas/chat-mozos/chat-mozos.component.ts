@@ -22,7 +22,7 @@ export class ChatMozosComponent implements OnInit {
     observableMensajes.subscribe( (data) => 
     { 
       this.arrayMensajes = data;
-      this.srvSonidos.reproducirSonido("bubble",this.sonidoActivado);
+      // this.srvSonidos.reproducirSonido("bubble",this.sonidoActivado);
     });
 
     let observableConsumidores = this.srvFirebase.listar_consumidores();

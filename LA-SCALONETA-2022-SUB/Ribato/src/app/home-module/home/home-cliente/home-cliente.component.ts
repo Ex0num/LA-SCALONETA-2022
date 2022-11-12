@@ -82,9 +82,9 @@ export class HomeClienteComponent implements OnInit {
         {
           console.log("Dando de alta consumidor ANONIMO");
           console.log(this.srvAuth.nombreDelAnonimo);
-    
+
           this.srvFirebase.alta_consumidor(this.srvAuth.nombreDelAnonimo);   
-    
+
           setTimeout(() => 
           {
             this.arrayConsumidores.forEach(element => 
@@ -98,23 +98,23 @@ export class HomeClienteComponent implements OnInit {
                   this.clienteEnListaDeEspera = true;
                 }
               });
-    
+
           }, 2000);
-    
+
         }
         else
         {
           //Si no, el alta del consumidor se hace con el mail del logeado
           let mailLogeado; 
-    
+
           this.srvAuth.afAuth.user.subscribe((data) => 
           {
             mailLogeado = data.email;
-    
+
             console.log("Dando de alta consumidor LOGEADO");
             console.log(mailLogeado);
             this.srvFirebase.alta_consumidor(mailLogeado); 
-    
+
             setTimeout(() => 
             {
               this.arrayConsumidores.forEach(element => 
@@ -130,8 +130,9 @@ export class HomeClienteComponent implements OnInit {
                 });
       
             }, 2000);
-    
+
           });
+        
         }
 
       }

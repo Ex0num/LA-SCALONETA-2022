@@ -1,3 +1,61 @@
-<p>
-  alta-producto works!
-</p>
+<body id="body">
+  <ion-card id="main-card">
+   <ion-card id="main-card-2">
+
+      <ion-card-header id="main-card-header">
+        <label id="titulo-principal">Registro de producto</label><br>
+      </ion-card-header>
+
+      <label id="lbl-helper-numeroProducto">El próximo número de producto en Ribato es...</label>
+      <input readonly class="input-producto" id="numero-producto" [(ngModel)]="numeroGenerado_producto" type="number" placeholder="Próximo número de producto">
+
+      <select (change)="actualizarTipoProducto($event)" class="input-producto" id="selector-tipo-producto">
+        <option>Comida</option>
+        <option>Bebida</option>
+      </select>
+
+      <input class="input-producto" id="nombre-producto" [(ngModel)]="nombre_producto" type="text" placeholder="Nombre del producto">
+
+      <input class="input-producto" id="precio-producto" [(ngModel)]="precio_producto" type="number" placeholder="Precio del producto">
+
+      <input class="input-producto" id="descripcion-producto" [(ngModel)]="descripcion_producto" type="text" placeholder="Breve descripción">
+
+
+      <div id="contenedor-foto">
+        <div class="container-lbl-helper">
+          <label>Subí las fotos de tu producto.</label><br>
+        </div>
+
+        <button id="btn-abrir-camara" (click)="abrirCamara1()"><ion-icon name="camera-outline"></ion-icon></button>
+        <img class="imagen-formulario" id="imagen-camara-1" src="../../../assets/files/example-foto.PNG" width="100%" height="100%">
+
+        <button id="btn-abrir-camara" (click)="abrirCamara2()"><ion-icon name="camera-outline"></ion-icon></button>
+        <img class="imagen-formulario" id="imagen-camara-2" src="../../../assets/files/example-foto.PNG" width="100%" height="100%">
+
+        <button id="btn-abrir-camara" (click)="abrirCamara3()"><ion-icon name="camera-outline"></ion-icon></button>
+        <img class="imagen-formulario" id="imagen-camara-3" src="../../../assets/files/example-foto.PNG" width="100%" height="100%">
+      </div>
+
+      <div id="contenedor-qr-producto">
+        <div class="container-lbl-helper">
+          <label>QR Generado automáticamente para el próximo producto n° {{numeroGenerado_producto}}.</label>
+        </div>
+
+        <div class="imagen-formulario" id="imagen-qr-deleteable-producto">
+          <qrcode [qrdata]="infoQRProducto" [allowEmptyString]="true" id="my-qr-producto"></qrcode>
+        </div>
+        
+        <img class="imagen-formulario" id="imagen-qr-producto" src="../../../assets/files/example-foto.PNG" width="100%" height="100%" hidden> 
+      </div>
+      
+      <button id="btn-enviar-producto" (click)="registrarProducto()">Enviar</button> 
+
+   </ion-card>
+  </ion-card>
+</body>
+
+<ion-fab id="indicador-de-sonido" vertical="bottom" horizontal="start" slot="fixed" color="light">
+  <ion-fab-button color="light" (click)="switchearEstadoSonido()">
+    <ion-icon id="icono-sonido-altaProducto" name="volume-mute"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

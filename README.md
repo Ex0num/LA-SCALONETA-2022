@@ -48,8 +48,15 @@ En conclusión, una <strong> mejora casi primordial para que funcione el sistema
 
 <strong> 11/11/22 </strong> <br>
 <label>- Se creó y diseñó el menú de <strong>Asignación de mesas a clientes (anónimos y logeados)</strong> - Alpha</label> <br>
-<label>- Proximamente <strong> Alta de productos, Push notifications y Listado de productos (Sección Menú para cliente)- Alpha</strong> </label> <br>
 
+<strong> 12/11/22 </strong> <br>
+<label>- Se creó y diseñó el de <strong>Alta de productos</strong> - Alpha</label> <br>
+<label>- Se creó y diseñó el menú de <strong>Home cocinero y home bartender</strong> - Alpha</label> <br>
+<label>- Se creó y diseñó la sección de <strong>Chat/consulta a los mozos</strong> - Alpha</label> <br>
+<label>- Notas importantes: <br>
+Todas los módulos de alta ya fueron finalizados. Fotos adjuntas. <br>
+Actualmente en el recorrido número del 1 al 13. El proyecto se encuentra en el 6/13. <br> 
+Los QRs de las mesas ya fueron adjuntos al readme. (Estos QRS son mas simples debido a que son generados 'on-live' en el mismo alta de la mesa. - Alpha</label> <br>
 
 ***
 <h3 id="visualizacionProyecto">📲 Visualización del proyecto</h3><br>
@@ -58,36 +65,51 @@ En conclusión, una <strong> mejora casi primordial para que funcione el sistema
 <img src="expositor/Ribato-big.png" width="300px" height="300px">
 <br><br>
 <strong> Pantalla de login y de registro </strong><br>
-<img src="expositor/menu-login.PNG" width="360px" height="740px">‏‏‎ ‎
+<img src="expositor/menu-login.PNG" width="360px" height="740px">
 <img src="expositor/menu-registro.PNG" width="360px" height="740px"><br>
 
 <strong> Pantalla de alta cliente y anónimo.</strong><br>
-<img src="expositor/registro-cliente.PNG" width="360px" height="740px">‏‏‎ ‎‏‏‎ ‎
+<img src="expositor/registro-cliente.PNG" width="360px" height="740px">
 <img src="expositor/registro-anonimo.PNG" width="360px" height="740px"><br>
 
 <strong> Pantalla de alta (Supervisor/Dueño) y empleados.</strong><br>
-<img src="expositor/alta-autoridad.PNG" width="360px" height="740px">‏‏‎ ‎‏‏‎ ‎
+<img src="expositor/alta-autoridad.PNG" width="360px" height="740px">
 <img src="expositor/alta-empleados.PNG" width="360px" height="740px"><br>
 
 <strong> Pantalla de alta mesa y esperando mesa.</strong><br>
-<img src="expositor/alta-mesa.PNG" width="360px" height="740px">‏‏‎ ‎‏‏‎ ‎
+<img src="expositor/alta-mesa.PNG" width="360px" height="740px">
+<img src="expositor/alta-mesa2.PNG" width="360px" height="740px">
 <img src="expositor/esperando-mesa.PNG" width="360px" height="740px"><br>
 
+<strong> Pantalla de alta productos</strong><br>
+<img src="expositor/alta-producto1.PNG" width="360px" height="740px">
+<img src="expositor/alta-producto2.PNG" width="360px" height="740px">
+<img src="expositor/alta-producto3.PNG" width="360px" height="740px"><br>
+
 <strong> Pantalla de home (Supervisor/Dueño) e ingreso al local.</strong><br>
-<img src="expositor/home-autoridad.PNG" width="360px" height="740px">‏‏‎ ‎‏‏‎ ‎
+<img src="expositor/home-autoridad.PNG" width="360px" height="740px">
+<img src="expositor/ingreso-local.PNG" width="360px" height="740px">
+
+<strong> Pantalla de home cocinero y bartender.</strong><br>
+<img src="expositor/home-autoridad.PNG" width="360px" height="740px">
 <img src="expositor/ingreso-local.PNG" width="360px" height="740px">
 
 <strong> Pantalla de aprobación de clientes y cliente rechazado.</strong><br>
-<img src="expositor/aprobacion-clientes.PNG" width="360px" height="740px">‏‏‎ ‎‏‏‎ ‎
+<img src="expositor/aprobacion-clientes.PNG" width="360px" height="740px">
 <img src="expositor/cliente-rechazado.PNG" width="360px" height="740px"><br>
 
 <strong> Pantalla de asignación mesa y de bienvenida a la mesa.</strong><br>
-<img src="expositor/asignacion-mesa.PNG" width="360px" height="740px">‏‏‎ ‎‏‏‎ ‎
+<img src="expositor/asignacion-mesa.PNG" width="360px" height="740px"><br>
 <img src="expositor/bienvenida-mesa.PNG" width="360px" height="740px"><br>
 
+<strong> Pantalla de home mozo y de chat con los mozos.</strong><br>
+<img src="expositor/home-mozo.PNG" width="360px" height="740px"><br>
+<img src="expositor/chat-mozos.PNG" width="360px" height="740px"><br>
+
 <strong> Pantalla de mail (cliente aceptado y rechazado).</strong><br>
-<img src="expositor/cuenta-aceptada.PNG" width="800px" height="340px"><br>‏‏‎ ‎‏‏‎ ‎
+<img src="expositor/cuenta-aceptada.PNG" width="800px" height="340px"><br>
 <img src="expositor/cuenta-rechazada.PNG" width="800px" height="340px"><br>
+
 
 <!-- <img src="src/assets/readme-files/menu-login.gif" width="50%" height="450px">
 <img src="src/assets/readme-files/registro-usuario-normal.gif" width="50%" height="450px">

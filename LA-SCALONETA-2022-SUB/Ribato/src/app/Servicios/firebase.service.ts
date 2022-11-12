@@ -24,6 +24,7 @@ export class FirebaseService
     mesasCollectionReference : any;
     consumidoresCollectionReference : any;
     mensajesCollectionReference : any;
+    productosCollectionReference : any;
     
   //#endregion ---------------------------------------------------------------------------
   
@@ -38,6 +39,7 @@ export class FirebaseService
     this.mesasCollectionReference = collection(this.Firestore, 'mesas');
     this.consumidoresCollectionReference = collection(this.Firestore, 'consumidores');
     this.mensajesCollectionReference = collection(this.Firestore, 'mensajes');
+    this.productosCollectionReference = collection(this.Firestore, 'productos');
   }
 
   //#region ---------------------- CLIENTES NORMALES ---------------------------//
@@ -520,5 +522,90 @@ export class FirebaseService
 
   //#endregion ------------------------------------------------------------------//
 
+  //#region ----------------------------- PRODUCTOS ----------------------------//
+
+  public alta_producto(numeroGeneradoRecibido, nombreRecibido, tipoRecibido, precioRecibido, descripcionRecibida, fotoQRRecibida, foto1Recibida, foto2Recibida, foto3Recibida)
+  {
+    //----------- Estructuracion de la entidad ---------------/
+    let productoEstructurado = 
+    {
+      numeroProducto: numeroGeneradoRecibido,
+      nombre: nombreRecibido,
+      precio: precioRecibido,
+      descripcion: descripcionRecibida,
+      fotoQR: fotoQRRecibida,
+      foto1: foto1Recibida,
+      foto2: foto2Recibida,
+      foto3: foto3Recibida,
+      tipo: tipoRecibido,
+    }
+
+    //SUBO LA FOTO DE LA ENTIDAD AL STORAGE Y OBTENGO EL LINK PUBLICO. DESP, LO SUBO A LA DB Y CON LA NUEVA ID.
+    let fechaValidaActual = new Date().toLocaleDateString();
+    let horaValidaActual = new Date().toLocaleTimeString();
+    do { fechaValidaActual = fechaValidaActual.replace("/",":"); } while(fechaValidaActual.includes("/"));
+
+    //---------------
+    let referenciaPathStorage = ref(this.storage, `images/productos/${productoEstructurado.numeroProducto + "/" + fechaValidaActual + "-" + horaValidaActual + "-v1"} `);
+    let referenciaPathStorage2 = ref(this.storage, `images/productos/${productoEstructurado.numeroProducto + "/" + fechaValidaActual + "-" + horaValidaActual + "-v2"} `);
+    let referenciaPathStorage3 = ref(this.storage, `images/productos/${productoEstructurado.numeroProducto + "/" + fechaValidaActual + "-" + horaValidaActual + "-v3"} `);
+    let referenciaPathStorage4 = ref(this.storage, `images/productos/${productoEstructurado.numeroProducto + "/" + fechaValidaActual + "-" + horaValidaActual + "-v4"} `);
+    //---------------
+
+    uploadString(referenciaPathStorage, productoEstructurado.foto1, 'data_url').then((data)=>
+    {
+        getDownloadURL(referenciaPathStorage).then((url)=>
+        {
+          productoEstructurado.foto1 = url;
+          
+          uploadString(referenciaPathStorage2, productoEstructurado.fotoQR, 'data_url').then((data)=>
+          {  
+              getDownloadURL(referenciaPathStorage2).then((url)=>
+              {
+                productoEstructurado.fotoQR = url;
+                
+                uploadString(referenciaPathStorage3, productoEstructurado.foto2, 'data_url').then((data)=>
+                {  
+                    getDownloadURL(referenciaPathStorage3).then((url)=>
+                    {
+                      productoEstructurado.foto2 = url;
+
+                      uploadString(referenciaPathStorage4, productoEstructurado.foto3, 'data_url').then((data)=>
+                      {  
+                          getDownloadURL(referenciaPathStorage4).then((url)=>
+                          {
+                            productoEstructurado.foto3 = url;
+                            return  addDoc(this.productosCollectionReference, productoEstructurado)
+      
+                          }).catch((error)=>
+                          {
+                            console.log(error);
+                          });
+                      });
+              
+                    }).catch((error)=>
+                    {
+                      console.log(error);
+                    });
+                });
+        
+              }).catch((error)=>
+              {
+                console.log(error);
+              });
+          });   
+
+        }).catch((error)=>
+        {
+          console.log(error);
+        });
+    });
+
+  }
+
+  public listar_productos():Observable<any[]>
+  {
+    return collectionData(this.productosCollectionReference,{idField: 'id'}) as Observable<any[]>;
+  }
 }
 

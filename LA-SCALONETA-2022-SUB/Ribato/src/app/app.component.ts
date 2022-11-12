@@ -31,7 +31,7 @@ export class AppComponent {
       SplashScreen.hide();
       //this.router.navigateByUrl("splash");
       this.router.navigateByUrl("login");
-      //this.router.navigateByUrl("chat-mozos");
+      //this.router.navigateByUrl("alta-producto");
     })
   }
 }

@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
         console.log("El tipo del usuario logeado es: " + this.srvAuth.tipoUserloged);
 
         this.srvToast.mostrarToast("bottom","Bienvenido/a  " + userCredential.email ,2000,"success");
-        this.srvSonidos.reproducirSonido("ingreso", this.sonidoActivado);
+        this.srvSonidos.reproducirSonido("login", this.sonidoActivado);
         this.srvAuth.nombreDelAnonimo = undefined;
         this.limpiarControlesLogin(); 
         this.router.navigateByUrl("home");

@@ -1,0 +1,29 @@
+
+<body id="body-pedidosPendientesBar">
+  <ion-card id="main-card-pedidosPendientesBar">
+   <ion-card id="main-card-2-pedidosPendientesBar">
+
+      <ion-card-header id="main-card-header-pedidosPendientesBar">
+        <label id="titulo-principal-pedidosPendientesBar">Pedidos pendientes al bar</label><br>
+      </ion-card-header>
+
+        <div class="wrapper" *ngIf="spinnerMostrandose == true">
+          <span class="circle circle-1"></span>
+          <span class="circle circle-2"></span>
+          <span class="circle circle-3"></span>
+          <span class="circle circle-4"></span>
+          <span class="circle circle-5"></span>
+          <span class="circle circle-6"></span>
+          <span class="circle circle-7"></span>
+          <span class="circle circle-8"></span>
+        </div>
+
+   </ion-card>
+  </ion-card>
+</body>
+
+<ion-fab id="indicador-de-sonido-pedidosPendientesBar" vertical="bottom" horizontal="start" slot="fixed" color="light">
+  <ion-fab-button color="light" (click)="switchearEstadoSonido()">
+    <ion-icon id="icono-sonido-pedidosPendientesBar" name="volume-mute"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

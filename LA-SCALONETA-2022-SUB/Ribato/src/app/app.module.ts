@@ -28,6 +28,8 @@ import { FiltradorMesasDisponiblesPipe } from './Pipes/filtrador-mesas-disponibl
 import { ChatMozosComponent } from './Vistas/chat-mozos/chat-mozos.component';
 import { FiltradorMensajariaPipe } from './Pipes/filtrador-mensajaria.pipe';
 
+import { Vibration } from '@awesome-cordova-plugins/vibration/ngx';
+
 @NgModule({
   declarations: [AppComponent,LoginComponent, AprobarClienteComponent, FiltradorClientesPendientesPipe, ClientesEsperandoMesaComponent, FiltradorConsumidoresEsperandoPipe, FiltradorMesasDisponiblesPipe,ChatMozosComponent, FiltradorMensajariaPipe],
   imports: [BrowserModule, IonicModule.forRoot(), 
@@ -42,7 +44,7 @@ import { FiltradorMensajariaPipe } from './Pipes/filtrador-mensajaria.pipe';
     provideFirestore(() => getFirestore()), 
     provideMessaging(() => getMessaging()), 
     provideStorage(() => getStorage())],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },Vibration],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

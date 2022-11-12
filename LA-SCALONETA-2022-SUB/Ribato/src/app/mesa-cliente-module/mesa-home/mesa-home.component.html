@@ -9,10 +9,12 @@
       <div *ngIf="mesaEscaneadaSatisfactoriamente == false" id="seccion-mesa-no-escaneada">
           <div class="mensaje-informativo" *ngIf="cargaDeConsumidorTerminada == true">
             <label>Su mesa es la numero {{consumidorActual.mesaAsignada}}. <br> ¡Escaneela por favor!</label>
+            <div>
+              <label class="emoji-scaneo-mesa">👉🏻</label><button id="qrScanner-ingreso-local" (click)="escenarQR_Mesa()"><ion-icon id="icono-qr-ingreso-local" name="camera-outline"></ion-icon></button><label class="emoji-scaneo-mesa">👈🏻</label>
+              <!-- <button class="btnOpcionesHome" (click)="testing()">testing</button> -->
+            </div>
           </div>
 
-          <label class="emoji-scaneo-mesa">👉🏻</label><button id="qrScanner-ingreso-local" (click)="escenarQR_Mesa()"><ion-icon id="icono-qr-ingreso-local" name="camera-outline"></ion-icon></button><label class="emoji-scaneo-mesa">👈🏻</label>
-          <button class="btnOpcionesHome" (click)="testing()">testing</button>
         </div>
 
       <div *ngIf="mesaEscaneadaSatisfactoriamente == true" id="seccion-mesa-escaneada">

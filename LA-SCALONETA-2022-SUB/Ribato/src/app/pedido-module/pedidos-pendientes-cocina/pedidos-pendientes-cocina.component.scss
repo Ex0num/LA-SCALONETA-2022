@@ -1,0 +1,171 @@
+#body-pedidosPendientesCocina
+{
+    background-color: black;
+    text-align: center;
+}
+
+#main-card-pedidosPendientesCocina
+{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    height: 97%;
+    background: white;
+}
+
+#main-card-2-pedidosPendientesCocina
+{
+    background-image: url("../../../assets/files/background.jpg");
+    height: 97%;
+    width: 94%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    height: 97%;
+}
+
+#main-card-header-pedidosPendientesCocina
+{
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 600;
+    font-style: oblique;
+    font-variant: small-caps;
+    margin-top: 2rem;
+}
+
+#titulo-principal-pedidosPendientesCocina
+{
+    font-size: 42px;
+}
+
+// RANGO
+
+#container-mensaje-bienvenida
+{
+    background-color: black;
+    width: 90%;
+    height: 3.2rem;
+    padding: 0.3rem;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+    border-radius: 6px;
+    margin-left: 5%;
+    border: 1px solid gray;
+}
+
+#mensaje-rango
+{
+    background-color: black;
+    color:  gray;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+
+#mensaje-rango-actual
+{
+    background-color: black;
+    color:  white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+
+#mensaje-mail
+{
+    background-color: black;
+    color:  white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+}
+//--
+
+#mensaje-cliente-desaprobado, #mensaje-cliente-pendiente
+{
+    font-size: 23px;
+    color: white;
+    background-color: black;
+    border-radius: 6px;
+    padding: 1.2rem;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 25%;
+}
+
+#indicador-de-sonido-pedidosPendientesCocina
+{
+    margin-left: 5%;
+    margin-bottom: 8%;
+}
+
+#indicador-de-logOut
+{
+    margin-right: 5%;
+    margin-bottom: 8%;
+}
+
+// SPINNER - STYLE
+
+.wrapper
+{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%); 
+  }
+  .circle
+  {
+    display: inline-block;
+    width: 15px;
+    margin-left: 0.2rem;
+    height: 15px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    animation: loading 1.5s cubic-bezier(.8, .5, .2, 1.4) infinite;
+    transform-origin: bottom center;
+    position: relative;
+  }
+  @keyframes loading
+  {
+    0%{
+      transform: translateY(0px);
+      background-color: #958a7a;
+    }
+    50%{
+      transform: translateY(50px);
+      background-color: #000000;
+    }
+    100%{
+      transform: translateY(0px);
+      background-color: #ffffff;
+    }
+  }
+  .circle-1
+  {
+    animation-delay: 0.1s;
+  }
+  .circle-2
+  {
+    animation-delay: 0.2s;
+  }
+  .circle-3
+  {
+    animation-delay: 0.3s;
+  }
+  .circle-4
+  {
+    animation-delay: 0.4s;
+  }
+  .circle-5
+  {
+    animation-delay: 0.5s;
+  }
+  .circle-6
+  {
+    animation-delay: 0.6s;
+  }
+  .circle-7
+  {
+    animation-delay: 0.7s;
+  }
+  .circle-8
+  {
+    animation-delay: 0.8s;
+  }
+
+  //--

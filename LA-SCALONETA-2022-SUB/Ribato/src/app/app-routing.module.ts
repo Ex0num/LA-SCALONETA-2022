@@ -13,6 +13,8 @@ import { HomeMetreComponent } from './home-module/home/home-metre/home-metre.com
 import { HomeMozoComponent } from './home-module/home/home-mozo/home-mozo.component';
 import { HomeComponent } from './home-module/home/home.component';
 import { MesaHomeComponent } from './mesa-cliente-module/mesa-home/mesa-home.component';
+import { PedidosPendientesBarComponent } from './pedido-module/pedidos-pendientes-bar/pedidos-pendientes-bar.component';
+import { PedidosPendientesCocinaComponent } from './pedido-module/pedidos-pendientes-cocina/pedidos-pendientes-cocina.component';
 import { SplashComponent } from './splash/splash/splash.component';
 import { AprobarClienteComponent } from './Vistas/aprobar-cliente/aprobar-cliente.component';
 import { ChatMozosComponent } from './Vistas/chat-mozos/chat-mozos.component';
@@ -38,6 +40,10 @@ const routes: Routes = [
   
   //Modulo de mesa
   {path: 'mesa-home',component:MesaHomeComponent, loadChildren: () => import('./mesa-cliente-module/mesa-cliente-module.module').then(m => m.MesaClienteModuleModule)},
+
+  //Modulo de pedidos
+  {path: 'pedidos-pendientes-bar',component:PedidosPendientesBarComponent, loadChildren: () => import('./pedido-module/pedido-module.module').then(m => m.PedidoModuleModule)},
+  {path: 'pedidos-pendientes-cocina',component:PedidosPendientesCocinaComponent, loadChildren: () => import('./pedido-module/pedido-module.module').then(m => m.PedidoModuleModule)},
 
   //Modulo de homes
   {path: 'home',component:HomeComponent, loadChildren: () => import('./home-module/home-module.module').then(m => m.HomeModuleModule)},

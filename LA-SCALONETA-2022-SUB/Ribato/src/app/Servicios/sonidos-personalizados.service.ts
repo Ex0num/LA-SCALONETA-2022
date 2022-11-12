@@ -1,19 +1,30 @@
 import { Injectable } from '@angular/core';
+import { Vibration } from '@awesome-cordova-plugins/vibration/ngx';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SonidosPersonalizadosService {
 
-  constructor() {}
+
+  constructor(private vibration:Vibration) {}
 
   public reproducirSonido(nombreArchivoRecibido : string, reprodudirSonido:boolean)
   {
     if (reprodudirSonido == true)
     {
-      let rutaAlFolder : string = '../../../assets/sonidos/';
+      //let rutaAlFolder : string = '../../../assets/sonidos/';
+      let rutaAlFolder : string = '../assets/sonidos/';
       let rutaCompletaAlArchivo = rutaAlFolder + nombreArchivoRecibido + ".mp3";
-      this.reproducir(rutaCompletaAlArchivo);   
+      console.log(rutaCompletaAlArchivo);
+
+      if (nombreArchivoRecibido == "error")
+      {
+        this.reproducir(rutaCompletaAlArchivo);   
+        this.vibration.vibrate(1500);
+      }
+
+      this.reproducir(rutaCompletaAlArchivo);  
     }        
   }
 
