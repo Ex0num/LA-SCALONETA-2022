@@ -83,13 +83,15 @@ Los QRs de las mesas ya fueron adjuntos al readme. (Estos QRS son mas simples de
 <img src="expositor/asignacion-mesa.PNG" width="360px" height="740px">
 <img src="expositor/aprobacion-clientes.PNG" width="360px" height="740px"><br>
 
-<strong> Pantalla de ingreso al local, escaneo de mesa y espera de mesa. (También casos como cliente rechazado o esperando)</strong><br>
-<img src="expositor/ingreso-local.PNG" width="360px" height="740px">
-<img src="expositor/bienvenida-mesa.PNG" width="360px" height="740px">
+<strong> Pantalla de esperando mesa y de bienvenida a la mesa</strong><br>
 <img src="expositor/esperando-mesa.PNG" width="360px" height="740px">
-<img src="expositor/qr-mesa1.PNG" width="360px" height="740px">
-<img src="expositor/qr-mesa2.PNG" width="360px" height="740px">
-<img src="expositor/qr-mesa3.PNG" width="360px" height="740px"><br>
+<img src="expositor/bienvenida-mesa.PNG" width="360px" height="740px"><br>
+
+<strong> QRs mesas (1,2,3) respectivamente</strong><br>
+<img src="expositor/ingreso-local.PNG" width="360px" height="740px">
+<img src="expositor/qr-mesa1.PNG" width="100px" height="100px">
+<img src="expositor/qr-mesa2.PNG" width="100px" height="100px">
+<img src="expositor/qr-mesa3.PNG" width="100px" height="100px"><br>
 
 <strong> Pantalla de cliente rechazado y pendiente.</strong><br>
 <img src="expositor/cliente-rechazado.PNG" width="360px" height="740px">
