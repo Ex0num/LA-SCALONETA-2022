@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-mozo',
@@ -7,8 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeMozoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, ) { }
 
   ngOnInit() {}
+
+  responderConsultas()
+  {
+    this.router.navigateByUrl("chat-mozos");
+  }
+
+  listadoMesas()
+  {
+    // this.router.navigateByUrl("chat-mozos");
+  }
+
+  menu()
+  {
+    // this.router.navigateByUrl("chat-mozos");
+  }
 
 }

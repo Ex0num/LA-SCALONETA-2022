@@ -18,42 +18,28 @@
       </div>
 
       <div id="seccion-mensajes-cargados">
-        <ul id="listado-mensajes"*ngIf="spinnerMostrandose == false">
-          
-          <!-- <li *ngFor="let clienteDesaprobado of (arrayClientes | filtradorClientesPendientes); index as i" class="item-cliente-pendiente">
-            <div *ngIf="clienteDesaprobado.estado =='pendiente'">
-              <img src="{{clienteDesaprobado.foto}}" class="foto-cliente-pendiente"> <br>
-              <label class="data-cliente-pendiente">Nombre: {{clienteDesaprobado.nombre}}</label><br>
-              <label class="data-cliente-pendiente">Apellido: {{clienteDesaprobado.apellido}}</label><br>
-              <label class="data-cliente-pendiente">DNI: {{clienteDesaprobado.dni}}</label><br>
-              <label class="data-cliente-pendiente">Correo: {{clienteDesaprobado.correo}}</label><br>
-              <button class="btn-aceptar-cli" (click)="accionarCliente(clienteDesaprobado,true, i)"><ion-icon name="checkmark-outline"></ion-icon></button>
-              <button class="btn-rechazar-cli" (click)="accionarCliente(clienteDesaprobado,false, i)"><ion-icon name="close-outline"></ion-icon></button>
+        <ul id="listado-mensajes">
+          <div *ngIf="spinnerMostrandose == false" id="container-mensajes">
+          <li *ngFor="let mensaje of (arrayMensajes | filtradorMensajaria); index as i" class="item-mensaje">
+
+            <!-- El mensaje se muestra con un estilo determinado si el tipo no es mozo -->
+            <div *ngIf="mensaje.tipo != 'mozo'" class="mensaje-cliente">
+              <label class="data-mensaje-cliente">{{mensaje.emisor}} - {{mensaje.hora}} - {{mensaje.numMesa}}</label><br>
+              {{mensaje.texto}}<br>
             </div>
-          </li> -->
-          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
-          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
-          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
-          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
-          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
-          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
-          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
-          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
-          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
-          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
-          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
-          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
-          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
-          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
-          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
-          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
-          <li style="font-size: 19px;">MENSAJE PROBADNO</li>
-          
+
+             <!-- El mensaje se muestra con un estilo determinado si el tipo es mozo -->
+            <div *ngIf="mensaje.tipo == 'mozo'" class="mensaje-mozo">
+              <label class="data-mensaje-mozo">{{mensaje.emisor}} - {{mensaje.hora}}</label><br>
+              {{mensaje.texto}}
+            </div>
+          </li>
+          </div>
         </ul>
       </div>
       
-      <input class="input-mensaje" placeholder="Escríba su mensaje acá">
-      <ion-button class="btnOpcionesHome" color="light">Enviar</ion-button>
+      <input class="input-mensaje" placeholder="Escríba su mensaje acá" [(ngModel)]="mensajeRedactado">
+      <ion-button class="btnOpcionesHome" color="light" (click)="enviarMensaje()">Enviar</ion-button>
 
    </ion-card>
   </ion-card>

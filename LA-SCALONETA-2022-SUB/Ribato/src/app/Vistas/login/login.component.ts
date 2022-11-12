@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Servicios/auth.service';
+import { FirebaseService } from 'src/app/Servicios/firebase.service';
 import { SonidosPersonalizadosService } from 'src/app/Servicios/sonidos-personalizados.service';
 import { ToastMsgService } from 'src/app/Servicios/toast-msg.service';
 
@@ -15,8 +16,29 @@ export class LoginComponent implements OnInit {
     public srvToast:ToastMsgService, 
     public srvSonidos:SonidosPersonalizadosService,
     public router:Router,
-    public srvAuth:AuthService) 
-  {}
+    public srvAuth:AuthService,
+    public srvFirebase:FirebaseService) 
+  {
+
+    let observableEmpleados = this.srvFirebase.listar_empleados();
+    observableEmpleados.subscribe( (data) => 
+    { 
+      this.arrayEmpleados = data;
+    });
+
+    let observableClientes = this.srvFirebase.listar_clientesNormales();
+    observableClientes.subscribe( (data) => 
+    { 
+      this.arrayClientes = data;
+    });
+
+    let observableAutoridades = this.srvFirebase.listar_autoridades();
+    observableAutoridades.subscribe( (data) => 
+    { 
+      this.arrayAutoridades = data;
+    });
+
+  }
 
   ngOnInit() 
   {
@@ -27,6 +49,10 @@ export class LoginComponent implements OnInit {
   }
 
 //------------------------ Atributos ----------------------------
+  arrayEmpleados:any = [];
+  arrayClientes:any = [];
+  arrayAutoridades:any = [];
+  
 
   mailIngresado:string = "";
   passwordIngresada:string = "";
@@ -46,10 +72,14 @@ export class LoginComponent implements OnInit {
 
       if (userCredential != undefined) 
       {
-        this.limpiarControlesLogin(); 
+        let tipoUsuarioLogeado = await this.obtenerTipoUsuarioByMail(this.mailIngresado);
+        this.srvAuth.tipoUserloged = tipoUsuarioLogeado;
+        console.log("El tipo del usuario logeado es: " + this.srvAuth.tipoUserloged);
+
         this.srvToast.mostrarToast("bottom","Bienvenido/a  " + userCredential.email ,2000,"success");
         this.srvSonidos.reproducirSonido("ingreso", this.sonidoActivado);
         this.srvAuth.nombreDelAnonimo = undefined;
+        this.limpiarControlesLogin(); 
         this.router.navigateByUrl("home");
       };
     } 
@@ -76,6 +106,46 @@ export class LoginComponent implements OnInit {
     // AltaClienteComponent.prototype.esRegistroAnonimo = undefined;
     //--
     this.router.navigateByUrl('alta-cliente');
+  }
+
+  obtenerTipoUsuarioByMail(mailRecibido)
+  {
+    let tipoUsuario = undefined;
+  
+    if (tipoUsuario == undefined)
+    {
+      this.arrayEmpleados.forEach(empleado => 
+      {
+        if (empleado.correo == mailRecibido)
+        {
+          tipoUsuario = empleado.tipo;
+        }  
+      });
+    }
+
+    if (tipoUsuario == undefined)
+    {
+      this.arrayClientes.forEach(cliente => 
+      {
+        if (cliente.correo == mailRecibido)
+        {
+          tipoUsuario = cliente.tipo;
+        }  
+      });
+    }
+
+    if (tipoUsuario == undefined)
+    {
+      this.arrayAutoridades.forEach(autoridad => 
+      {
+        if (autoridad.correo == mailRecibido)
+        {
+          tipoUsuario = autoridad.tipo;
+        }  
+      });
+    }
+
+    return tipoUsuario;
   }
 
 //------------- Autocompletado de datos ---------------------

@@ -26,9 +26,10 @@ import { ClientesEsperandoMesaComponent } from './Vistas/clientes-esperando-mesa
 import { FiltradorConsumidoresEsperandoPipe } from './Pipes/filtrador-consumidores-esperando.pipe';
 import { FiltradorMesasDisponiblesPipe } from './Pipes/filtrador-mesas-disponibles.pipe';
 import { ChatMozosComponent } from './Vistas/chat-mozos/chat-mozos.component';
+import { FiltradorMensajariaPipe } from './Pipes/filtrador-mensajaria.pipe';
 
 @NgModule({
-  declarations: [AppComponent,LoginComponent, AprobarClienteComponent, FiltradorClientesPendientesPipe, ClientesEsperandoMesaComponent, FiltradorConsumidoresEsperandoPipe, FiltradorMesasDisponiblesPipe,ChatMozosComponent],
+  declarations: [AppComponent,LoginComponent, AprobarClienteComponent, FiltradorClientesPendientesPipe, ClientesEsperandoMesaComponent, FiltradorConsumidoresEsperandoPipe, FiltradorMesasDisponiblesPipe,ChatMozosComponent, FiltradorMensajariaPipe],
   imports: [BrowserModule, IonicModule.forRoot(), 
     FormsModule,
     AppRoutingModule, 

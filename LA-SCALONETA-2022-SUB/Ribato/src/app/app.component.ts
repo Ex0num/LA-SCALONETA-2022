@@ -30,8 +30,8 @@ export class AppComponent {
     {
       SplashScreen.hide();
       //this.router.navigateByUrl("splash");
-      //this.router.navigateByUrl("login");
-      this.router.navigateByUrl("clientes-esperando-mesa");
+      this.router.navigateByUrl("login");
+      //this.router.navigateByUrl("chat-mozos");
     })
   }
 }

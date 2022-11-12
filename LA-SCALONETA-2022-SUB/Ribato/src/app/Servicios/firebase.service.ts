@@ -23,7 +23,8 @@ export class FirebaseService
     empleadosCollectionReference : any;
     mesasCollectionReference : any;
     consumidoresCollectionReference : any;
-
+    mensajesCollectionReference : any;
+    
   //#endregion ---------------------------------------------------------------------------
   
 
@@ -36,6 +37,7 @@ export class FirebaseService
     this.empleadosCollectionReference = collection(this.Firestore, 'empleados');
     this.mesasCollectionReference = collection(this.Firestore, 'mesas');
     this.consumidoresCollectionReference = collection(this.Firestore, 'consumidores');
+    this.mensajesCollectionReference = collection(this.Firestore, 'mensajes');
   }
 
   //#region ---------------------- CLIENTES NORMALES ---------------------------//
@@ -484,5 +486,39 @@ export class FirebaseService
   
   //#endregion ------------------------------------------------------------------//
   
+  //#region ----------------------------- MENSAJES ----------------------------//
+
+  public alta_mensaje(textoRecibido, nombreEmisorRecibido, tipoEmisorRecibido, numeroMesaRecibido)
+  {
+    let fecha = new Date();
+    let fechaActual = fecha.toLocaleDateString();
+  
+    let hora = new Date();
+    let horaActual = hora.toLocaleTimeString();
+
+    //----------- Estructuracion de la entidad ---------------/
+    let mensajeEstructurado = 
+    {
+      texto: textoRecibido,
+      emisor: nombreEmisorRecibido,
+      tipo: tipoEmisorRecibido,
+      fecha: fechaActual,
+      hora: horaActual,
+      numMesa: numeroMesaRecibido
+    }
+
+    console.log("Subiendo mensaje...");
+    console.log(mensajeEstructurado);
+
+    return  addDoc(this.mensajesCollectionReference, mensajeEstructurado);
+  }
+  
+  public listar_mensajes():Observable<any[]>
+  { 
+    return collectionData(this.mensajesCollectionReference,{idField: 'id'}) as Observable<any[]>;
+  }
+
+  //#endregion ------------------------------------------------------------------//
+
 }
 

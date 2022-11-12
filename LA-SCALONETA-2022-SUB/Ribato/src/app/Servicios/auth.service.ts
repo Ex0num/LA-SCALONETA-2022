@@ -21,6 +21,7 @@ export class AuthService
     {}
 
     public nombreDelAnonimo;
+    public tipoUserloged;
 
   async login(email: string, password:string, sonidoActivadoRecibido:boolean)
   {
