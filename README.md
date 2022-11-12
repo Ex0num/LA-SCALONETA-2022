@@ -63,12 +63,14 @@ Los QRs de las mesas ya fueron adjuntos al readme. (Estos QRS son mas simples de
 
 ***
 <h3>Ícono</h3>
+
 <label> Nuestro restaurante, es de tipo <strong>urbano/juvenil, nocturno, con un "look and feel" moderno y alejado de la elegancia.</strong></label><br><br>
 <img src="expositor/Ribato-big.png" width="300px" height="300px">
 <br><br>
 
 ***
 <h3>Login y registro</h3>
+
 <strong> Pantalla de login y de registro </strong><br>
 <img src="expositor/menu-login.PNG" width="360px" height="740px">
 <img src="expositor/menu-registro.PNG" width="360px" height="740px"><br>
@@ -76,6 +78,7 @@ Los QRs de las mesas ya fueron adjuntos al readme. (Estos QRS son mas simples de
 
 ***
 <h3>Pantallas administrativas y de recorrido</h3>
+
 <strong> Pantalla de asignación mesa y aprobación clientes.</strong><br>
 <img src="expositor/asignacion-mesa.PNG" width="360px" height="740px">
 <img src="expositor/aprobacion-clientes.PNG" width="360px" height="740px"><br>
