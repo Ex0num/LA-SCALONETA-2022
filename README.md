@@ -91,7 +91,7 @@ Los QRs de las mesas ya fueron adjuntos al readme. (Estos QRS son mas simples de
 <img src="expositor/ingreso-local.PNG" width="360px" height="740px"><br>
 <br><label>Mesa 1</label><br>
 <img src="expositor/qr-mesa1.PNG" width="300px" height="300px"><br>
-<br><label>Mesa 2</label>
+<br><label>Mesa 2</label><br>
 <img src="expositor/qr-mesa2.PNG" width="300px" height="300px"><br>
 <br><label>Mesa 3</label><br>
 <img src="expositor/qr-mesa3.PNG" width="300px" height="300px"><br>
