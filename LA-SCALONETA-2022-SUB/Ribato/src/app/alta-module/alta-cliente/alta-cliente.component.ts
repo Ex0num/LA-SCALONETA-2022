@@ -87,11 +87,11 @@ export class AltaClienteComponent implements OnInit {
           this.dni_clienteNormal,
           this.foto_clienteNormal); 
         
-          // //---- Aca aviso al mail ingresado y validado que su cuenta está pendiente de ser aprobada por un supervisor/dueño -----------
-          // this.srvMailSending.enviarMail(
-          // this.correo_clienteNormal, 
-          // "Su cuenta está pendiente de ser aprobada. Nuestro equipo la verificará y aprobará lo antes posible.");
-          // //---------------------------------------------------------------------------------------------------------------------------
+          //---- Aca aviso al mail ingresado y validado que su cuenta está pendiente de ser aprobada por un supervisor/dueño -----------
+          this.srvMailSending.enviarMail(
+          this.correo_clienteNormal, 
+          "Su cuenta está pendiente de ser aprobada. Nuestro equipo la verificará y aprobará lo antes posible.");
+          //---------------------------------------------------------------------------------------------------------------------------
 
           //Aca envio el push notification
           // TO DO

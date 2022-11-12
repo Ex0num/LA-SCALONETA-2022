@@ -47,11 +47,11 @@ export class AprobarClienteComponent implements OnInit {
 
       this.srvToast.mostrarToast("top","¡Aprobado!",2000,"success");
       
-      // //---- Aca aviso al mail ingresado y validado que su cuenta fue aceptada -----------
-      //   this.srvMailSending.enviarMail(
-      //   clienteRecibido.correo, 
-      //   "Su cuenta fue aceptada en el sistema. ¡Ahora puede disfrutar de Ribato!.");
-      // //----------------------------------------------------------------------------------
+      //---- Aca aviso al mail ingresado y validado que su cuenta fue aceptada -----------
+        this.srvMailSending.enviarMail(
+        clienteRecibido.correo, 
+        "Su cuenta fue aceptada en el sistema. ¡Ahora puede disfrutar de Ribato!.");
+      //----------------------------------------------------------------------------------
     }
     else
     {
@@ -59,11 +59,11 @@ export class AprobarClienteComponent implements OnInit {
       this.srvFirebase.modificar_clienteNormal(clienteRecibido,clienteRecibido.id)
       this.srvToast.mostrarToast("top","!Desaprobado!",2000,"danger");
 
-      // //---- Aca aviso al mail ingresado y validado que su cuenta fue rechazada -----------
-      //   this.srvMailSending.enviarMail(
-      //   clienteRecibido.correo, 
-      //   "Su cuenta fue rechazada del sistema. ¡Lo sentimos, en otra ocasión será!.");
-      // //-----------------------------------------------------------------------------------
+      //---- Aca aviso al mail ingresado y validado que su cuenta fue rechazada -----------
+        this.srvMailSending.enviarMail(
+        clienteRecibido.correo, 
+        "Su cuenta fue rechazada del sistema. ¡Lo sentimos, en otra ocasión será!.");
+      //-----------------------------------------------------------------------------------
     }
 
     let arrayLI:any = document.querySelectorAll(".item-cliente-pendiente");
