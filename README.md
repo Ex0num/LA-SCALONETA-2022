@@ -61,12 +61,36 @@ Los QRs de las mesas ya fueron adjuntos al readme. (Estos QRS son mas simples de
 ***
 <h3 id="visualizacionProyecto">📲 Visualización del proyecto</h3><br>
 
+***
+<h3>Ícono</h3>
 <label> Nuestro restaurante, es de tipo <strong>urbano/juvenil, nocturno, con un "look and feel" moderno y alejado de la elegancia.</strong></label><br><br>
 <img src="expositor/Ribato-big.png" width="300px" height="300px">
 <br><br>
+
+***
+<h3>Login y registro</h3>
 <strong> Pantalla de login y de registro </strong><br>
 <img src="expositor/menu-login.PNG" width="360px" height="740px">
 <img src="expositor/menu-registro.PNG" width="360px" height="740px"><br>
+
+
+***
+<h3>Pantallas administrativas y de recorrido</h3>
+<strong> Pantalla de asignación mesa y aprobación clientes.</strong><br>
+<img src="expositor/asignacion-mesa.PNG" width="360px" height="740px">
+<img src="expositor/aprobacion-clientes.PNG" width="360px" height="740px"><br>
+
+<strong> Pantalla de ingreso al local, escaneo de mesa y espera de mesa. (También casos como cliente rechazado o esperando)</strong><br>
+<img src="expositor/ingreso-local.PNG" width="360px" height="740px">
+<img src="expositor/bienvenida-mesa.PNG" width="360px" height="740px">
+<img src="expositor/esperando-mesa.PNG" width="360px" height="740px"><br>
+
+<strong> Pantalla de cliente rechazado y pendiente.</strong><br>
+<img src="expositor/cliente-rechazado.PNG" width="360px" height="740px">
+<img src="expositor/cliente-pendiente.PNG" width="360px" height="740px"><br>
+
+***
+<h3>Altas</h3>
 
 <strong> Pantalla de alta cliente y anónimo.</strong><br>
 <img src="expositor/registro-cliente.PNG" width="360px" height="740px">
@@ -79,52 +103,41 @@ Los QRs de las mesas ya fueron adjuntos al readme. (Estos QRS son mas simples de
 <strong> Pantalla de alta mesa y esperando mesa.</strong><br>
 <img src="expositor/alta-mesa.PNG" width="360px" height="740px">
 <img src="expositor/alta-mesa2.PNG" width="360px" height="740px">
-<img src="expositor/esperando-mesa.PNG" width="360px" height="740px"><br>
 
 <strong> Pantalla de alta productos</strong><br>
 <img src="expositor/alta-producto1.PNG" width="360px" height="740px">
 <img src="expositor/alta-producto2.PNG" width="360px" height="740px">
 <img src="expositor/alta-producto3.PNG" width="360px" height="740px"><br>
 
-<strong> Pantalla de home (Supervisor/Dueño) e ingreso al local.</strong><br>
+***
+<h3>Homes</h3>
+
+<strong> Pantalla de home</strong><br>
 <img src="expositor/home-autoridad.PNG" width="360px" height="740px">
-<img src="expositor/ingreso-local.PNG" width="360px" height="740px">
-
-<strong> Pantalla de home cocinero y bartender.</strong><br>
-<img src="expositor/home-autoridad.PNG" width="360px" height="740px">
-<img src="expositor/ingreso-local.PNG" width="360px" height="740px">
-
-<strong> Pantalla de aprobación de clientes y cliente rechazado.</strong><br>
-<img src="expositor/aprobacion-clientes.PNG" width="360px" height="740px">
-<img src="expositor/cliente-rechazado.PNG" width="360px" height="740px"><br>
-
-<strong> Pantalla de asignación mesa y de bienvenida a la mesa.</strong><br>
-<img src="expositor/asignacion-mesa.PNG" width="360px" height="740px"><br>
-<img src="expositor/bienvenida-mesa.PNG" width="360px" height="740px"><br>
 
 <strong> Pantalla de home mozo y de chat con los mozos.</strong><br>
-<img src="expositor/home-mozo.PNG" width="360px" height="740px"><br>
+<img src="expositor/home-mozo.PNG" width="360px" height="740px">
 <img src="expositor/chat-mozos.PNG" width="360px" height="740px"><br>
 
+<strong> Pantalla de home bartender y cocinero.</strong><br>
+<img src="expositor/home-bartender.PNG" width="360px" height="740px">
+<img src="expositor/home-cocinero.PNG" width="360px" height="740px"><br>
+
+***
+<h3>Mail-sending</h3>
+
 <strong> Pantalla de mail (cliente aceptado y rechazado).</strong><br>
-<img src="expositor/cuenta-aceptada.PNG" width="800px" height="340px"><br>
-<img src="expositor/cuenta-rechazada.PNG" width="800px" height="340px"><br>
-
-
-<!-- <img src="src/assets/readme-files/menu-login.gif" width="50%" height="450px">
-<img src="src/assets/readme-files/registro-usuario-normal.gif" width="50%" height="450px">
-<br>
-<img src="src/assets/readme-files/splash-animado.gif" width="50%" height="450px">
-<img src="src/assets/readme-files/splash-estatico.jpg" width="50%" height="450px"> -->
+<img src="expositor/cuenta-aceptada.PNG" width="900px" height="340px"><br>
+<img src="expositor/cuenta-rechazada.PNG" width="900px" height="340px"><br>
 
 ***
 <h3 id="comandos">👨🏻‍💻 Comandos utilizados</h3>
 
 Actualizar la carpeta android con los archivos de Angular
 ```
-$ ng build
-$ ionic capacitor add android
-$ cordova-res android --skip-config --copy
+$ ionic build
+$ npx cap sync
+$ npx cap open android
 ```
 
 Agregar la carpeta android (Generada desde 0)
