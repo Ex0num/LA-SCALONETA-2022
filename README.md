@@ -61,7 +61,6 @@ Los QRs de las mesas ya fueron adjuntos al readme. (Estos QRS son mas simples de
 ***
 <h3 id="visualizacionProyecto">📲 Visualización del proyecto</h3><br>
 
-***
 <h3>Ícono</h3>
 
 <label> Nuestro restaurante, es de tipo <strong>urbano/juvenil, nocturno, con un "look and feel" moderno y alejado de la elegancia.</strong></label><br><br>
