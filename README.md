@@ -89,9 +89,12 @@ Los QRs de las mesas ya fueron adjuntos al readme. (Estos QRS son mas simples de
 
 <strong> QRs mesas (1,2,3) respectivamente</strong><br>
 <img src="expositor/ingreso-local.PNG" width="360px" height="740px">
-<img src="expositor/qr-mesa1.PNG" width="100px" height="100px">
-<img src="expositor/qr-mesa2.PNG" width="100px" height="100px">
-<img src="expositor/qr-mesa3.PNG" width="100px" height="100px"><br>
+<label>Mesa 1</label>
+<img src="expositor/qr-mesa1.PNG" width="360px" height="360px">
+<label>Mesa 2</label>
+<img src="expositor/qr-mesa2.PNG" width="360px" height="360px">
+<label>Mesa 3</label>
+<img src="expositor/qr-mesa3.PNG" width="360px" height="360px"><br>
 
 <strong> Pantalla de cliente rechazado y pendiente.</strong><br>
 <img src="expositor/cliente-rechazado.PNG" width="360px" height="740px">
