@@ -25,6 +25,7 @@ export class AltaProductoComponent implements OnInit {
     this.srvFirebase.listar_productos().subscribe((data)=>
     {
       this.arrayProductos = data;
+      console.log(this.arrayProductos);
     })
   }
 
@@ -35,12 +36,12 @@ export class AltaProductoComponent implements OnInit {
     {
       this.setearDataQR();
       
-      setTimeout(() => 
+      setTimeout(async () => 
       {
-        this.obtenerSetearImagenQR();
+        await this.obtenerSetearImagenQR();
       }, 2500);
           
-    },1000);  
+    },2500);  
   }
 
   //#region ------------------------ Atributos ---------------------------------
@@ -52,6 +53,7 @@ export class AltaProductoComponent implements OnInit {
   public nombre_producto;
   public tipo_producto = "comida";
   public descripcion_producto = "";
+  public tiempoEstimado_producto = undefined;
   public precio_producto;
 
   //El producto tiene 3 fotos
@@ -158,7 +160,7 @@ export class AltaProductoComponent implements OnInit {
  
    async registrarProducto()
    {
-     if (this.nombre_producto != "" || this.nombre_producto != undefined || this.nombre_producto != " " || this.precio_producto > 0 || this.foto_producto1 != undefined || this.foto_producto2 != undefined || this.foto_producto3 != undefined)
+     if (this.nombre_producto != "" && this.nombre_producto != undefined && this.nombre_producto != " " && this.precio_producto > 0 && this.foto_producto1 != undefined && this.foto_producto2 != undefined && this.foto_producto3 != undefined && this.tiempoEstimado_producto != undefined && this.tiempoEstimado_producto > 0 )
      {
         console.log(this.foto_producto1);
         console.log(this.foto_producto2);
@@ -174,7 +176,8 @@ export class AltaProductoComponent implements OnInit {
         this.foto_productoQR,
         this.foto_producto1,
         this.foto_producto2,
-        this.foto_producto3
+        this.foto_producto3,
+        this.tiempoEstimado_producto
         ); 
 
         //Acciones finales
@@ -203,13 +206,17 @@ export class AltaProductoComponent implements OnInit {
       {
         this.srvToast.mostrarToast("bottom","Revise las fotos subidas. Faltan adjuntar.",3000,"danger");
       }
+      else if (this.tiempoEstimado_producto == undefined || this.tiempoEstimado_producto <= 0 )
+      {
+        this.srvToast.mostrarToast("bottom","El tiempo estimado no puede ser igual o menor a 0 minutos.",3000,"danger");
+      }
 
        this.srvSonidos.reproducirSonido("error",this.sonidoActivado);
      }
    }
  
    //Busca el ultimo numero de mesa y le hace ++ para asignarlo a esta nueva mesa
-   public async setearDataQR()
+   public setearDataQR()
    {
      let lengthProductos = this.arrayProductos.length;
      lengthProductos++;
@@ -217,6 +224,8 @@ export class AltaProductoComponent implements OnInit {
      //Info para el QR y para el producto
      this.infoQRProducto = "p_" + lengthProductos.toString();
      this.numeroGenerado_producto = lengthProductos.toString();
+     console.log(lengthProductos);
+     console.log(this.arrayProductos);
    }
  
    public async obtenerSetearImagenQR()

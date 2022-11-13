@@ -1,0 +1,84 @@
+<body id="body">
+  <ion-card id="main-card">
+   <ion-card id="main-card-2">
+
+      <ion-card-header id="main-card-header">
+        <label id="titulo-principal">Sección de espera del pedido</label><br>
+      </ion-card-header>
+
+       <div *ngIf="mesaEscaneadaSatisfactoriamente == false" id="seccion-mesa-no-escaneada-esperandoPedido">
+          <div class="mensaje-informativo-esperandoPedido" *ngIf="cargaDeConsumidorTerminada == true"> 
+             <label>Para acceder al estado de su pedido, debe escanear su mesa, la número {{consumidorActual.mesaAsignada}}. <br> ¡Escaneela por favor!</label>
+             <div>
+
+              <label class="emoji-scaneo-mesa-esperandoPedido">👉🏻</label>
+
+                <button id="qrScanner-esperandoPedido" (click)="escenarQR_Mesa()">
+                  <ion-icon id="icono-qr-ingreso-local-esperandoPedido" name="camera-outline"></ion-icon>
+                </button>
+       
+              <label class="emoji-scaneo-mesa-esperandoPedido">👈🏻</label>
+
+              <button class="btnOpcionesHome" (click)="testing()">testing</button>
+            </div>
+          </div>
+      </div> 
+
+      <div *ngIf="mesaEscaneadaSatisfactoriamente == true" id="seccion-mesa-escaneada-esperandoPedido">
+        <label class="mensaje-informativo-estadoPedido">El estado de su pedido es...<br>"{{pedidoDelConsumidorActual.estado | transformadorEstadoPedido}}"</label>
+
+        <ion-button class="btnOpcionesHome" id="btn-confirmar-entrega" color="light" (click)="confirmarEntrega()" *ngIf="pedidoDelConsumidorActual.estado == 'entregado_sin_confirmar'">Confirmar entrega</ion-button>
+        <ion-button class="btnOpcionesHome" color="light" (click)="juegos()">Juegos (Proximamente)</ion-button>
+
+        <ion-button class="btnOpcionesHome" color="light" *ngIf="pedidoDelConsumidorActual.estado == 'pago_pendiente'" (click)="switchearMostrarEncuestaPersonal()">Enviar encuesta</ion-button>
+
+        <div *ngIf="mostrarEncuesta == true" id="formulario-encuesta">
+            ABC
+          <ion-button class="btnOpcionesHome" color="light">Enviar</ion-button>
+        </div>
+
+        <ion-button class="btnOpcionesHome" color="light" *ngIf="pedidoDelConsumidorActual.estado == 'pago_pendiente'" (click)="switchearMostrarResultadosEncuestas()">Resultados de encuestas</ion-button>
+
+        <div *ngIf="mostrarResultadosEncuestas == true" id="graphs-resultados-encuestas">
+         
+            <!-- <canvas id="barChart" baseChart 
+              [datasets]="barChartData" 
+              [labels]="barChartLabels" 
+              [options]="barChartOptions" 
+              [legend]="barChartLegend"
+              [type]="barChartType">
+            </canvas>
+
+            <canvas id="barChart" baseChart 
+            [datasets]="barChartData" 
+            [labels]="barChartLabels" 
+            [options]="barChartOptions" 
+            [legend]="barChartLegend"
+            [type]="barChartType">
+            </canvas> -->
+
+        </div>
+
+        <ion-button class="btnOpcionesHome" color="light" (click)="pedirLaCuenta()" *ngIf="pedidoDelConsumidorActual.estado == 'pago_pendiente'">Pedir la cuenta</ion-button>
+      </div>
+
+      <div class="wrapper" *ngIf="cargaDeConsumidorTerminada == false">
+        <span class="circle circle-1"></span>
+        <span class="circle circle-2"></span>
+        <span class="circle circle-3"></span>
+        <span class="circle circle-4"></span>
+        <span class="circle circle-5"></span>
+        <span class="circle circle-6"></span>
+        <span class="circle circle-7"></span>
+        <span class="circle circle-8"></span>
+      </div>
+
+   </ion-card>
+  </ion-card>
+</body>
+
+<ion-fab id="indicador-de-sonido" vertical="bottom" horizontal="start" slot="fixed" color="light">
+  <ion-fab-button color="light" (click)="switchearEstadoSonido()">
+    <ion-icon id="icono-sonido-esperandoPedido" name="volume-mute"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

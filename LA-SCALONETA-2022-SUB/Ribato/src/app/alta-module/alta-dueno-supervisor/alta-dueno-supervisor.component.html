@@ -15,6 +15,7 @@
         <input class="input-autoridad" id="dni-autoridad" [(ngModel)]="dni_autoridad" type="number" placeholder="DNI">
         <input class="input-autoridad" id="cuil-autoridad" [(ngModel)]="cuil_autoridad" type="text" placeholder="CUIL">
         <button class="input-autoridad" id="qrScanner-autoridad" (click)="escenarDNI()" ><ion-icon id="icono-sonido" name="qr-code-outline"></ion-icon></button>
+        <!-- <button class="input-autoridad" id="qrScanner-autoridad" (click)="testeoDNI()" ><ion-icon id="icono-sonido" name="qr-code-outline"></ion-icon></button> -->
       
         <div class="inputfile-box">
           <input type="file" id="file-autoridad" class="inputfile" accept="image/png,image/jpeg,image/jpg" (change)="archivoAutoridadSubido($event)">

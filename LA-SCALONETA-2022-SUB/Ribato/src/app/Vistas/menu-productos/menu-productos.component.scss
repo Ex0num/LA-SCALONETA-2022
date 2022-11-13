@@ -1,17 +1,17 @@
-#body-pedidosPendientesBar
+#body-menu
 {
     background-color: black;
     text-align: center;
 }
 
-#main-card-pedidosPendientesBar
+#main-card-menu
 {
     font-family: Georgia, 'Times New Roman', Times, serif;
     height: 97%;
     background: white;
 }
 
-#main-card-2-pedidosPendientesBar
+#main-card-2-menu
 {
     background-image: url("../../../assets/files/background.jpg");
     height: 97%;
@@ -20,7 +20,7 @@
     height: 97%;
 }
 
-#main-card-header-pedidosPendientesBar
+#main-card-header-menu
 {
     color: white;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -30,69 +30,66 @@
     margin-top: 2rem;
 }
 
-#titulo-principal-pedidosPendientesBar
+#titulo-principal-menu
 {
     font-size: 42px;
 }
 
-#seccion-pedidos-esperando-bar
+#listado-menu-productos-comidas
 {
-    width: 90%;
-    margin-left: 4.5%;
-    overflow: auto;
-    height: 20rem;
-    margin-bottom: 5%;
-    border: 2px solid gray;
-    border-radius: 6px;
-}
-
-.listado-pedidos-esperando-bar
-{
-  margin: 0px;
-  margin-block-start: 0px;
-  margin-block-end: 0px;
-}
-
-.item-pedido-esperando-bar
-{
-  text-align: left;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 18px;
-  background-color: #000000;
-  color: white;
-  border-radius: 6px;
-  padding: 0.3rem;
-  list-style: none;
-  width: 90%;
-  margin-left: 5%;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
   border: 1px solid gray;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  border-radius: 8px;
+  width: 90%;
+  height: 28rem;
+  overflow: auto;
+  margin-left: 5%;
 }
 
-.data-pedido-esperando-bar
+.item-menu-producto
 {
-  padding: 0.8rem;
+  list-style: none;
+  border: 1px solid gray;
+  background-color: gray;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  border-radius: 8px;
+  width: 90%;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
-.item-articulo-del-pedido
+// container-info-item-prod
+// {
+  
+// }
+
+.info-item-producto
 {
-  margin-left: 0.3rem;
-  margin-top: 0.3rem;
-  margin-bottom: 0.3rem;
+  border-radius: 8px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  font-size: 17px;
+  // background-color: gray;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: white;
+  // width: 100%;
+  padding: 0.3rem;
 }
 
-#indicador-de-sonido-pedidosPendientesBar
+.foto1-producto
 {
-    margin-left: 5%;
-    margin-bottom: 8%;
+  border-top-left-radius: 8px;
 }
 
-.btn-finalizar-pedido-bar
+.foto2-producto
 {
-  width: 95%;
-  margin-left: 3%;
-  margin-top: 0.3rem;
+  border-top-right-radius: 8px;
+}
+
+#indicador-de-sonido-menu
+{
+  margin-left: 5%;
+  margin-bottom: 8%;
 }
 
 // SPINNER - STYLE

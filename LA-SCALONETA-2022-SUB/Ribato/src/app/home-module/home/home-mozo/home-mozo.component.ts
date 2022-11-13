@@ -24,7 +24,17 @@ export class HomeMozoComponent implements OnInit {
 
   menu()
   {
-    // this.router.navigateByUrl("chat-mozos");
+    this.router.navigateByUrl("menu-productos");
+  }
+
+  pedidosEnEspera()
+  {
+    this.router.navigateByUrl("pedidos-esperando-mozo");
+  }
+
+  pedidosDelMozo()
+  {
+    this.router.navigateByUrl("pedidos-esperando-respuesta-mozo");
   }
 
 }

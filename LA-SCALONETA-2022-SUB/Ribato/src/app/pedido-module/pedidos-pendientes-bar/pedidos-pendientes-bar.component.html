@@ -7,6 +7,26 @@
         <label id="titulo-principal-pedidosPendientesBar">Pedidos pendientes al bar</label><br>
       </ion-card-header>
 
+        <div id="seccion-pedidos-esperando-bar" *ngIf="spinnerMostrandose == false">
+          <div id="listado-pedidos-esperando-bar">
+            
+            <li class="item-pedido-esperando-bar" *ngFor="let pedidoPendientebar of (arrayPedidos | filtradorPedidosEnPreparacionBar)">
+              <div class="data-pedido-esperando-bar">
+
+                Pedido a cargo del mozo: {{pedidoPendientebar.mozo}} <br><br>
+                Sus artículos a ser preparados:<br>
+                
+                <li *ngFor="let articulo of pedidoPendientebar.carrito_bar" class="item-articulo-del-pedido">
+                  -> {{articulo}}
+                </li>
+                
+              </div>
+              <ion-button class="btn-finalizar-pedido-bar" color="light" (click)="terminarPedidoBar(pedidoPendientebar)"><ion-icon class="icono-finalizar-pedido-bar" name="checkmark-done-outline"></ion-icon></ion-button>
+            </li>
+    
+          </div>
+        </div>
+
         <div class="wrapper" *ngIf="spinnerMostrandose == true">
           <span class="circle circle-1"></span>
           <span class="circle circle-2"></span>

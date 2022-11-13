@@ -7,6 +7,26 @@
         <label id="titulo-principal-pedidosPendientesCocina">Pedidos pendientes a la cocina</label><br>
       </ion-card-header>
 
+        <div id="seccion-pedidos-esperando-cocina" *ngIf="spinnerMostrandose == false">
+          <div id="listado-pedidos-esperando-cocina">
+            
+            <li class="item-pedido-esperando-cocina" *ngFor="let pedidoPendienteCocina of (arrayPedidos | filtradorPedidosEnPreparacionCocina)">
+              <div class="data-pedido-esperando-cocina">
+
+                Pedido a cargo del mozo: {{pedidoPendienteCocina.mozo}} <br><br>
+                Sus artículos a ser preparados:<br>
+                
+                <li *ngFor="let articulo of pedidoPendienteCocina.carrito_cocina" class="item-articulo-del-pedido">
+                  -> {{articulo}}
+                </li>
+                
+              </div>
+              <ion-button class="btn-finalizar-pedido-cocina" color="light" (click)="terminarPedidoCocina(pedidoPendienteCocina)"><ion-icon class="icono-finalizar-pedido-cocina" name="checkmark-done-outline"></ion-icon></ion-button>
+            </li>
+    
+          </div>
+        </div>
+
         <div class="wrapper" *ngIf="spinnerMostrandose == true">
           <span class="circle circle-1"></span>
           <span class="circle circle-2"></span>

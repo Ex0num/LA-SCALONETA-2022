@@ -33,7 +33,7 @@ export class AltaDuenoSupervisorComponent implements OnInit {
   public passwordConfirmada_autoridad:string;
   public nombre_autoridad:string;
   public apellidos_autoridad:string;
-  public dni_autoridad:number;
+  public dni_autoridad:string;
   public cuil_autoridad:string;
   public foto_autoridad:string;
 
@@ -116,6 +116,34 @@ export class AltaDuenoSupervisorComponent implements OnInit {
     document.getElementById("file-name-autoridad").innerHTML = "";
   }
 
+  // public escenarDNI()
+  // {
+    // //Leo el QR y el contenido devuelto lo cargo al formulario.
+    // this.srvLectorQR.openScan().then((stringObtenido)=>
+    // {
+    //   let contenidoLeido = stringObtenido.split('@');
+
+    //   if (contenidoLeido.length >= 16)
+    //   {
+    //     //Es dni QR VIEJO
+    //     this.apellidos_autoridad = contenidoLeido[4];
+    //     this.nombre_autoridad = contenidoLeido[5];
+    //     this.dni_autoridad = parseInt(contenidoLeido[1]);
+    //   }
+    //   else
+    //   {
+    //     //Es dni QR NUEVO
+    //     this.apellidos_autoridad = contenidoLeido[1].charAt(0) + contenidoLeido[1].slice(1).toLocaleLowerCase();
+    //     this.nombre_autoridad  = contenidoLeido[2].charAt(0) + contenidoLeido[2].slice(1).toLocaleLowerCase();
+    //     this.dni_autoridad  = parseInt(contenidoLeido[4]);
+    //   }
+
+    //   //Detengo el scanner.
+    //   this.srvLectorQR.stopScan();
+    // });
+  // }
+
+  
   public escenarDNI()
   {
     //Leo el QR y el contenido devuelto lo cargo al formulario.
@@ -123,10 +151,25 @@ export class AltaDuenoSupervisorComponent implements OnInit {
     {
       let contenidoLeido = stringObtenido.split('@');
 
-      this.apellidos_autoridad = contenidoLeido[1].charAt(0) + contenidoLeido[1].slice(1).toLocaleLowerCase();
-      this.nombre_autoridad  = contenidoLeido[2].charAt(0) + contenidoLeido[2].slice(1).toLocaleLowerCase();
-      this.dni_autoridad  = parseInt(contenidoLeido[4]);
+      if (contenidoLeido.length >= 16) //Si tiene mas de 16 arrobas
+      {
+        //Es dni QR VIEJO
+        this.apellidos_autoridad = contenidoLeido[4] //Apellidos;
+        this.nombre_autoridad = contenidoLeido[5] //Nombre;
+        this.dni_autoridad = contenidoLeido[1].trim(); //DNI;
+      }
+      else
+      {
+        //Es dni QR NUEVO
+        this.apellidos_autoridad = contenidoLeido[1]; //Apellido
+        this.nombre_autoridad  = contenidoLeido[2] //Nombre
+        this.dni_autoridad  = contenidoLeido[4]; //DNI
 
+        let cuilSliced = contenidoLeido[8].split(""); //CUIL
+        let cuilFinal = cuilSliced[0] + cuilSliced[1] + "-" + this.dni_autoridad + "-" + cuilSliced[2];
+        this.cuil_autoridad = cuilFinal;
+      }
+  
       //Detengo el scanner.
       this.srvLectorQR.stopScan();
     });

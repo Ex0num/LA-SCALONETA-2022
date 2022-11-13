@@ -33,7 +33,7 @@ export class AltaEmpleadoComponent implements OnInit {
     public passwordConfirmada_empleado:string;
     public nombre_empleado:string;
     public apellidos_empleado:string;
-    public dni_empleado:number;
+    public dni_empleado:string;
     public cuil_empleado:string;
     public foto_empleado:string;
 
@@ -121,20 +121,35 @@ export class AltaEmpleadoComponent implements OnInit {
     }
 
     public escenarDNI()
+  {
+    //Leo el QR y el contenido devuelto lo cargo al formulario.
+    this.srvLectorQR.openScan().then((stringObtenido)=>
     {
-      //Leo el QR y el contenido devuelto lo cargo al formulario.
-      this.srvLectorQR.openScan().then((stringObtenido)=>
+      let contenidoLeido = stringObtenido.split('@');
+
+      if (contenidoLeido.length >= 16) //Si tiene mas de 16 arrobas
       {
-        let contenidoLeido = stringObtenido.split('@');
+        //Es dni QR VIEJO
+        this.apellidos_empleado = contenidoLeido[4] //Apellidos;
+        this.nombre_empleado = contenidoLeido[5] //Nombre;
+        this.dni_empleado = contenidoLeido[1].trim(); //DNI;
+      }
+      else
+      {
+        //Es dni QR NUEVO
+        this.apellidos_empleado = contenidoLeido[1]; //Apellido
+        this.nombre_empleado  = contenidoLeido[2] //Nombre
+        this.dni_empleado  = contenidoLeido[4]; //DNI
+
+        let cuilSliced = contenidoLeido[8].split(""); //CUIL
+        let cuilFinal = cuilSliced[0] + cuilSliced[1] + "-" + this.dni_empleado + "-" + cuilSliced[2];
+        this.cuil_empleado = cuilFinal;
+      }
   
-        this.apellidos_empleado = contenidoLeido[1].charAt(0) + contenidoLeido[1].slice(1).toLocaleLowerCase();
-        this.nombre_empleado  = contenidoLeido[2].charAt(0) + contenidoLeido[2].slice(1).toLocaleLowerCase();
-        this.dni_empleado  = parseInt(contenidoLeido[4]);
-  
-        //Detengo el scanner.
-        this.srvLectorQR.stopScan();
-      });
-    }
+      //Detengo el scanner.
+      this.srvLectorQR.stopScan();
+    });
+  }
 
     actualizarTipoEmpleado(event:any)
     {

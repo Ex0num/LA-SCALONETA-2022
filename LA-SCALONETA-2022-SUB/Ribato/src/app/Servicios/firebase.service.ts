@@ -25,6 +25,7 @@ export class FirebaseService
     consumidoresCollectionReference : any;
     mensajesCollectionReference : any;
     productosCollectionReference : any;
+    pedidosCollectionReference : any;
     
   //#endregion ---------------------------------------------------------------------------
   
@@ -40,11 +41,12 @@ export class FirebaseService
     this.consumidoresCollectionReference = collection(this.Firestore, 'consumidores');
     this.mensajesCollectionReference = collection(this.Firestore, 'mensajes');
     this.productosCollectionReference = collection(this.Firestore, 'productos');
+    this.pedidosCollectionReference = collection(this.Firestore, 'pedidos');
   }
 
   //#region ---------------------- CLIENTES NORMALES ---------------------------//
 
-  public alta_clienteNormal(mailRecibido:string, passwordRecibida:string, nombreRecibido:string, apellidoRecibido:string, dniRecibido:number, fotoRecibida:any) 
+  public alta_clienteNormal(mailRecibido:string, passwordRecibida:string, nombreRecibido:string, apellidoRecibido:string, dniRecibido:string, fotoRecibida:any) 
   {
     //----------- Estructuracion de la entidad ---------------/
     let clienteEstructurado = 
@@ -99,7 +101,7 @@ export class FirebaseService
     return deleteDoc(containerDocRef);
   }
 
-  public validar_clienteNormal(mailRecibido:string, passwordRecibida:string, passwordConfirmRecibida:string ,nombreRecibido:string, apellidoRecibido:string, dniRecibido:number, fotoRecibida:any)
+  public validar_clienteNormal(mailRecibido:string, passwordRecibida:string, passwordConfirmRecibida:string ,nombreRecibido:string, apellidoRecibido:string, dniRecibido:string, fotoRecibida:any)
   {
     //----
     let datoInvalido = "ninguno";
@@ -126,7 +128,7 @@ export class FirebaseService
       datoInvalido = "apellido";
     }
 
-    if (dniRecibido.toString().length > 10 || dniRecibido.toString().length < 3)
+    if (dniRecibido.toString().length > 12 || dniRecibido.toString().length < 3)
     {
       datoInvalido = "dni";
     }
@@ -199,7 +201,7 @@ export class FirebaseService
 
   //#region ---------------------------- AUTORIDADES ---------------------------//
 
-  public alta_autoridad(mailRecibido:string, passwordRecibida:string, nombreRecibido:string, apellidoRecibido:string, dniRecibido:number, cuilRecibido:string, fotoRecibida:any) 
+  public alta_autoridad(mailRecibido:string, passwordRecibida:string, nombreRecibido:string, apellidoRecibido:string, dniRecibido:string, cuilRecibido:string, fotoRecibida:any) 
   {
     //----------- Estructuracion de la entidad ---------------/
     let autoridadEstructurada = 
@@ -242,7 +244,7 @@ export class FirebaseService
     return collectionData(this.autoridadesCollectionReference,{idField: 'id'}) as Observable<any[]>
   }
 
-  public validar_autoridad(mailRecibido:string, passwordRecibida:string, passwordConfirmRecibida:string ,nombreRecibido:string, apellidoRecibido:string, dniRecibido:number, cuilRecibido:string ,fotoRecibida:any)
+  public validar_autoridad(mailRecibido:string, passwordRecibida:string, passwordConfirmRecibida:string ,nombreRecibido:string, apellidoRecibido:string, dniRecibido:string, cuilRecibido:string ,fotoRecibida:any)
   {
     //----
     let datoInvalido = "ninguno";
@@ -269,7 +271,7 @@ export class FirebaseService
       datoInvalido = "apellido";
     }
 
-    if (dniRecibido.toString().length > 10 || dniRecibido.toString().length < 3)
+    if (dniRecibido.toString().length > 20 || dniRecibido.toString().length < 3)
     {
       datoInvalido = "dni";
     }
@@ -356,7 +358,7 @@ export class FirebaseService
 
   //#region ----------------------------- EMPLEADOS ----------------------------//
 
-  public alta_empleado(mailRecibido:string, passwordRecibida:string, nombreRecibido:string, apellidoRecibido:string, dniRecibido:number, tipoRecibido:string,cuilRecibido:string, fotoRecibida:any)
+  public alta_empleado(mailRecibido:string, passwordRecibida:string, nombreRecibido:string, apellidoRecibido:string, dniRecibido:string, tipoRecibido:string,cuilRecibido:string, fotoRecibida:any)
   {
     //----------- Estructuracion de la entidad ---------------/
     let empleadoEstructurado = 
@@ -394,7 +396,7 @@ export class FirebaseService
     });
   }
 
-  public validar_empleado(mailRecibido:string, passwordRecibida:string, passwordConfirmRecibida:string ,nombreRecibido:string, apellidoRecibido:string, dniRecibido:number, tipoRecibido:string, cuilRecibido:string ,fotoRecibida:any)
+  public validar_empleado(mailRecibido:string, passwordRecibida:string, passwordConfirmRecibida:string ,nombreRecibido:string, apellidoRecibido:string, dniRecibido:string, tipoRecibido:string, cuilRecibido:string ,fotoRecibida:any)
   {
     //----
     let datoInvalido = "ninguno";
@@ -421,7 +423,7 @@ export class FirebaseService
       datoInvalido = "apellido";
     }
 
-    if (dniRecibido.toString().length > 10 || dniRecibido.toString().length < 3)
+    if (dniRecibido.toString().length > 20 || dniRecibido.toString().length < 3)
     {
       datoInvalido = "dni";
     }
@@ -524,7 +526,7 @@ export class FirebaseService
 
   //#region ----------------------------- PRODUCTOS ----------------------------//
 
-  public alta_producto(numeroGeneradoRecibido, nombreRecibido, tipoRecibido, precioRecibido, descripcionRecibida, fotoQRRecibida, foto1Recibida, foto2Recibida, foto3Recibida)
+  public alta_producto(numeroGeneradoRecibido, nombreRecibido, tipoRecibido, precioRecibido, descripcionRecibida, fotoQRRecibida, foto1Recibida, foto2Recibida, foto3Recibida, tiempoEstimado)
   {
     //----------- Estructuracion de la entidad ---------------/
     let productoEstructurado = 
@@ -538,6 +540,7 @@ export class FirebaseService
       foto2: foto2Recibida,
       foto3: foto3Recibida,
       tipo: tipoRecibido,
+      minutosPreparacion: tiempoEstimado
     }
 
     //SUBO LA FOTO DE LA ENTIDAD AL STORAGE Y OBTENGO EL LINK PUBLICO. DESP, LO SUBO A LA DB Y CON LA NUEVA ID.
@@ -602,10 +605,51 @@ export class FirebaseService
     });
 
   }
-
+  
   public listar_productos():Observable<any[]>
   {
     return collectionData(this.productosCollectionReference,{idField: 'id'}) as Observable<any[]>;
   }
+  //#endregion ------------------------------------------------------------------//
+  
+  //#region ----------------------------- PEDIDOS ----------------------------//
+  public alta_pedido(consumidorNombreRecibido, carritoBarRecibido, carritoCocinaRecibido, numeroMesaRecibido)
+  {
+    let resultadoEstadoBar;
+    let resultadoEstadoCocina;
+
+    //Me fijo si carrito (tanto de cocina como de bar) tienen algo. Si lo tienen su estado es finalizado = false
+    if (carritoBarRecibido.length > 0) {resultadoEstadoBar = false;} else {resultadoEstadoBar = true;}
+    if (carritoCocinaRecibido.length > 0) {resultadoEstadoCocina = false;} else {resultadoEstadoCocina = true;}
+
+    //----------- Estructuracion de la entidad ---------------/
+    let pedidoEstructurado = 
+    {
+      consumidor: consumidorNombreRecibido,
+      carrito_bar : carritoBarRecibido,
+      carrito_cocina : carritoCocinaRecibido,
+      estado: 'esperando_aceptacion',
+      estado_bar_finalizado: resultadoEstadoBar,
+      estado_cocina_finalizado: resultadoEstadoCocina,
+      mozo: '',
+      mesa: numeroMesaRecibido
+    }
+
+    return  addDoc(this.pedidosCollectionReference, pedidoEstructurado);
+  }
+    
+  public listar_pedidos():Observable<any[]>
+  {
+    return collectionData(this.pedidosCollectionReference,{idField: 'id'}) as Observable<any[]>;
+  }
+
+  public modificar_pedido(pedidoRecibido:any, id:any)
+  {
+    let pedidoDocRef = doc(this.Firestore, `pedidos/${id}`);
+    return updateDoc(pedidoDocRef, pedidoRecibido);
+  }
+  //#endregion ------------------------------------------------------------------//
+    
+
 }
 

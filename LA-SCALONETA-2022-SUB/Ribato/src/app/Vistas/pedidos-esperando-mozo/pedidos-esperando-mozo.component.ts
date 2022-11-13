@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Servicios/auth.service';
 import { FirebaseService } from 'src/app/Servicios/firebase.service';
 import { MailSendingService } from 'src/app/Servicios/mail-sending.service';
@@ -7,16 +6,17 @@ import { SonidosPersonalizadosService } from 'src/app/Servicios/sonidos-personal
 import { ToastMsgService } from 'src/app/Servicios/toast-msg.service';
 
 @Component({
-  selector: 'app-pedidos-pendientes-cocina',
-  templateUrl: './pedidos-pendientes-cocina.component.html',
-  styleUrls: ['./pedidos-pendientes-cocina.component.scss'],
+  selector: 'app-pedidos-esperando-mozo',
+  templateUrl: './pedidos-esperando-mozo.component.html',
+  styleUrls: ['./pedidos-esperando-mozo.component.scss'],
 })
-export class PedidosPendientesCocinaComponent implements OnInit {
+export class PedidosEsperandoMozoComponent implements OnInit {
 
   constructor(
     public srvFirebase:FirebaseService,
     public srvToast:ToastMsgService, 
     public srvSonidos:SonidosPersonalizadosService,
+    public srvMailSending:MailSendingService,
     public srvAuth:AuthService) 
   {
     this.srvFirebase.listar_pedidos().subscribe((data)=>
@@ -34,35 +34,28 @@ export class PedidosPendientesCocinaComponent implements OnInit {
     }, 2500);
   }
 
-  //------------------------ Atributos ---------------------------- //
-
+  //------------------------ Atributos ----------------------------
   sonidoActivado:boolean = true;
-  spinnerMostrandose:boolean = true;
+  spinnerMostrandose = true;
 
-  arrayPedidos:any = [];
+  public arrayPedidos: any[] = [];
 
-  terminarPedidoCocina(pedidoTerminado:any)
+  responsabilizarseDelPedido(pedidoRecibido)
   {
-    console.log(pedidoTerminado);
+    //Le asigno el mozo responsable y el nuevo estado del pedido. Ya fue confirmado. Ahora a la cocina!!!
+    let mailMozoResponsable = this.srvAuth.userLogedData.email;
+    //let mailMozoResponsable = 'probando@123.cpom';
+    pedidoRecibido.mozo = mailMozoResponsable;
+    pedidoRecibido.estado = 'en_preparacion';
 
-    pedidoTerminado.estado_cocina_finalizado = true;
-    this.srvToast.mostrarToast("bottom","El pedido por parte de la cocina ya fue marcado como finalizado. ¡Genial!",2500,"success");
-    this.srvSonidos.reproducirSonido("bubble",this.sonidoActivado);
-
-    //Significa que el pedido acaba de finalizar
-    if (pedidoTerminado.estado_bar_finalizado == true)
-    {
-      pedidoTerminado.estado = 'preparado';
-    }
-
-    this.srvFirebase.modificar_pedido(pedidoTerminado, pedidoTerminado.id);
+    this.srvFirebase.modificar_pedido(pedidoRecibido,pedidoRecibido.id);
   }
 
-  //------------- Funcionamiento de sonido --------------------------
+  //------------- Funcionamiento de sonido ----------------------
   switchearEstadoSonido()
   {
     this.sonidoActivado = !this.sonidoActivado;
-    let iconoSonido = document.getElementById("icono-sonido-pedidosPendientesCocina");
+    let iconoSonido = document.getElementById("icono-sonido-pedidosEnEspera");
 
     if (this.sonidoActivado == true)
     {
@@ -73,4 +66,5 @@ export class PedidosPendientesCocinaComponent implements OnInit {
       iconoSonido.setAttribute("name","radio");
     }
   }
+
 }

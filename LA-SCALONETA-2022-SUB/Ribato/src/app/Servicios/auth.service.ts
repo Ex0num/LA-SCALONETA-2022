@@ -20,6 +20,10 @@ export class AuthService
     public srvSonidos:SonidosPersonalizadosService) 
     {}
 
+    // public dataConsumidor;
+
+    public pedidoEnviado = false;
+    
     public nombreDelAnonimo;
     public tipoUserloged;
 

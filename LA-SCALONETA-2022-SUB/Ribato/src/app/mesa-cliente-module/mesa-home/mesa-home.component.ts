@@ -188,8 +188,18 @@ export class MesaHomeComponent implements OnInit {
     //});
   }
 
+  menu()
+  {
+    this.router.navigateByUrl("menu-productos");
+  }
+
   consultarMozo()
   {
     this.router.navigateByUrl("chat-mozos");
+  }
+
+  realizarPedido()
+  {
+    this.router.navigateByUrl("realizar-pedido");
   }
 }

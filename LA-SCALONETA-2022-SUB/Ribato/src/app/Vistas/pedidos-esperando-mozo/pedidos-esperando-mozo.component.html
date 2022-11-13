@@ -1,0 +1,45 @@
+<body id="body">
+  <ion-card id="main-card">
+   <ion-card id="main-card-2">
+
+    <ion-card-header id="main-card-header">
+      <label id="titulo-principal">Sección pedidos en espera</label><br>
+    </ion-card-header>
+
+    <div class="wrapper" *ngIf="spinnerMostrandose == true">
+      <span class="circle circle-1"></span>
+      <span class="circle circle-2"></span>
+      <span class="circle circle-3"></span>
+      <span class="circle circle-4"></span>
+      <span class="circle circle-5"></span>
+      <span class="circle circle-6"></span>
+      <span class="circle circle-7"></span>
+      <span class="circle circle-8"></span>
+    </div>
+
+    <div id="seccion-pedidos-esperando">
+      <ul id="listado-pedidos-esperando"*ngIf="spinnerMostrandose == false">
+        
+        <li class="item-pedido-esperando" *ngFor="let pedidoEnEspera of (arrayPedidos | filtradorPedidosEsperando)">
+          <div>
+            <ion-button class="btn-responsabilizarse-pedido" color="dark" (click)="responsabilizarseDelPedido(pedidoEnEspera)"><ion-icon class="icono-responsabilizacion" name="person-outline"></ion-icon></ion-button><label class="data-consumidor-esperando">Mesa: {{pedidoEnEspera.mesa}}</label>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+
+    <div id="mensaje-pedidos-esperando">
+      Usted mozo, será responsable de todo aquel pedido que confirme/acepte en esta sección y será derivado a la cocina/bar. <br>
+      Deberá entregarlo y cobrarlo cuando corresponda.
+    </div>  
+
+   </ion-card>
+  </ion-card>
+</body>
+
+<ion-fab id="indicador-de-sonido" vertical="bottom" horizontal="start" slot="fixed" color="light">
+  <ion-fab-button color="light" (click)="switchearEstadoSonido()">
+    <ion-icon id="icono-sonido-pedidosEnEspera" name="volume-mute"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

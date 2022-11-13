@@ -41,7 +41,7 @@ export class AltaClienteComponent implements OnInit {
   // --- DatosClienteNormal ---
   public nombre_clienteNormal:string;
   public apellidos_clienteNormal:string;
-  public dni_clienteNormal:number;
+  public dni_clienteNormal:string;
   public correo_clienteNormal:string;
   public password_clienteNormal:string;
   public passwordConfirmada_clienteNormal:string;
@@ -224,10 +224,25 @@ export class AltaClienteComponent implements OnInit {
     {
       let contenidoLeido = stringObtenido.split('@');
 
-      this.apellidos_clienteNormal = contenidoLeido[1].charAt(0) + contenidoLeido[1].slice(1).toLocaleLowerCase();
-      this.nombre_clienteNormal  = contenidoLeido[2].charAt(0) + contenidoLeido[2].slice(1).toLocaleLowerCase();
-      this.dni_clienteNormal  = parseInt(contenidoLeido[4]);
+      if (contenidoLeido.length >= 16) //Si tiene mas de 16 arrobas
+      {
+        //Es dni QR VIEJO
+        this.apellidos_clienteNormal = contenidoLeido[4] //Apellidos;
+        this.nombre_clienteNormal = contenidoLeido[5] //Nombre;
+        this.dni_clienteNormal = contenidoLeido[1].trim(); //DNI;
+      }
+      else
+      {
+        //Es dni QR NUEVO
+        this.apellidos_clienteNormal = contenidoLeido[1]; //Apellido
+        this.nombre_clienteNormal  = contenidoLeido[2] //Nombre
+        this.dni_clienteNormal  = contenidoLeido[4]; //DNI
 
+        // let cuilSliced = contenidoLeido[8].split(""); //CUIL
+        // let cuilFinal = cuilSliced[0] + cuilSliced[1] + "-" + this.dni_clienteNormal + "-" + cuilSliced[2];
+        // this.cui = cuilFinal;
+      }
+  
       //Detengo el scanner.
       this.srvLectorQR.stopScan();
     });

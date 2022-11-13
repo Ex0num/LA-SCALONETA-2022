@@ -1,0 +1,58 @@
+<body id="body">
+  <ion-card id="main-card">
+   <ion-card id="main-card-2">
+
+    <ion-card-header id="main-card-header">
+      <label id="titulo-principal">Sección pedidos en espera</label><br>
+    </ion-card-header>
+
+    <div class="wrapper" *ngIf="spinnerMostrandose == true">
+      <span class="circle circle-1"></span>
+      <span class="circle circle-2"></span>
+      <span class="circle circle-3"></span>
+      <span class="circle circle-4"></span>
+      <span class="circle circle-5"></span>
+      <span class="circle circle-6"></span>
+      <span class="circle circle-7"></span>
+      <span class="circle circle-8"></span>
+    </div>
+    
+    <div id="mensaje-pedidos-esperando-rtaMozo">
+        Aquí estarán disponibles todos los pedidos que estén
+        bajo su responsabilidad, y en caso de precisar una acción de su 
+        parte, se disponibilizará el botón correspondiente.
+    </div>  
+
+    <div id="seccion-pedidos-esperando-rtaMozo">
+      <ul id="listado-pedidos-esperando-rtaMozo"*ngIf="spinnerMostrandose == false">
+        
+        <li class="item-pedido-esperando-rtaMozo" *ngFor="let pedido of (arrayPedidos | filtradorPedidosEsperandoRespuesta : nombreMozo)">
+          
+          <div *ngIf="pedido.estado == 'preparado'" (click)="entregarPedido(pedido)">
+            <ion-button class="bt" color="dark">
+              <ion-icon class="icono-responsabilizacion" name="paper-plane-outline"></ion-icon>
+            </ion-button>
+            <label class="data-consumidor-esperando">Mesa: {{pedido.mesa}}</label>
+          </div>
+
+          <div *ngIf="pedido.estado == 'pago_solicitado'" (click)="cobrarPedido(pedido)">
+            <ion-button class="bt" color="dark">
+              <ion-icon class="icono-responsabilizacion" name="cash-outline"></ion-icon>
+            </ion-button>
+            <label class="data-consumidor-esperando">Mesa: {{pedido.mesa}}</label>
+          </div>
+
+        </li>
+
+      </ul>
+    </div>
+
+   </ion-card>
+  </ion-card>
+</body>
+
+<ion-fab id="indicador-de-sonido" vertical="bottom" horizontal="start" slot="fixed" color="light">
+  <ion-fab-button color="light" (click)="switchearEstadoSonido()">
+    <ion-icon id="icono-sonido-pedidosEnEsperaRespuesta" name="volume-mute"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

@@ -1,0 +1,111 @@
+#body
+{
+    background-color: black;
+    text-align: center;
+}
+
+#main-card
+{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    height: 97%;
+    background: white;
+}
+
+#main-card-2
+{
+    background-image: url("../../../assets/files/background.jpg");
+    height: 97%;
+    width: 94%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    height: 97%;
+    overflow: auto;
+}
+
+#main-card-header
+{
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 600;
+    font-style: oblique;
+    font-variant: small-caps;
+    margin-top: 0.5rem;
+    margin-bottom: 0.35rem;
+}
+
+#titulo-principal
+{
+    font-size: 35px;
+}
+
+#mensaje-pedidos-esperando-rtaMozo
+{
+    font-size: 19px;
+    color: white;
+    background-color: black;
+    border-radius: 6px;
+    padding: 0.5rem;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+// PEDIDOS LISTADO STYLES
+
+#seccion-pedidos-esperando-rtaMozo
+{
+    width: 90%;
+    margin-left: 4.5%;
+    overflow: auto;
+    height: 19.5rem;
+    margin-bottom: 6%;
+    border: 2px solid gray;
+    border-radius: 6px;
+}
+
+.item-pedido-esperando-rtaMozo
+{
+    list-style: none;
+    background-color: white;
+    color: black;
+    border: 1px solid white;
+    border-radius: 4px;
+    margin-top: 1.5rem;
+    width: 90%;
+    margin-right: 5%;
+    padding: 0.5rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+    text-align: left;
+}
+
+// .btn-responsabilizarse-pedido-rtaMozo
+// {
+//     font-size: 16px;
+//     width: 3rem;
+// }
+
+// .icono-responsabilizacion
+// {   
+//     height: 90%;
+//     width: 90%;
+// }
+
+.data-consumidor-esperando
+{
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+#listado-pedidos-esperando
+{
+    height: 100%;
+    width: 95%;
+    margin-right: 3%;
+}
+
+#indicador-de-sonido
+{
+    margin-bottom: 6%;
+    margin-left: 5%;
+}

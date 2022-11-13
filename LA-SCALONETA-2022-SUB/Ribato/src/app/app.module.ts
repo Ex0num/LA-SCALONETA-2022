@@ -29,9 +29,16 @@ import { ChatMozosComponent } from './Vistas/chat-mozos/chat-mozos.component';
 import { FiltradorMensajariaPipe } from './Pipes/filtrador-mensajaria.pipe';
 
 import { Vibration } from '@awesome-cordova-plugins/vibration/ngx';
+import { MenuProductosComponent } from './Vistas/menu-productos/menu-productos.component';
+import { PedidosEsperandoMozoComponent } from './Vistas/pedidos-esperando-mozo/pedidos-esperando-mozo.component';
+import { FiltradorPedidosEsperandoPipe } from './Pipes/filtrador-pedidos-esperando.pipe';
+import { FiltradorPedidosEnPreparacionCocinaPipe } from './Pipes/filtrador-pedidos-en-preparacion-cocina.pipe';
+import { FiltradorPedidosEnPreparacionBarPipe } from './Pipes/filtrador-pedidos-en-preparacion-bar.pipe';
+import { TransformadorEstadoPedidoPipe } from './Pipes/transformador-estado-pedido.pipe';
+import { FiltradorPedidosEsperandoRespuestaPipe } from './Pipes/filtrador-pedidos-esperando-respuesta.pipe';
 
 @NgModule({
-  declarations: [AppComponent,LoginComponent, AprobarClienteComponent, FiltradorClientesPendientesPipe, ClientesEsperandoMesaComponent, FiltradorConsumidoresEsperandoPipe, FiltradorMesasDisponiblesPipe,ChatMozosComponent, FiltradorMensajariaPipe],
+  declarations: [AppComponent,LoginComponent, AprobarClienteComponent, FiltradorClientesPendientesPipe, ClientesEsperandoMesaComponent, FiltradorConsumidoresEsperandoPipe, FiltradorMesasDisponiblesPipe,ChatMozosComponent, FiltradorMensajariaPipe, MenuProductosComponent,PedidosEsperandoMozoComponent, FiltradorPedidosEsperandoPipe],
   imports: [BrowserModule, IonicModule.forRoot(), 
     FormsModule,
     AppRoutingModule, 

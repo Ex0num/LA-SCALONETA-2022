@@ -13,28 +13,35 @@ import { HomeMetreComponent } from './home-module/home/home-metre/home-metre.com
 import { HomeMozoComponent } from './home-module/home/home-mozo/home-mozo.component';
 import { HomeComponent } from './home-module/home/home.component';
 import { MesaHomeComponent } from './mesa-cliente-module/mesa-home/mesa-home.component';
+import { ClientesEsperandoPedidoComponent } from './pedido-module/clientes-esperando-pedido/clientes-esperando-pedido.component';
+import { PedidosEsperandoRespuestaMozoComponent } from './pedido-module/pedidos-esperando-respuesta-mozo/pedidos-esperando-respuesta-mozo.component';
 import { PedidosPendientesBarComponent } from './pedido-module/pedidos-pendientes-bar/pedidos-pendientes-bar.component';
 import { PedidosPendientesCocinaComponent } from './pedido-module/pedidos-pendientes-cocina/pedidos-pendientes-cocina.component';
+import { RealizarPedidoComponent } from './pedido-module/realizar-pedido/realizar-pedido.component';
 import { SplashComponent } from './splash/splash/splash.component';
 import { AprobarClienteComponent } from './Vistas/aprobar-cliente/aprobar-cliente.component';
 import { ChatMozosComponent } from './Vistas/chat-mozos/chat-mozos.component';
 import { ClientesEsperandoMesaComponent } from './Vistas/clientes-esperando-mesa/clientes-esperando-mesa.component';
+import { CuentaGeneradaComponent } from './Vistas/cuenta-generada/cuenta-generada.component';
 import { LoginComponent } from './Vistas/login/login.component';
+import { MenuProductosComponent } from './Vistas/menu-productos/menu-productos.component';
+import { PedidosEsperandoMozoComponent } from './Vistas/pedidos-esperando-mozo/pedidos-esperando-mozo.component';
 
 const routes: Routes = [
 
- //Paginas iniciales/normales
-  {path: 'splash',component:SplashComponent,  loadChildren: () => import('./splash/splash.module').then(m => m.SplashModule)},
+  //Paginas iniciales/normales
+  {path: 'splash',component:SplashComponent, loadChildren: () => import('./splash/splash.module').then(m => m.SplashModule)},
   {path: 'login',component:LoginComponent},
   {path: 'aprobar-clientes',component:AprobarClienteComponent},
   {path: 'clientes-esperando-mesa',component:ClientesEsperandoMesaComponent},
   {path: 'chat-mozos',component:ChatMozosComponent},
+  {path: 'menu-productos',component:MenuProductosComponent},
+  {path: 'cuenta-generada',component:CuentaGeneradaComponent},
 
-  // //Modulo de alta (Tipos de usuarios)
+  //Modulo de alta (Tipos de usuarios y objetos no-humanos)
   {path: 'alta-cliente',component:AltaClienteComponent, loadChildren: () => import('./alta-module/alta-module.module').then(m => m.AltaModuleModule)},
   {path: 'alta-dueno-supervisor',component:AltaDuenoSupervisorComponent, loadChildren: () => import('./alta-module/alta-module.module').then(m => m.AltaModuleModule)},
   {path: 'alta-empleado',component:AltaEmpleadoComponent, loadChildren: () => import('./alta-module/alta-module.module').then(m => m.AltaModuleModule)},
-  //Modulo de alta (Objetos)
   {path: 'alta-mesa',component:AltaMesaComponent, loadChildren: () => import('./alta-module/alta-module.module').then(m => m.AltaModuleModule)},
   {path: 'alta-producto',component:AltaProductoComponent, loadChildren: () => import('./alta-module/alta-module.module').then(m => m.AltaModuleModule)},
   
@@ -44,6 +51,10 @@ const routes: Routes = [
   //Modulo de pedidos
   {path: 'pedidos-pendientes-bar',component:PedidosPendientesBarComponent, loadChildren: () => import('./pedido-module/pedido-module.module').then(m => m.PedidoModuleModule)},
   {path: 'pedidos-pendientes-cocina',component:PedidosPendientesCocinaComponent, loadChildren: () => import('./pedido-module/pedido-module.module').then(m => m.PedidoModuleModule)},
+  {path: 'realizar-pedido',component:RealizarPedidoComponent, loadChildren: () => import('./pedido-module/pedido-module.module').then(m => m.PedidoModuleModule)},
+  {path: 'clientes-esperando-pedido',component:ClientesEsperandoPedidoComponent, loadChildren: () => import('./pedido-module/pedido-module.module').then(m => m.PedidoModuleModule)},
+  {path: 'pedidos-esperando-mozo',component:PedidosEsperandoMozoComponent},
+  {path: 'pedidos-esperando-respuesta-mozo',component:PedidosEsperandoRespuestaMozoComponent , loadChildren: () => import('./pedido-module/pedido-module.module').then(m => m.PedidoModuleModule)},
 
   //Modulo de homes
   {path: 'home',component:HomeComponent, loadChildren: () => import('./home-module/home-module.module').then(m => m.HomeModuleModule)},

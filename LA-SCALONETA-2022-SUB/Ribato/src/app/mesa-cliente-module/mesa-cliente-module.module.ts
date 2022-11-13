@@ -8,7 +8,7 @@ import { IonicModule } from '@ionic/angular';
 @NgModule({
   declarations: [MesaHomeComponent],
   imports: [
-    CommonModule, IonicModule
+    CommonModule, IonicModule.forRoot()
   ]
 })
 export class MesaClienteModuleModule { }

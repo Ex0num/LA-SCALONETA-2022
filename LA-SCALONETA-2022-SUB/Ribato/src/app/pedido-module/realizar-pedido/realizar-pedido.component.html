@@ -1,0 +1,54 @@
+<body id="body-realizarPedido">
+  <ion-card id="main-card-realizarPedido">
+   <ion-card id="main-card-2-realizarPedido">
+
+      <ion-card-header id="main-card-header-realizarPedido">
+        <label id="titulo-principal-realizarPedido">Sección pedido</label><br>
+      </ion-card-header>
+
+        <div *ngIf="spinnerMostrandose == false">
+          <ul id="listado-realizarPedido">
+
+            <li *ngFor="let producto of arrayProductos; index as i" class="item-realizarPedido">
+              <div>
+                <img class="foto1-producto" src="{{producto.foto1}}" width="50%" height="80px">
+                <img class="foto2-producto" src="{{producto.foto2}}" width="50%" height="80px"><br>
+                <img class="foto3-producto" src="{{producto.foto3}}" width="50%" height="80px">
+                <img class="fotoqr-producto"src="{{producto.fotoQR}}" width="50%" height="80px"><br>
+              </div>
+              <label class="info-item-realizarPedido">{{producto.nombre}} ${{producto.precio}}</label><br>
+              <button class="btn-sumar-prod" (click)="sumarProducto(producto)"><ion-icon name="add-outline"></ion-icon></button>
+              <button class="btn-restar-prod" (click)="restarProducto(producto)"><ion-icon name="remove-outline"></ion-icon></button>
+            </li> 
+
+          </ul>
+          <label class="info-pedido">Importe acumulado: ${{importeAcumulado}}</label><br>
+          <label class="info-pedido">Tiempo estimado: {{tiempoEstimado}} mts</label>
+        </div>
+       
+        <div class="wrapper" *ngIf="spinnerMostrandose == true">
+          <span class="circle circle-1"></span>
+          <span class="circle circle-2"></span>
+          <span class="circle circle-3"></span>
+          <span class="circle circle-4"></span>
+          <span class="circle circle-5"></span>
+          <span class="circle circle-6"></span>
+          <span class="circle circle-7"></span>
+          <span class="circle circle-8"></span>
+        </div>
+
+   </ion-card>
+  </ion-card>
+</body>
+
+<ion-fab id="indicador-de-sonido-realizarPedido" vertical="bottom" horizontal="start" slot="fixed" color="light">
+  <ion-fab-button color="light" (click)="switchearEstadoSonido()">
+    <ion-icon id="icono-sonido-realizarPedido" name="volume-mute"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<ion-fab id="indicador-de-enviar-pedido" vertical="bottom" horizontal="end" slot="fixed" color="light">
+  <ion-fab-button color="light" (click)="enviarPedido()">
+    <ion-icon id="icono-enviar-pedido" name="chevron-forward-circle-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

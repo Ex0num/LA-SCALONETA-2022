@@ -24,7 +24,7 @@
 
             <!-- El mensaje se muestra con un estilo determinado si el tipo no es mozo -->
             <div *ngIf="mensaje.tipo != 'mozo'" class="mensaje-cliente">
-              <label class="data-mensaje-cliente">{{mensaje.emisor}} - {{mensaje.hora}} - {{mensaje.numMesa}}</label><br>
+              <label class="data-mensaje-cliente">{{mensaje.hora}} - Mesa: {{mensaje.numMesa}}</label><br>
               {{mensaje.texto}}<br>
             </div>
 

@@ -64,30 +64,41 @@ export class ClientesEsperandoMesaComponent implements OnInit {
 
   asignarMesa()
   {
-    //Me fijo si la mesa sigue disponible
-    this.arrayMesas.forEach(mesa => 
+    if (this.numero_mesaSeleccionada != "Numero" && this.nombre_consumidorSeleccionado != "Cliente")
     {
-      if ((mesa.numeroMesa == this.numero_mesaSeleccionada && mesa.estado == 'disponible'))
+      //Me fijo si la mesa sigue disponible
+      this.arrayMesas.forEach( (mesa,index) => 
       {
-        //Me fijo si el consumidor sigue necesitando la asignacion
-        this.arrayConsumidores.forEach(consumidor => 
+        if ((mesa.numeroMesa == this.numero_mesaSeleccionada && mesa.estado == 'disponible'))
         {
-            if(consumidor.nombre == this.nombre_consumidorSeleccionado && consumidor.estado == 'esperando_mesa')
-            {
-              //Se hace la modificacion tanto del estado de la mesa como del consumidor
-              this.mesaSeleccionada.estado = 'ocupada';
-              this.srvFirebase.modificar_mesa(this.mesaSeleccionada, this.mesaSeleccionada.id);
+          //Me fijo si el consumidor sigue necesitando la asignacion
+          this.arrayConsumidores.forEach( (consumidor,index) => 
+          {
+              if(consumidor.nombre == this.nombre_consumidorSeleccionado && consumidor.estado == 'esperando_mesa')
+              {
+                //Se hace la modificacion tanto del estado de la mesa como del consumidor
+                this.mesaSeleccionada.estado = 'ocupada';
+                this.srvFirebase.modificar_mesa(this.mesaSeleccionada, this.mesaSeleccionada.id);
 
-              this.consumidorSeleccionado.estado = 'escaneando_mesa';
-              this.consumidorSeleccionado.mesaAsignada = this.numero_mesaSeleccionada;
-              this.srvFirebase.modificar_consumidor(this.consumidorSeleccionado, this.consumidorSeleccionado.id);
+                this.consumidorSeleccionado.estado = 'escaneando_mesa';
+                this.consumidorSeleccionado.mesaAsignada = this.numero_mesaSeleccionada;
+                this.srvFirebase.modificar_consumidor(this.consumidorSeleccionado, this.consumidorSeleccionado.id);
 
-              this.nombre_consumidorSeleccionado = "Consumidor";
-              this.numero_mesaSeleccionada = "Numero";
-            }
-        });
-      }
-    });
+                this.nombre_consumidorSeleccionado = "Consumidor";
+                this.numero_mesaSeleccionada = "Numero";
+
+                this.srvToast.mostrarToast("bottom","El cliente y la mesa, fueron asignados satisfactoriamente",2000,"success");
+                this.srvSonidos.reproducirSonido("bubble",this.sonidoActivado);
+              }
+          });
+        }
+      });
+    }
+    else
+    {
+      this.srvToast.mostrarToast("bottom","No se puede asignar ante la falta de datos. Revisa tu cliente y tu mesa seleccionada.",2000,"danger");
+      this.srvSonidos.reproducirSonido("error",this.sonidoActivado);
+    }
   }
 
   //------------- Funcionamiento de sonido ----------------------
