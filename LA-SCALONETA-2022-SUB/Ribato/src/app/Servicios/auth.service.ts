@@ -10,7 +10,8 @@ import { SonidosPersonalizadosService } from './sonidos-personalizados.service';
 })
 export class AuthService 
 {
-  
+  encuestaEnviada = false;
+
   userLogedData:any;
 
   constructor(

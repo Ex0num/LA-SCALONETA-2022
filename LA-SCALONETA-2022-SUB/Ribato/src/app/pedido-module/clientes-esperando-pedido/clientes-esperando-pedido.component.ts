@@ -108,26 +108,84 @@ export class ClientesEsperandoPedidoComponent implements OnInit {
   cargaDeConsumidorTerminada = false;
   mesaEscaneadaSatisfactoriamente = false;
   
-  
+  // ------------ Encuestas ----------------
+
   mostrarEncuesta = false;
   mostrarResultadosEncuestas = false;
 
   switchearMostrarEncuestaPersonal()
   {
-    let formularioEncuesta = document.getElementById("formulario-encuesta");
 
     if (this.mostrarEncuesta == false)
-    {
+    {   
+      //Muestro encuesta
       this.mostrarEncuesta = true;
-
-      //Asigno animacion de entrada al formulario encuesta
-      formularioEncuesta.style.animation = "slide-in-elliptic-bottom-fwd 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;";
     }
     else
     {
+      //Oculto encuesta
       this.mostrarEncuesta = false;
-      //Asigno animacion de salida al formulario encuesta
-      formularioEncuesta.style.animation = "slide-out-bottom 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;";
+
+    }
+  }
+  
+  enviarEncuesta()
+  {
+    if (this.srvAuth.encuestaEnviada == false)
+    {
+      // --
+      let opcionesPrecios:any = document.querySelectorAll('input[name="precioAcordes"]');
+      let preciosAcordesRta;         
+      
+      if (opcionesPrecios[0]["checked"] == true) //Se tildo si
+      {
+        preciosAcordesRta = "Si";
+      }
+      else if (opcionesPrecios[1]["checked"] == true) //Se tildo no
+      {;
+        preciosAcordesRta = "No";
+      }
+      // --
+      let opcionesAtencion:any = document.querySelectorAll('input[name="atencionEmpleados"]');
+      let atencionBuenaRta;         
+      
+      if (opcionesAtencion[0]["checked"] == true) //Se tildo si
+      {
+        atencionBuenaRta = "Si";
+      }
+      else if (opcionesAtencion[1]["checked"] == true) //Se tildo no
+      {;
+        atencionBuenaRta = "No";
+      }
+      // --
+      let opcionesComida:any = document.querySelectorAll('input[name="comidaRica"]');
+      let comidaRicaRta;         
+      
+      if (opcionesComida[0]["checked"] == true) //Se tildo si
+      {
+        comidaRicaRta = "Si";
+      }
+      else if (opcionesComida[1]["checked"] == true) //Se tildo no
+      {;
+        comidaRicaRta = "No";
+      }
+      // --
+
+      this.srvFirebase.alta_encuesta(comidaRicaRta,atencionBuenaRta,preciosAcordesRta);
+
+      this.srvToast.mostrarToast("top","Encuesta enviada correctamente. ¡Gracias por tu opinión!",3000,"success");
+      this.srvSonidos.reproducirSonido("bubble",this.sonidoActivado);
+
+      //Oculto encuesta
+      this.mostrarEncuesta = false;
+
+      //Me guardo que el tipo ya envio la encuesta
+      this.srvAuth.encuestaEnviada = true;
+    }
+    else
+    {
+      this.srvToast.mostrarToast("top","No se puede enviar más de una encuesta por estadía",3000,"danger");
+      this.srvSonidos.reproducirSonido("error",this.sonidoActivado);
     }
   }
 
@@ -150,6 +208,8 @@ export class ClientesEsperandoPedidoComponent implements OnInit {
       graficosEncuestas.style.animation = "slide-out-bottom 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;";
     }
   }
+
+  // ------------------------------------------
 
   // ------------- Funcionamiento de sonido ----------------------//
   public switchearEstadoSonido()
@@ -273,7 +333,7 @@ export class ClientesEsperandoPedidoComponent implements OnInit {
     this.arrayPedidos.forEach(pedido => 
     {
       //Obviamente me traigo al pedido que COINCIDA con el consumidor y que OBVIO no haya finalizado (xq puede no ser la primera vez del consumidor en el restobar)
-      if (pedido.consumidor == nombreConsumidor && pedido.estado != 'cobrado')
+      if (pedido.consumidor == nombreConsumidor && pedido.estado != 'finalizado')
       {
         pedidoActual = pedido;
       }

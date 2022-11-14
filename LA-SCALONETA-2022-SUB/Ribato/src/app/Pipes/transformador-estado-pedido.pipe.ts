@@ -46,6 +46,11 @@ export class TransformadorEstadoPedidoPipe implements PipeTransform {
         resultado = 'Pago realizado';
         break;
       }
+      case 'finalizado':                                  //De pago_solicitado a pagado LO CLICKEA EL MOZO
+      {
+        resultado = 'Finalizado';
+        break;
+      }
     }
     
     return resultado;

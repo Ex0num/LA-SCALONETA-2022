@@ -1,3 +1,66 @@
-<p>
-  cuenta-generada works!
-</p>
+<body id="body">
+    <ion-card id="main-card">
+     <ion-card id="main-card-2">
+  
+        <ion-card-header id="main-card-header">
+          <label id="titulo-principal">Cuenta final</label><br>
+        </ion-card-header>
+  
+        <div *ngIf="qrPropinaEscaneadoSatisfactoriamente == false" id="seccion-propina-no-escaneada">
+            <div class="mensaje-informativo" *ngIf="cargaDeConsumidorTerminada == true">
+              <label>Por favor escanee el qr actual de propina <strong>(Lea con detención qué propina es).</strong></label>
+              <div>
+                <label class="emoji-scaneo-propina">👉🏻</label><button id="qrScanner-ingreso-propina" (click)="escenarQR_Propina()"><ion-icon id="icono-qr-ingreso-local" name="camera-outline"></ion-icon></button><label class="emoji-scaneo-propina">👈🏻</label>
+                <button class="btnOpcionesHome" (click)="testing()">testing</button>
+              </div>
+            </div>
+
+            <div class="mensaje-informativo" *ngIf="cargaDeConsumidorTerminada == true">
+                <label>¡Muchas gracias por haber comido en Ribato. Esperamos verlo pronto de vuelta! 😀</label>
+            </div>
+  
+        </div>
+  
+        <div *ngIf="qrPropinaEscaneadoSatisfactoriamente == true && cargaDeConsumidorTerminada == true && cargaDePedidoTerminada == true && cargaDeProductosDelPedidoTerminada == true" id="seccion-propina-escaneada">
+            <div>
+                <label *ngFor="let productoCocina of productosCocinaPedidoActual" class="item-cuenta">
+                    <img src="{{productoCocina.foto1}}" class="foto-articulo">
+                    {{productoCocina.nombre + " $" + productoCocina.precio}}<br>
+                </label>
+                <br>
+                <label *ngFor="let productoBar of productosBarPedidoActual" class="item-cuenta">
+                    <img src="{{productoBar.foto1}}" class="foto-articulo">
+                    {{productoBar.nombre + " $" + productoBar.precio}}<br>
+                </label>
+                <br>
+                <!-- <label *ngFor="let articuloCocina of productosDelPedidoActual.carrito_cocina" class="item-cuenta">
+                    <img src="{{articuloCocina.foto1}}" class="foto-articulo">
+                    {{articuloCocina.nombre + " $" + articuloCocina.precio}}<br>
+                </label>
+                <br> -->
+                <label>Descuento por juegos (Próximamente)</label><br>
+                <label>Propina de {{propinaAumento}}%</label><br>
+                <label>Importe total a abonar de ${{importeTotalCalculado}}</label>
+            </div>
+        </div>
+        
+        <div class="wrapper" *ngIf="cargaDeConsumidorTerminada == false">
+          <span class="circle circle-1"></span>
+          <span class="circle circle-2"></span>
+          <span class="circle circle-3"></span>
+          <span class="circle circle-4"></span>
+          <span class="circle circle-5"></span>
+          <span class="circle circle-6"></span>
+          <span class="circle circle-7"></span>
+          <span class="circle circle-8"></span>
+        </div>
+  
+     </ion-card>
+    </ion-card>
+  </body>
+  
+  <ion-fab id="indicador-de-sonido-cuentaGenerada" vertical="bottom" horizontal="start" slot="fixed" color="light">
+    <ion-fab-button color="light" (click)="switchearEstadoSonido()">
+      <ion-icon id="icono-sonido-cuentaGenerada" name="volume-mute"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>

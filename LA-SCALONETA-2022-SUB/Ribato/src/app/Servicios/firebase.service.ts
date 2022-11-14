@@ -26,6 +26,7 @@ export class FirebaseService
     mensajesCollectionReference : any;
     productosCollectionReference : any;
     pedidosCollectionReference : any;
+    encuestasCollectionReference : any;
     
   //#endregion ---------------------------------------------------------------------------
   
@@ -42,6 +43,7 @@ export class FirebaseService
     this.mensajesCollectionReference = collection(this.Firestore, 'mensajes');
     this.productosCollectionReference = collection(this.Firestore, 'productos');
     this.pedidosCollectionReference = collection(this.Firestore, 'pedidos');
+    this.encuestasCollectionReference = collection(this.Firestore, 'encuestas');
   }
 
   //#region ---------------------- CLIENTES NORMALES ---------------------------//
@@ -650,6 +652,26 @@ export class FirebaseService
   }
   //#endregion ------------------------------------------------------------------//
     
+  //#region ----------------------------- ENCUESTAS ----------------------------//
+  public alta_encuesta(respuestaComidaRica, respuestaAtencionEmpleados, respuestaPreciosAcordes)
+  {
+    //----------- Estructuracion de la entidad ---------------/
+    let encuestaEstructurado = 
+    {
+      comidaRica: respuestaComidaRica,
+      atencionEmpleados : respuestaAtencionEmpleados,
+      preciosAcordes : respuestaPreciosAcordes,   
+    }
 
+    return  addDoc(this.encuestasCollectionReference, encuestaEstructurado);
+  }
+    
+  public listar_encuestas():Observable<any[]>
+  {
+    return collectionData(this.encuestasCollectionReference,{idField: 'id'}) as Observable<any[]>;
+  }
+  
+  //#endregion ------------------------------------------------------------------//
+      
 }
 

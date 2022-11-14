@@ -32,7 +32,7 @@ export class MesaHomeComponent implements OnInit {
       data.forEach( (element) => 
       {
         //Si el consumidor actual ya fue cargado voy a reemplazar sus datos xq la actualizacion de la db podria pertenecerle
-        if (this.consumidorActual != undefined && this.consumidorActual.nombre == element.nombre)
+        if (this.consumidorActual != undefined && this.consumidorActual.nombre == element.nombre && element.estado != 'retirado')
         { 
           console.log("Actualizando data del consumidor actual...");
           this.consumidorActual = element;
@@ -186,6 +186,30 @@ export class MesaHomeComponent implements OnInit {
         this.srvSonidos.reproducirSonido("error", this.sonidoActivado);
       }
     //});
+  }
+
+  // ENCUESTAS
+
+  mostrarResultadosEncuestas = false;
+
+  switchearMostrarResultadosEncuestas()
+  {
+    let graficosEncuestas = document.getElementById("graphs-resultados-encuestas");
+    
+    if (this.mostrarResultadosEncuestas == false)
+    {
+      this.mostrarResultadosEncuestas = true;
+
+      //Asigno animacion de entrada a los graphs  
+      graficosEncuestas.style.animation = "slide-in-elliptic-bottom-fwd 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;";
+    }
+    else
+    {
+      this.mostrarResultadosEncuestas = false;
+
+      //Asigno animacion de salida a los graphs
+      graficosEncuestas.style.animation = "slide-out-bottom 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;";
+    }
   }
 
   menu()

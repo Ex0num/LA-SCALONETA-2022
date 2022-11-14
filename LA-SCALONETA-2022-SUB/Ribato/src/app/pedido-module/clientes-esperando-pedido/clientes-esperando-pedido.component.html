@@ -6,72 +6,104 @@
         <label id="titulo-principal">Sección de espera del pedido</label><br>
       </ion-card-header>
 
-       <div *ngIf="mesaEscaneadaSatisfactoriamente == false" id="seccion-mesa-no-escaneada-esperandoPedido">
-          <div class="mensaje-informativo-esperandoPedido" *ngIf="cargaDeConsumidorTerminada == true"> 
-             <label>Para acceder al estado de su pedido, debe escanear su mesa, la número {{consumidorActual.mesaAsignada}}. <br> ¡Escaneela por favor!</label>
-             <div>
+        <div *ngIf="mesaEscaneadaSatisfactoriamente == false" id="seccion-mesa-no-escaneada-esperandoPedido">
+            <div class="mensaje-informativo-esperandoPedido" *ngIf="cargaDeConsumidorTerminada == true"> 
+              <label>Para acceder al estado de su pedido, debe escanear su mesa, la número {{consumidorActual.mesaAsignada}}. <br> ¡Escaneela por favor!</label>
+              <div>
 
-              <label class="emoji-scaneo-mesa-esperandoPedido">👉🏻</label>
+                <label class="emoji-scaneo-mesa-esperandoPedido">👉🏻</label>
 
-                <button id="qrScanner-esperandoPedido" (click)="escenarQR_Mesa()">
-                  <ion-icon id="icono-qr-ingreso-local-esperandoPedido" name="camera-outline"></ion-icon>
-                </button>
-       
-              <label class="emoji-scaneo-mesa-esperandoPedido">👈🏻</label>
+                  <button id="qrScanner-esperandoPedido" (click)="escenarQR_Mesa()">
+                    <ion-icon id="icono-qr-ingreso-local-esperandoPedido" name="camera-outline"></ion-icon>
+                  </button>
+        
+                <label class="emoji-scaneo-mesa-esperandoPedido">👈🏻</label>
 
-              <button class="btnOpcionesHome" (click)="testing()">testing</button>
+                <button class="btnOpcionesHome" (click)="testing()">testing</button>
+              </div>
             </div>
-          </div>
-      </div> 
+        </div> 
 
-      <div *ngIf="mesaEscaneadaSatisfactoriamente == true" id="seccion-mesa-escaneada-esperandoPedido">
-        <label class="mensaje-informativo-estadoPedido">El estado de su pedido es...<br>"{{pedidoDelConsumidorActual.estado | transformadorEstadoPedido}}"</label>
+        <div *ngIf="mesaEscaneadaSatisfactoriamente == true" id="seccion-mesa-escaneada-esperandoPedido">
+          <label class="mensaje-informativo-estadoPedido">El estado de su pedido es...<br>"{{pedidoDelConsumidorActual.estado | transformadorEstadoPedido}}"</label>
 
-        <ion-button class="btnOpcionesHome" id="btn-confirmar-entrega" color="light" (click)="confirmarEntrega()" *ngIf="pedidoDelConsumidorActual.estado == 'entregado_sin_confirmar'">Confirmar entrega</ion-button>
-        <ion-button class="btnOpcionesHome" color="light" (click)="juegos()">Juegos (Proximamente)</ion-button>
+          <ion-button class="btnOpcionesHome" id="btn-confirmar-entrega" color="light" (click)="confirmarEntrega()" *ngIf="pedidoDelConsumidorActual.estado == 'entregado_sin_confirmar'">Confirmar entrega</ion-button>
+          <ion-button class="btnOpcionesHome" color="light" (click)="juegos()">Juegos (Proximamente)</ion-button>
 
-        <ion-button class="btnOpcionesHome" color="light" *ngIf="pedidoDelConsumidorActual.estado == 'pago_pendiente'" (click)="switchearMostrarEncuestaPersonal()">Enviar encuesta</ion-button>
+          <ion-button class="btnOpcionesHome" color="light" *ngIf="pedidoDelConsumidorActual.estado == 'pago_pendiente'" (click)="switchearMostrarEncuestaPersonal()">Enviar encuesta</ion-button>
 
-        <div *ngIf="mostrarEncuesta == true" id="formulario-encuesta">
-            ABC
-          <ion-button class="btnOpcionesHome" color="light">Enviar</ion-button>
-        </div>
+          <!---------------- FORM ENCUESTA --------------------------->
+          <div id="formulario-encuesta-personal" *ngIf="mostrarEncuesta == true">
+            
+            <label>Rellene esta encuesta a su gusto y opinión. ¡Es anónima!</label><br><br>
 
-        <ion-button class="btnOpcionesHome" color="light" *ngIf="pedidoDelConsumidorActual.estado == 'pago_pendiente'" (click)="switchearMostrarResultadosEncuestas()">Resultados de encuestas</ion-button>
+            <!-- ¿LE GUSTÓ LA COMIDA? -->
+            <label>¿La comida estuvo rica?</label><br>
+            <div class="seccion-opciones-encuesta1">
+              <input type="radio" class="tipo-opcion" name="comidaRica" value="Si" id="opcion1-comida" checked>
+              <label>Sí</label>
+              <input type="radio" class="tipo-opcion2" name="comidaRica" value="No" id="opcion2-comida">
+              <label>No</label>
+            </div><br><br>
+          
+            <!-- ¿LE GUSTÓ LA ATENCION DE LOS EMPLEADOS? -->
+            <label>¿Le gustó la atención de los empleados?</label><br>
+            <div class="seccion-opciones-encuesta">
+              <input type="radio" class="tipo-opcion" name="atencionEmpleados" value="Si" id="opcion1-atencion" checked>
+              <label>Sí</label>
+              <input type="radio" class="tipo-opcion2" name="atencionEmpleados" value="No" id="opcion2-atencion">
+              <label>No</label>
+            </div><br><br>
+          
+            <!-- ¿LOS PRECIOS FUERON ACORDES? -->
+            <label>¿Los precios fueron acordes?</label><br>
+            <div class="seccion-opciones-encuesta">
+              <input type="radio" class="tipo-opcion" name="precioAcordes" value="Si" id="opcion1-precios" checked>
+              <label>Sí</label>
+              <input type="radio" class="tipo-opcion2" name="precioAcordes" value="No" id="opcion2-precios">
+              <label>No</label>
+            </div><br><br>
+          
+            <ion-button class="btn-enviar-encuesta" color="light" (click)="enviarEncuesta()">Enviar</ion-button>
+            
+          </div> 
+          <!---------------------------------------------------------->
 
-        <div *ngIf="mostrarResultadosEncuestas == true" id="graphs-resultados-encuestas">
-         
-            <!-- <canvas id="barChart" baseChart 
+          <ion-button class="btnOpcionesHome" color="light" *ngIf="pedidoDelConsumidorActual.estado == 'pago_pendiente'" (click)="switchearMostrarResultadosEncuestas()">Resultados de encuestas</ion-button>
+
+          <div *ngIf="mostrarResultadosEncuestas == true" id="graphs-resultados-encuestas">
+          
+              <!-- <canvas id="barChart" baseChart 
+                [datasets]="barChartData" 
+                [labels]="barChartLabels" 
+                [options]="barChartOptions" 
+                [legend]="barChartLegend"
+                [type]="barChartType">
+              </canvas>
+
+              <canvas id="barChart" baseChart 
               [datasets]="barChartData" 
               [labels]="barChartLabels" 
               [options]="barChartOptions" 
               [legend]="barChartLegend"
               [type]="barChartType">
-            </canvas>
+              </canvas> -->
 
-            <canvas id="barChart" baseChart 
-            [datasets]="barChartData" 
-            [labels]="barChartLabels" 
-            [options]="barChartOptions" 
-            [legend]="barChartLegend"
-            [type]="barChartType">
-            </canvas> -->
+          </div>
 
+          <ion-button class="btnOpcionesHome" color="light" (click)="pedirLaCuenta()" *ngIf="pedidoDelConsumidorActual.estado == 'pago_pendiente'">Pedir la cuenta</ion-button>
         </div>
 
-        <ion-button class="btnOpcionesHome" color="light" (click)="pedirLaCuenta()" *ngIf="pedidoDelConsumidorActual.estado == 'pago_pendiente'">Pedir la cuenta</ion-button>
-      </div>
-
-      <div class="wrapper" *ngIf="cargaDeConsumidorTerminada == false">
-        <span class="circle circle-1"></span>
-        <span class="circle circle-2"></span>
-        <span class="circle circle-3"></span>
-        <span class="circle circle-4"></span>
-        <span class="circle circle-5"></span>
-        <span class="circle circle-6"></span>
-        <span class="circle circle-7"></span>
-        <span class="circle circle-8"></span>
-      </div>
+        <div class="wrapper" *ngIf="cargaDeConsumidorTerminada == false">
+          <span class="circle circle-1"></span>
+          <span class="circle circle-2"></span>
+          <span class="circle circle-3"></span>
+          <span class="circle circle-4"></span>
+          <span class="circle circle-5"></span>
+          <span class="circle circle-6"></span>
+          <span class="circle circle-7"></span>
+          <span class="circle circle-8"></span>
+        </div>
 
    </ion-card>
   </ion-card>

@@ -75,7 +75,7 @@ export class PedidosEsperandoRespuestaMozoComponent implements OnInit {
 
   cobrarPedido(pedidoRecibido)
   {
-    pedidoRecibido.estado = 'pagado';
+    pedidoRecibido.estado = 'finalizado';
     this.srvFirebase.modificar_pedido(pedidoRecibido, pedidoRecibido.id);
 
     //Se libera la mesa y se cambia al estado final, el estado del consumidor se indica como retirado

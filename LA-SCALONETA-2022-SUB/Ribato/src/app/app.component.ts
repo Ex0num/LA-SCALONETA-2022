@@ -29,10 +29,8 @@ export class AppComponent {
     this.platform.ready().then(()=>
     {
       SplashScreen.hide();
-      this.router.navigateByUrl("splash");
-      //this.router.navigateByUrl("menu-productos");
-      //this.router.navigateByUrl("clientes-esperando-pedido");
-      //this.router.navigateByUrl("pedidos-pendientes-cocina");
+      this.router.navigateByUrl("login");
+      //this.router.navigateByUrl("cuenta-generada");
       
     })
   }

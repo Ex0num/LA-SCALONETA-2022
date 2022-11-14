@@ -36,9 +36,10 @@ import { FiltradorPedidosEnPreparacionCocinaPipe } from './Pipes/filtrador-pedid
 import { FiltradorPedidosEnPreparacionBarPipe } from './Pipes/filtrador-pedidos-en-preparacion-bar.pipe';
 import { TransformadorEstadoPedidoPipe } from './Pipes/transformador-estado-pedido.pipe';
 import { FiltradorPedidosEsperandoRespuestaPipe } from './Pipes/filtrador-pedidos-esperando-respuesta.pipe';
+import { CuentaGeneradaComponent } from './Vistas/cuenta-generada/cuenta-generada.component';
 
 @NgModule({
-  declarations: [AppComponent,LoginComponent, AprobarClienteComponent, FiltradorClientesPendientesPipe, ClientesEsperandoMesaComponent, FiltradorConsumidoresEsperandoPipe, FiltradorMesasDisponiblesPipe,ChatMozosComponent, FiltradorMensajariaPipe, MenuProductosComponent,PedidosEsperandoMozoComponent, FiltradorPedidosEsperandoPipe],
+  declarations: [AppComponent,LoginComponent, AprobarClienteComponent, FiltradorClientesPendientesPipe, ClientesEsperandoMesaComponent, FiltradorConsumidoresEsperandoPipe, FiltradorMesasDisponiblesPipe,ChatMozosComponent, FiltradorMensajariaPipe, MenuProductosComponent,PedidosEsperandoMozoComponent, FiltradorPedidosEsperandoPipe, CuentaGeneradaComponent],
   imports: [BrowserModule, IonicModule.forRoot(), 
     FormsModule,
     AppRoutingModule, 
