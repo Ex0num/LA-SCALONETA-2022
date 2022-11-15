@@ -5,6 +5,7 @@ import { FirebaseService } from 'src/app/Servicios/firebase.service';
 import { ScannerQrService } from 'src/app/Servicios/scanner-qr.service';
 import { SonidosPersonalizadosService } from 'src/app/Servicios/sonidos-personalizados.service';
 import { ToastMsgService } from 'src/app/Servicios/toast-msg.service';
+import { Chart } from 'chart.js/auto';
 
 @Component({
   selector: 'app-clientes-esperando-pedido',
@@ -63,6 +64,13 @@ export class ClientesEsperandoPedidoComponent implements OnInit {
         }
       });
     });
+
+     //Encuestas
+     this.srvFirebase.listar_encuestas().subscribe((data) => 
+     {
+       this.arrayEncuestasGraphs = data;
+       console.log(this.arrayEncuestasGraphs);
+     });
   }
 
   ngOnInit() 
@@ -94,6 +102,14 @@ export class ClientesEsperandoPedidoComponent implements OnInit {
       console.log(this.consumidorActual);
       console.log(this.pedidoDelConsumidorActual);
     }, 3800);
+
+     //------Encuestas graphs------- 
+     setTimeout(() => 
+     {
+       this.cargarDataGraphs();
+       console.log(this.arrayEncuestasGraphs);
+     }, 2000);
+     //-----------------------------
   }
 
   //#region ------------------------ Atributos ----------------------------
@@ -108,8 +124,7 @@ export class ClientesEsperandoPedidoComponent implements OnInit {
   cargaDeConsumidorTerminada = false;
   mesaEscaneadaSatisfactoriamente = false;
   
-  // ------------ Encuestas ----------------
-
+  // ------------ Encuestas form ----------------
   mostrarEncuesta = false;
   mostrarResultadosEncuestas = false;
 
@@ -208,8 +223,168 @@ export class ClientesEsperandoPedidoComponent implements OnInit {
       graficosEncuestas.style.animation = "slide-out-bottom 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;";
     }
   }
-
   // ------------------------------------------
+
+  //#region ------------ Encuestas GRAPHS -------------------
+  
+  public chart1:any;
+  public dataChart1:any[] = [];
+
+  public chart2:any;
+  public dataChart2:any[] = [];
+
+  public chart3:any;
+  public dataChart3:any[] = [];
+
+  arrayEncuestasGraphs:any = [];
+  mostrarResultadosEncuestasHomePedido = false;
+
+  //--------------------------------------------------------------------------------------------------
+  
+  switchearMostrarResultadosEncuestasHomePedido()
+  {
+    let graficosEncuestas = document.getElementById("graphs-resultados-encuestas-homePedido");
+
+    if (this.mostrarResultadosEncuestasHomePedido == false)
+    {
+      this.mostrarResultadosEncuestasHomePedido = true;
+      graficosEncuestas.removeAttribute("hidden");
+
+      //Asigno animacion de entrada a los graphs  
+      // graficosEncuestas.style.animation = "slide-in-elliptic-bottom-fwd 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;";
+    }
+    else
+    {
+      this.mostrarResultadosEncuestasHomePedido = false;
+      graficosEncuestas.setAttribute("hidden","true");
+
+      //Asigno animacion de salida a los graphs
+      // graficosEncuestas.style.animation = "slide-out-bottom 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;";
+    }
+  }
+
+  public cargarDataGraphs()
+  {
+    //Cargo la data de todos los charts que tenga
+    console.log("CARGANDO DATA GRAPHS");
+
+    //----------- Inicializacion de 0 y carga de datos. --------------
+    this.dataChart1[0] = 0;
+    this.dataChart1[1] = 0;
+
+    this.dataChart2[0] = 0;
+    this.dataChart2[1] = 0;
+
+    this.dataChart3[0] = 0;
+    this.dataChart3[1] = 0;
+
+    this.arrayEncuestasGraphs.forEach(encuesta => 
+      { 
+          if (encuesta.comidaRica == 'Si')
+          {
+            this.dataChart1[0]++;
+          }
+          else if (encuesta.comidaRica == 'No')
+          {
+            this.dataChart1[1]++;
+          }
+
+          if (encuesta.atencionEmpleados == 'Si')
+          {
+            this.dataChart2[0]++;
+          }
+          else if (encuesta.atencionEmpleados == 'No')
+          {
+            this.dataChart2[1]++;
+          }
+
+          if (encuesta.preciosAcordes == 'Si')
+          {
+            this.dataChart3[0]++;
+          }
+          else if (encuesta.preciosAcordes == 'No')
+          {
+            this.dataChart3[1]++;
+          }
+    });
+      //---------------------------------------------------------------
+
+    //Renderizacion y carga de los graficos ya con sus datos generados
+    this.cargarPieChart();
+    this.cargarBarChart();
+    this.cargarDognutChart();
+  }
+
+  public cargarPieChart()
+  {
+    const ctx7:any = 'pieChart-homePedido';
+
+    this.chart1 = new Chart(ctx7, 
+      {
+      type: 'pie',
+      data: {
+          labels: ['Si', 'No'],
+          datasets: [{
+              label: '¿Le gustó la comida?.',
+              data: this.dataChart1,
+              backgroundColor: [
+                'green',
+                'red',
+            ],
+            borderColor: 'gray'
+          }]
+      },
+      options: {scales: {y: {beginAtZero: true}},responsive: true, maintainAspectRatio: false}
+    });
+  }
+
+  public cargarBarChart()
+  {
+    const ctx8:any = 'barChart-homePedido';
+
+    this.chart2 = new Chart(ctx8, 
+      {
+      type: 'bar',
+      data: {
+          labels: ['Si', 'No'],
+          datasets: [{
+              label: '¿La atención de empleados fue buena?.',
+              data: this.dataChart2,
+              backgroundColor: [
+                'green',
+                'red',
+            ],
+            borderColor: 'gray'
+          }]
+      },
+      options: {scales: {y: {beginAtZero: true}},responsive: true, maintainAspectRatio: false}
+    });
+  }
+
+  public cargarDognutChart()
+  {
+    const ctx9:any = 'dognutChart-homePedido';
+
+    this.chart3 = new Chart(ctx9, 
+      {
+      type: 'doughnut',
+      data: {
+          labels: ['Si', 'No'],
+          datasets: [{
+              label: '¿Los precios fueron acordes?.',
+              data: this.dataChart3,
+              backgroundColor: [
+                'green',
+                'red',
+            ],
+            borderColor: 'gray'
+          }]
+      },
+      options: {scales: {y: {beginAtZero: true}},responsive: true, maintainAspectRatio: false}
+    });
+  }
+  //#endregion ----------------------------------------
+ 
 
   // ------------- Funcionamiento de sonido ----------------------//
   public switchearEstadoSonido()

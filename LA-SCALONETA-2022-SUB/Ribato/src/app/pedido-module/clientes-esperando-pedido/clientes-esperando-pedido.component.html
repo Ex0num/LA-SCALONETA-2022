@@ -69,30 +69,21 @@
           </div> 
           <!---------------------------------------------------------->
 
-          <ion-button class="btnOpcionesHome" color="light" *ngIf="pedidoDelConsumidorActual.estado == 'pago_pendiente'" (click)="switchearMostrarResultadosEncuestas()">Resultados de encuestas</ion-button>
-
-          <div *ngIf="mostrarResultadosEncuestas == true" id="graphs-resultados-encuestas">
-          
-              <!-- <canvas id="barChart" baseChart 
-                [datasets]="barChartData" 
-                [labels]="barChartLabels" 
-                [options]="barChartOptions" 
-                [legend]="barChartLegend"
-                [type]="barChartType">
-              </canvas>
-
-              <canvas id="barChart" baseChart 
-              [datasets]="barChartData" 
-              [labels]="barChartLabels" 
-              [options]="barChartOptions" 
-              [legend]="barChartLegend"
-              [type]="barChartType">
-              </canvas> -->
-
-          </div>
-
           <ion-button class="btnOpcionesHome" color="light" (click)="pedirLaCuenta()" *ngIf="pedidoDelConsumidorActual.estado == 'pago_pendiente'">Pedir la cuenta</ion-button>
         </div>
+
+        <ion-button class="btnOpcionesHome" color="light" *ngIf="mesaEscaneadaSatisfactoriamente == true && pedidoDelConsumidorActual.estado == 'pago_pendiente'" (click)="switchearMostrarResultadosEncuestasHomePedido()">Ver encuestas</ion-button>
+
+          <div id="graphs-resultados-encuestas-homePedido" hidden>
+            <canvas id="barChart-homePedido" class="graficos-encuesta">
+            </canvas>
+            <br>
+            <canvas id="pieChart-homePedido" class="graficos-encuesta">
+            </canvas>
+            <br>
+            <canvas id="dognutChart-homePedido" class="graficos-encuesta">
+            </canvas>
+          </div>
 
         <div class="wrapper" *ngIf="cargaDeConsumidorTerminada == false">
           <span class="circle circle-1"></span>

@@ -64,11 +64,15 @@ export class CuentaGeneradaComponent implements OnInit {
             this.srvAuth.pedidoEnviado = false;
             this.srvAuth.tipoUserloged = undefined;
             
-            this.srvToast.mostrarToast("top","Fuiste redirigido al menú de inicio. ¡Muchas gracias por habernos elegido!",4000,"success");
-            this.srvSonidos.reproducirSonido("cambio-pag", this.sonidoActivado);
-    
-            this.srvAuth.logOut(false);
-            this.router.navigateByUrl("login");
+            // if (this.flagNavigateLoging == true)
+            // {
+            //   this.flagNavigateLoging = false;
+            //   this.srvToast.mostrarToast("top","Fuiste redirigido al menú de inicio. ¡Muchas gracias por habernos elegido!",4000,"success");
+            //   this.srvSonidos.reproducirSonido("cambio-pag", this.sonidoActivado);
+      
+            //   this.srvAuth.logOut(false);
+            //   this.router.navigateByUrl("login");
+            // }
           }
         }
       });
@@ -121,6 +125,8 @@ export class CuentaGeneradaComponent implements OnInit {
     cargaDeProductosDelPedidoTerminada = false;
 
     qrPropinaEscaneadoSatisfactoriamente = false;
+
+    // flagNavigateLoging = true;
 
   //#endregion ------------------------ Atributos ----------------------------
 

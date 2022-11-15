@@ -43,6 +43,28 @@
     height: 100%;
 }
 
+// GRAPHS
+
+#graphs-resultados-encuestas-homeCliente
+{
+  width: 90%;
+  margin-left: 5%;
+  border: 1px solid gray;
+  border-radius: 4px;
+  max-height: 10rem;
+  overflow: auto;
+}
+
+.graficos-encuesta
+{
+  width: 50%;
+  height: 50%;
+  border-radius: 6px;
+  font-size: 17px;
+  padding: 1rem;
+  background-color: white;
+}
+
 
 // LISTA DE ESPERA
 

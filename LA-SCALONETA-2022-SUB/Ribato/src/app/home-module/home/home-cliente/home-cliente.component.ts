@@ -7,6 +7,7 @@ import { ScannerQrService } from 'src/app/Servicios/scanner-qr.service';
 import { SonidosPersonalizadosService } from 'src/app/Servicios/sonidos-personalizados.service';
 import { ToastMsgService } from 'src/app/Servicios/toast-msg.service';
 import { HomeComponent } from '../home.component';
+import { Chart } from 'chart.js/auto';
 
 @Component({
   selector: 'app-home-cliente',
@@ -44,9 +45,25 @@ export class HomeClienteComponent implements OnInit {
         }
       })
     });
+
+    //Encuestas
+    this.srvFirebase.listar_encuestas().subscribe((data) => 
+    {
+      this.arrayEncuestasGraphs = data;
+      console.log(this.arrayEncuestasGraphs);
+    });
   }
 
-  ngOnInit() {}
+  ngOnInit() 
+  {
+    //------Encuestas graphs------- 
+    setTimeout(() => 
+    {
+      this.cargarDataGraphs();
+      console.log(this.arrayEncuestasGraphs);
+    }, 2000);
+    //-----------------------------
+  }
 
   //#region ------------------------ Atributos ---------------------------------
   clienteEnListaDeEspera = false;
@@ -55,6 +72,170 @@ export class HomeClienteComponent implements OnInit {
   arrayConsumidores:any = [];
   consumidorActual:any;
   //#endregion -------------------------------------------------------------------
+
+    //#region ------------ Encuestas GRAPHS -------------------
+    
+    public chart1:any;
+    public dataChart1:any[] = [];
+
+    public chart2:any;
+    public dataChart2:any[] = [];
+
+    public chart3:any;
+    public dataChart3:any[] = [];
+
+    arrayEncuestasGraphs:any = [];
+    mostrarResultadosEncuestas = false;
+
+    //--------------------------------------------------------------------------------------------------
+    
+    switchearMostrarResultadosEncuestas()
+    {
+      let graficosEncuestas = document.getElementById("graphs-resultados-encuestas-homeCliente");
+      let loader = document.getElementById("loader-home-cliente");
+
+      if (this.mostrarResultadosEncuestas == false)
+      {
+        this.mostrarResultadosEncuestas = true;
+        graficosEncuestas.removeAttribute("hidden");
+
+        loader.setAttribute("hidden","true");
+        //Asigno animacion de entrada a los graphs  
+        // graficosEncuestas.style.animation = "slide-in-elliptic-bottom-fwd 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;";
+      }
+      else
+      {
+        this.mostrarResultadosEncuestas = false;
+        graficosEncuestas.setAttribute("hidden","true");
+
+        loader.removeAttribute("hidden");
+        //Asigno animacion de salida a los graphs
+        // graficosEncuestas.style.animation = "slide-out-bottom 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;";
+      }
+    }
+
+    public async cargarDataGraphs()
+    {
+      //Cargo la data de todos los charts que tenga
+      console.log("CARGANDO DATA GRAPHS");
+
+      //----------- Inicializacion de 0 y carga de datos. --------------
+      this.dataChart1[0] = 0;
+      this.dataChart1[1] = 0;
+
+      this.dataChart2[0] = 0;
+      this.dataChart2[1] = 0;
+
+      this.dataChart3[0] = 0;
+      this.dataChart3[1] = 0;
+
+      this.arrayEncuestasGraphs.forEach(encuesta => 
+        { 
+            if (encuesta.comidaRica == 'Si')
+            {
+              this.dataChart1[0]++;
+            }
+            else if (encuesta.comidaRica == 'No')
+            {
+              this.dataChart1[1]++;
+            }
+
+            if (encuesta.atencionEmpleados == 'Si')
+            {
+              this.dataChart2[0]++;
+            }
+            else if (encuesta.atencionEmpleados == 'No')
+            {
+              this.dataChart2[1]++;
+            }
+
+            if (encuesta.preciosAcordes == 'Si')
+            {
+              this.dataChart3[0]++;
+            }
+            else if (encuesta.preciosAcordes == 'No')
+            {
+              this.dataChart3[1]++;
+            }
+      });
+       //---------------------------------------------------------------
+
+      //Renderizacion y carga de los graficos ya con sus datos generados
+      this.cargarPieChart();
+      this.cargarBarChart();
+      this.cargarDognutChart();
+    }
+
+    public cargarPieChart()
+    {
+      const ctx1:any = 'pieChart-homeCliente';
+
+      this.chart1 = new Chart(ctx1, 
+        {
+        type: 'pie',
+        data: {
+            labels: ['Si', 'No'],
+            datasets: [{
+                label: '¿Le gustó la comida?.',
+                data: this.dataChart1,
+                backgroundColor: [
+                  'green',
+                  'red',
+              ],
+              borderColor: 'gray'
+            }]
+        },
+        options: {scales: {y: {beginAtZero: true}},responsive: true, maintainAspectRatio: false}
+      });
+    }
+
+    public cargarBarChart()
+    {
+      const ctx2:any = 'barChart-homeCliente';
+
+      this.chart2 = new Chart(ctx2, 
+        {
+        type: 'bar',
+        data: {
+            labels: ['Si', 'No'],
+            datasets: [{
+                label: '¿La atención de empleados fue buena?.',
+                data: this.dataChart2,
+                backgroundColor: [
+                  'green',
+                  'red',
+              ],
+              borderColor: 'gray'
+            }]
+        },
+        options: {scales: {y: {beginAtZero: true}},responsive: true, maintainAspectRatio: false}
+      });
+    }
+
+    public cargarDognutChart()
+    {
+      const ctx3:any = 'dognutChart-homeCliente';
+
+      this.chart3 = new Chart(ctx3, 
+        {
+        type: 'doughnut',
+        data: {
+            labels: ['Si', 'No'],
+            datasets: [{
+                label: '¿Los precios fueron acordes?.',
+                data: this.dataChart3,
+                backgroundColor: [
+                  'green',
+                  'red',
+              ],
+              borderColor: 'gray'
+            }]
+        },
+        options: {scales: {y: {beginAtZero: true}},responsive: true, maintainAspectRatio: false}
+      });
+    }
+  
+  //#endregion ----------------------------------------
 
   //------------------ Funciones generales ---------------------
 

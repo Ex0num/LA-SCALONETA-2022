@@ -6,14 +6,27 @@
   <button (click)="testing()">testing</button>
 </div>
 
-<div *ngIf="clienteEnListaDeEspera == true && consumidorActual.estado == 'esperando_mesa'">
-  <ion-button class="btnOpcionesHome" color="light">Ver encuestas</ion-button> 
+<ion-button class="btnOpcionesHome" color="light" (click)="switchearMostrarResultadosEncuestas()" *ngIf="clienteEnListaDeEspera == true">Ver encuestas</ion-button>
+
+<div id="graphs-resultados-encuestas-homeCliente" hidden>
+  <canvas id="barChart-homeCliente" class="graficos-encuesta">
+  </canvas>
+  <br>
+  <canvas id="pieChart-homeCliente" class="graficos-encuesta">
+  </canvas>
+  <br>
+  <canvas id="dognutChart-homeCliente" class="graficos-encuesta">
+  </canvas>
+</div>
+
+<div *ngIf="clienteEnListaDeEspera == true && consumidorActual.estado == 'esperando_mesa'" id="contenedor-main-homeCliente">
+
   <div class="mensaje-cliente-esperando">
     Usted fue añadido correctamente a la lista de espera para ingresar al local. <br>
     Aguarde, nuestro metre le asignará una mesa lo antes posible.
   </div>
 
-  <div class="wrapper" *ngIf="clienteEnListaDeEspera == true && consumidorActual.estado == 'esperando_mesa'">
+  <div class="wrapper" *ngIf="clienteEnListaDeEspera == true && consumidorActual.estado == 'esperando_mesa'" id="loader-home-cliente">
     <span class="circle circle-1"></span>
     <span class="circle circle-2"></span>
     <span class="circle circle-3"></span>

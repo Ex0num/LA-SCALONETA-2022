@@ -14,14 +14,25 @@
               <button class="btnOpcionesHome" (click)="testing()">testing</button>
             </div>
           </div>
-
-        </div>
+      </div>
 
       <div *ngIf="mesaEscaneadaSatisfactoriamente == true" id="seccion-mesa-escaneada">
         <ion-button class="btnOpcionesHome" color="light" (click)="consultarMozo()">Consultar</ion-button>
         <ion-button  class="btnOpcionesHome" color="light" (click)="menu()">Menú</ion-button >
         <ion-button  class="btnOpcionesHome" color="light" (click)="realizarPedido()">Realizar pedido</ion-button>
-        <ion-button  class="btnOpcionesHome" color="light">Ver encuestas</ion-button>
+      </div>
+
+      <ion-button class="btnOpcionesHome" color="light" (click)="switchearMostrarResultadosEncuestasHomeMesa()" *ngIf="mesaEscaneadaSatisfactoriamente == true">Ver encuestas</ion-button>
+
+      <div id="graphs-resultados-encuestas-homeMesa" hidden>
+        <canvas id="barChart-homeMesa" class="graficos-encuesta">
+        </canvas>
+        <br>
+        <canvas id="pieChart-homeMesa" class="graficos-encuesta">
+        </canvas>
+        <br>
+        <canvas id="dognutChart-homeMesa" class="graficos-encuesta">
+        </canvas>
       </div>
       
       <div class="wrapper" *ngIf="cargaDeConsumidorTerminada == false">
