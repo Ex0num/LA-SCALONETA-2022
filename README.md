@@ -163,8 +163,8 @@ Los QRs de las mesas ya fueron adjuntos al readme. (Estos QRS son mas simples de
 <h3>Push notifications</h3>
 
 <strong> Push notifications de distinto tipo.</strong><br>
-<img src="expositor/push-notif-p1.PNG" width="360px" height="740px">
-<img src="expositor/push-notif-p2.PNG" width="360px" height="740px"><br>
+<img src="expositor/push-notif-p1.PNG" width="360px" height="360px">
+<img src="expositor/push-notif-p2.PNG" width="360px" height="360px"><br>
 
 ***
 <h3>Cuenta</h3>
@@ -187,9 +187,19 @@ Los QRs de las mesas ya fueron adjuntos al readme. (Estos QRS son mas simples de
 <h3>Pantallas de interfaz (menú visual, encuestas, menú interactivo/carrito)</h3>
 
 <strong> Pantalla de pedidos esperando un mozo y esperando la respuesta del mozo.</strong><br>
-<img src="expositor/encuestas.PNG" width="360px" height="740px">
+<img src="expositor/encuestas.PNG" width="360px" height="360px">
 <img src="expositor/menu.PNG" width="360px" height="740px"><br>
 <img src="expositor/realizar-pedido.PNG" width="360px" height="740px"><br>
+
+***
+<h3>QRs - Propinas</h3>
+
+<h3>Códigos QRs de todas las propinas</h3>
+<img src="expositor/qr-servicio-excelente.PNG" width="360px" height="360px">
+<img src="expositor/qr-servicio-muybueno.PNG" width="360px" height="360px"><br>
+<img src="expositor/qr-servicio-bueno.PNG" width="360px" height="360px">
+<img src="expositor/qr-servicio-regular.PNG" width="360px" height="360px"><br>
+<img src="expositor/qr-servicio-malo.PNG" width="360px" height="360px"><br>
 
 ***
 <h3 id="comandos">👨🏻‍💻 Comandos utilizados</h3>
