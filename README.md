@@ -58,6 +58,25 @@ Todas los módulos de alta ya fueron finalizados. Fotos adjuntas. <br>
 Actualmente en el recorrido número del 1 al 13. El proyecto se encuentra en el 6/13. <br> 
 Los QRs de las mesas ya fueron adjuntos al readme. (Estos QRS son mas simples debido a que son generados 'on-live' en el mismo alta de la mesa. - Alpha</label> <br>
 
+<strong> 13/11/22 </strong> <br>
+<label>- Se creó y diseñó el <strong>Menú</strong> - Alpha</label> <br>
+<label>- Se creó y diseñó la sección <strong>Realizar pedido</strong> - Alpha</label> <br>
+
+<strong> 14/11/22 </strong> <br>
+<label>- Se creó y diseñó la sección <strong>Pedidos esperando mozo</strong> - Alpha</label> <br>
+
+<strong> 14/11/22 </strong> <br>
+<label>- Se creó y diseñó la sección <strong>Pedidos del mozo esperando respuesta</strong> - Alpha</label> <br>
+<label>- Se creó y diseñó el <strong>Home del pedido</strong> - Alpha</label> <br>
+
+<strong> 15/11/22 </strong> <br>
+<label>- Se creó y diseñó el  <strong>Home del bartender/cocinero</strong> - Alpha</label> <br>
+<label>- Se creó y diseñó el de <strong>Pedidos del mozo esperando respuesta</strong> - Alpha</label> <br>
+
+<strong> 16/11/22 </strong> <br>
+<label>- Se creó y diseñó la sección de <strong>Propina QR-scan y generación de cuenta</strong> - Alpha</label> <br>
+<label>- Se creó y diseñó la sección de <strong>Propina QR-scan y generación de cuenta</strong> - Alpha</label> <br>
+
 ***
 <h3 id="visualizacionProyecto">📲 Visualización del proyecto</h3><br>
 
@@ -73,7 +92,6 @@ Los QRs de las mesas ya fueron adjuntos al readme. (Estos QRS son mas simples de
 <strong> Pantalla de login y de registro </strong><br>
 <img src="expositor/menu-login.PNG" width="360px" height="740px">
 <img src="expositor/menu-registro.PNG" width="360px" height="740px"><br>
-
 
 ***
 <h3>Pantallas administrativas y de recorrido</h3>
@@ -132,6 +150,7 @@ Los QRs de las mesas ya fueron adjuntos al readme. (Estos QRS son mas simples de
 <strong> Pantalla de home bartender y cocinero.</strong><br>
 <img src="expositor/home-bartender.PNG" width="360px" height="740px">
 <img src="expositor/home-cocinero.PNG" width="360px" height="740px"><br>
+<img src="expositor/cocina-bar.PNG" width="360px" height="740px"><br>
 
 ***
 <h3>Mail-sending</h3>
@@ -139,6 +158,38 @@ Los QRs de las mesas ya fueron adjuntos al readme. (Estos QRS son mas simples de
 <strong> Pantalla de mail (cliente aceptado y rechazado).</strong><br>
 <img src="expositor/cuenta-aceptada.PNG" width="900px" height="340px"><br>
 <img src="expositor/cuenta-rechazada.PNG" width="900px" height="340px"><br>
+
+***
+<h3>Push notifications</h3>
+
+<strong> Push notifications de distinto tipo.</strong><br>
+<img src="expositor/push-notif-p1.PNG" width="360px" height="740px">
+<img src="expositor/push-notif-p2.PNG" width="360px" height="740px"><br>
+
+***
+<h3>Cuenta</h3>
+
+<strong> Pantalla de propina y cuenta final.</strong><br>
+<img src="expositor/cuenta-generada.PNG" width="360px" height="740px">
+<img src="expositor/ingreso-propina.PNG" width="360px" height="740px"><br>
+
+***
+<h3>Pedidos (gestión)</h3>
+
+<strong> Pantalla de pedidos esperando un mozo y esperando la respuesta del mozo. Home pedido y estado del pedido</strong><br>
+<img src="expositor/pedidos-esperando-respuesta-mozo.PNG" width="360px" height="740px">
+<img src="expositor/pedidos-esperando-respuesta-mozo-p2.PNG" width="360px" height="740px"><br>
+<img src="expositor/pedidos-esperando-mozo.PNG" width="360px" height="740px">
+<img src="expositor/home-pedido.PNG" width="360px" height="740px"><br>
+<img src="expositor/estado-pedido.PNG" width="360px" height="740px"><br>
+
+***
+<h3>Pantallas de interfaz (menú visual, encuestas, menú interactivo/carrito)</h3>
+
+<strong> Pantalla de pedidos esperando un mozo y esperando la respuesta del mozo.</strong><br>
+<img src="expositor/encuestas.PNG" width="360px" height="740px">
+<img src="expositor/menu.PNG" width="360px" height="740px"><br>
+<img src="expositor/realizar-pedido.PNG" width="360px" height="740px"><br>
 
 ***
 <h3 id="comandos">👨🏻‍💻 Comandos utilizados</h3>
