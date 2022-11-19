@@ -195,11 +195,11 @@ Los QRs de las mesas ya fueron adjuntos al readme. (Estos QRS son mas simples de
 <h3>QRs - Propinas</h3>
 
 <h3>Códigos QRs de todas las propinas</h3>
-<img src="expositor/qr-servicio-excelente.png" width="360px" height="360px">
-<img src="expositor/qr-servicio-muybueno.png" width="360px" height="360px"><br>
-<img src="expositor/qr-servicio-bueno.png" width="360px" height="360px">
-<img src="expositor/qr-servicio-regular.png" width="360px" height="360px"><br>
-<img src="expositor/qr-servicio-malo.png" width="360px" height="360px"><br>
+<img src="expositor/qr-servicio-excelente.png" width="250px" height="250px">
+<img src="expositor/qr-servicio-muybueno.png" width="250px" height="250px"><br>
+<img src="expositor/qr-servicio-bueno.png" width="250px" height="250px">
+<img src="expositor/qr-servicio-regular.png" width="250px" height="250px"><br>
+<img src="expositor/qr-servicio-malo.png" width="250px" height="250px"><br>
 
 ***
 <h3 id="comandos">👨🏻‍💻 Comandos utilizados</h3>
