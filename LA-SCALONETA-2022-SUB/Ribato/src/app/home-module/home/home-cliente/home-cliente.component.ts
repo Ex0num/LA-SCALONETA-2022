@@ -8,6 +8,7 @@ import { SonidosPersonalizadosService } from 'src/app/Servicios/sonidos-personal
 import { ToastMsgService } from 'src/app/Servicios/toast-msg.service';
 import { HomeComponent } from '../home.component';
 import { Chart } from 'chart.js/auto';
+import { PushNotificationsService } from 'src/app/Servicios/push-notifications.service';
 
 @Component({
   selector: 'app-home-cliente',
@@ -22,7 +23,8 @@ export class HomeClienteComponent implements OnInit {
     public srvSonidos:SonidosPersonalizadosService,
     public srvFirebase:FirebaseService,
     public srvAuth:AuthService,
-    public router:Router
+    public router:Router,
+    public srvPushNotif:PushNotificationsService
   ) 
   {
     //Me traigo los consumidores
@@ -254,9 +256,27 @@ export class HomeClienteComponent implements OnInit {
         this.srvToast.mostrarToast("bottom","El ingreso al local fue satisfactorio. Espere a ser asignado una mesa.",2500,"success");
         this.srvSonidos.reproducirSonido("bubble", HomeComponent.prototype.sonidoActivado);
 
-        //Aca envio el push notification al METRE. Hay un nuevo cliente en la lista de espera
-        // TO DO
-        //----------------------------
+        // ------- Aca envio el push notification -------------
+        //
+        // VA PARA EL CELULAR METRE (NADIA)
+        // 
+        this.srvPushNotif
+        .sendPushNotification({
+          // eslint-disable-next-line @typescript-eslint/naming-convention
+          registration_ids: [
+            // eslint-disable-next-line max-len
+            'dlsUeiVMQEqe_HbeaoFYqT:APA91bFM3TjHo8VicJXsefO-Hq8omdkcKSkSE-ftS3eubQ3mUM4h6qDG3IfsS02PS938QMMEGUOuX05Oitie0xucJP6ko7ktRYbRRn50o1z2Rs7_k0cqOaPGHzpJi6q0P0FAAL08PnZD',
+          ],
+          notification: {
+            title: 'Asignacion mesa',
+            body: 'Hay un cliente esperando a ser asignado a una mesa.',
+          },
+        })
+        .subscribe((data) => {
+          console.log(data);
+        });
+
+        //---------------------------------------------------------
         
         //Si la sesion es anonima el alta del consumidor se hace con el nombre del anonimo
         if (this.srvAuth.nombreDelAnonimo != undefined)
@@ -328,10 +348,6 @@ export class HomeClienteComponent implements OnInit {
   testing()
   {
     this.srvToast.mostrarToast("bottom","El ingreso al local fue satisfactorio. Espere a ser asignado una mesa.",2500,"success");
-
-    //Aca envio el push notification al METRE. Hay un nuevo cliente en la lista de espera
-    // TO DO
-    //----------------------------
     
     //Si la sesion es anonima el alta del consumidor se hace con el nombre del anonimo
     if (this.srvAuth.nombreDelAnonimo != undefined)
@@ -340,6 +356,29 @@ export class HomeClienteComponent implements OnInit {
       console.log(this.srvAuth.nombreDelAnonimo);
 
       this.srvFirebase.alta_consumidor(this.srvAuth.nombreDelAnonimo);   
+
+      // ------- Aca envio el push notification -------------
+      //
+      // VA PARA EL CELULAR METRE (NADIA)
+      // 
+      this.srvPushNotif
+      .sendPushNotification({
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        registration_ids: [
+          // eslint-disable-next-line max-len
+          'dlsUeiVMQEqe_HbeaoFYqT:APA91bFM3TjHo8VicJXsefO-Hq8omdkcKSkSE-ftS3eubQ3mUM4h6qDG3IfsS02PS938QMMEGUOuX05Oitie0xucJP6ko7ktRYbRRn50o1z2Rs7_k0cqOaPGHzpJi6q0P0FAAL08PnZD',
+        ],
+        notification: {
+          title: 'Asignacion mesa',
+          body: 'Hay un cliente esperando a ser asignado a una mesa.',
+        },
+      })
+      .subscribe((data) => {
+        console.log(data);
+      });
+
+      //---------------------------------------------------------
+
 
       setTimeout(() => 
       {

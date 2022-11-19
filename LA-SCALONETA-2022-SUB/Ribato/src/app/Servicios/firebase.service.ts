@@ -27,6 +27,9 @@ export class FirebaseService
     productosCollectionReference : any;
     pedidosCollectionReference : any;
     encuestasCollectionReference : any;
+
+    // Push token
+    usuariosCollectionReference : any;
     
   //#endregion ---------------------------------------------------------------------------
   
@@ -44,7 +47,24 @@ export class FirebaseService
     this.productosCollectionReference = collection(this.Firestore, 'productos');
     this.pedidosCollectionReference = collection(this.Firestore, 'pedidos');
     this.encuestasCollectionReference = collection(this.Firestore, 'encuestas');
+
+    // Esto es para saber el push-token 
+    this.usuariosCollectionReference = collection(this.Firestore, 'usuarios');
   }
+
+  //#region ---------------------- USUARIOS (SOLO PARA TOKEN DE PUSH-NOTIF) ---------------------------//
+  public alta_usuario(usuario:any) 
+  {
+    return  addDoc(this.usuariosCollectionReference, usuario);
+  }
+
+  public listar_usuarios():Observable<any[]>
+  {
+    return collectionData(this.usuariosCollectionReference,{idField: 'id'}) as Observable<any[]>;
+  }
+
+  //#endregion ---------------------- USUARIOS (SOLO PARA TOKEN DE PUSH-NOTIF) ---------------------------//
+
 
   //#region ---------------------- CLIENTES NORMALES ---------------------------//
 
@@ -77,6 +97,10 @@ export class FirebaseService
       getDownloadURL(referenciaPathStorage).then((url)=>
       {
         clienteEstructurado.foto = url;
+
+        // Push notif - token
+        this.alta_usuario(clienteEstructurado);
+
         return  addDoc(this.clientesCollectionReference, clienteEstructurado);
 
       }).catch((error)=>
@@ -170,6 +194,10 @@ export class FirebaseService
       getDownloadURL(referenciaPathStorage).then((url)=>
       {
         clienteAnonimoEstructurado.foto = url;
+
+        // Push notif - token
+        // this.alta_usuario(clienteAnonimoEstructurado);
+
         return  addDoc(this.anonimosCollectionReference, clienteAnonimoEstructurado);
 
       }).catch((error)=>
@@ -232,6 +260,10 @@ export class FirebaseService
       getDownloadURL(referenciaPathStorage).then((url)=>
       {
         autoridadEstructurada.foto = url;
+
+        // Push notif - token
+        this.alta_usuario(autoridadEstructurada);
+
         return  addDoc(this.autoridadesCollectionReference, autoridadEstructurada);
 
       }).catch((error)=>
@@ -389,6 +421,10 @@ export class FirebaseService
       getDownloadURL(referenciaPathStorage).then((url)=>
       {
         empleadoEstructurado.foto = url;
+
+        // Push notif - token
+        this.alta_usuario(empleadoEstructurado);
+
         return  addDoc(this.empleadosCollectionReference, empleadoEstructurado);
 
       }).catch((error)=>

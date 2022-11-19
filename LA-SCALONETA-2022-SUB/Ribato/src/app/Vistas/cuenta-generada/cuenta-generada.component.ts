@@ -252,7 +252,7 @@ export class CuentaGeneradaComponent implements OnInit {
       //Detengo el scanner.
       this.srvLectorQR.stopScan();
 
-      if (contenidoLeidoSpliteado[1] != '1' && contenidoLeidoSpliteado[1] != '2' && contenidoLeidoSpliteado[1] != '3' && contenidoLeidoSpliteado[1] != '4' && contenidoLeidoSpliteado[1] != '5')
+      if (contenidoLeidoSpliteado[1] == "1" || contenidoLeidoSpliteado[1] == "2" || contenidoLeidoSpliteado[1] == "3" || contenidoLeidoSpliteado[1] == "4" || contenidoLeidoSpliteado[1] == "5")
       {
 
         //Defino el porcentaje de descuento en cuestion de lo leido

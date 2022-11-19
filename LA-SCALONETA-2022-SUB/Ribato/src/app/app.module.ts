@@ -33,12 +33,14 @@ import { MenuProductosComponent } from './Vistas/menu-productos/menu-productos.c
 import { PedidosEsperandoMozoComponent } from './Vistas/pedidos-esperando-mozo/pedidos-esperando-mozo.component';
 import { FiltradorPedidosEsperandoPipe } from './Pipes/filtrador-pedidos-esperando.pipe';
 import { CuentaGeneradaComponent } from './Vistas/cuenta-generada/cuenta-generada.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent,LoginComponent, AprobarClienteComponent, FiltradorClientesPendientesPipe, ClientesEsperandoMesaComponent, FiltradorConsumidoresEsperandoPipe, FiltradorMesasDisponiblesPipe,ChatMozosComponent, FiltradorMensajariaPipe, MenuProductosComponent,PedidosEsperandoMozoComponent, FiltradorPedidosEsperandoPipe, CuentaGeneradaComponent],
   imports: [BrowserModule, IonicModule.forRoot(), 
     FormsModule,
-    AppRoutingModule, 
+    AppRoutingModule,
+    HttpClientModule, 
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Servicios/auth.service';
 import { FirebaseService } from 'src/app/Servicios/firebase.service';
+import { PushNotificationsService } from 'src/app/Servicios/push-notifications.service';
 import { SonidosPersonalizadosService } from 'src/app/Servicios/sonidos-personalizados.service';
 import { ToastMsgService } from 'src/app/Servicios/toast-msg.service';
 
@@ -17,7 +18,7 @@ export class RealizarPedidoComponent implements OnInit {
     public srvAuth:AuthService,
     public srvToast:ToastMsgService, 
     public srvSonidos:SonidosPersonalizadosService,
-    public router:Router
+    public router:Router,
   ) 
   { 
     this.srvFirebase.listar_productos().subscribe((data)=>
@@ -206,8 +207,10 @@ export class RealizarPedidoComponent implements OnInit {
           consumidorActual.estado = 'esperando_pedido';
           this.srvFirebase.modificar_consumidor(consumidorActual, consumidorActual.id);
 
-          this.srvFirebase.alta_pedido(this.srvAuth.userLogedData.email, carritoBarNombres, carritoCocinaNombres, consumidorActual.mesaAsignada); 
+          this.srvFirebase.alta_pedido(this.srvAuth.userLogedData.email, carritoBarNombres, carritoCocinaNombres, consumidorActual.mesaAsignada);
         }
+
+        //---------------------------------------------------------
 
         //Me lo guardo en srvAuth por si mas adelante necesito saber de vuelta la informacion del consumidor
         //this.srvAuth.dataConsumidor = consumidorActual;

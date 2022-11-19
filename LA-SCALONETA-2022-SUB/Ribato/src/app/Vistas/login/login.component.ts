@@ -212,15 +212,33 @@ export class LoginComponent implements OnInit {
 
         break;
       }
-      case "Cliente":
+      case "Cliente pendiente":
       {
-        console.log("Logeo rapido de cliente");
+        console.log("Logeo rapido de cliente pendiente");
 
-        txtBoxMail.setAttribute("value","cliente@gmail.com");
+        txtBoxMail.setAttribute("value","clientependiente@gmail.com");
         txtBoxPassword.setAttribute("value","123123");
 
         break;
       }
+      case "Cliente aceptado":
+      {
+        console.log("Logeo rapido de cliente aceptado");
+
+        txtBoxMail.setAttribute("value","clienteaceptado@gmail.com");
+        txtBoxPassword.setAttribute("value","123123");
+
+        break;
+      }
+      case "Cliente rechazado":
+        {
+          console.log("Logeo rapido de cliente rechazado");
+  
+          txtBoxMail.setAttribute("value","clienterechazado@gmail.com");
+          txtBoxPassword.setAttribute("value","123123");
+  
+          break;
+        }
     }
   }
 

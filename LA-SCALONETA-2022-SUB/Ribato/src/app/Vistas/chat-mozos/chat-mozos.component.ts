@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/Servicios/auth.service';
 import { FirebaseService } from 'src/app/Servicios/firebase.service';
+import { PushNotificationsService } from 'src/app/Servicios/push-notifications.service';
 import { SonidosPersonalizadosService } from 'src/app/Servicios/sonidos-personalizados.service';
 import { ToastMsgService } from 'src/app/Servicios/toast-msg.service';
 
@@ -16,6 +17,7 @@ export class ChatMozosComponent implements OnInit {
     public srvAuth:AuthService,
     public srvToast:ToastMsgService, 
     public srvSonidos:SonidosPersonalizadosService,
+    public srvPushNotif:PushNotificationsService
   ) 
   {
     let observableMensajes = this.srvFirebase.listar_mensajes();
@@ -61,6 +63,28 @@ export class ChatMozosComponent implements OnInit {
         let numeroMesaAnonimo = this.obtenerNumeroMesaByNombreConsumidor(this.srvAuth.nombreDelAnonimo);
         this.srvFirebase.alta_mensaje(this.mensajeRedactado,this.srvAuth.nombreDelAnonimo,'anonimo', numeroMesaAnonimo);
         
+        // ------- Aca envio el push notification -------------
+        //
+        // VA PARA EL CELULAR MOZO (NADIA)
+        // 
+        this.srvPushNotif
+        .sendPushNotification({
+          // eslint-disable-next-line @typescript-eslint/naming-convention
+          registration_ids: [
+            // eslint-disable-next-line max-len
+            'dlsUeiVMQEqe_HbeaoFYqT:APA91bFM3TjHo8VicJXsefO-Hq8omdkcKSkSE-ftS3eubQ3mUM4h6qDG3IfsS02PS938QMMEGUOuX05Oitie0xucJP6ko7ktRYbRRn50o1z2Rs7_k0cqOaPGHzpJi6q0P0FAAL08PnZD',
+          ],
+          notification: {
+            title: 'Consulta rapida',
+            body: 'Hay un nuevo mensaje en el chat.',
+          },
+        })
+        .subscribe((data) => {
+          console.log(data);
+        });
+
+        //---------------------------------------------------------
+
         //Limpio el input
         this.mensajeRedactado = "";
       }
@@ -74,6 +98,37 @@ export class ChatMozosComponent implements OnInit {
           //Limpio el input
           this.mensajeRedactado = "";
         }
+        else //El mensaje es de un cliente registrado
+        {
+          //Es un mensaje de un anonimo
+          let numeroMesaClienteLogeado = this.obtenerNumeroMesaByNombreConsumidor(this.srvAuth.dataUsuarioLogeado.correo);
+          this.srvFirebase.alta_mensaje(this.mensajeRedactado,this.srvAuth.dataUsuarioLogeado.correo,'anonimo', numeroMesaClienteLogeado);
+          
+          // ------- Aca envio el push notification -------------
+          //
+          // VA PARA EL CELULAR MOZO (NADIA)
+          // 
+          this.srvPushNotif
+          .sendPushNotification({
+            // eslint-disable-next-line @typescript-eslint/naming-convention
+            registration_ids: [
+              // eslint-disable-next-line max-len
+              'dlsUeiVMQEqe_HbeaoFYqT:APA91bFM3TjHo8VicJXsefO-Hq8omdkcKSkSE-ftS3eubQ3mUM4h6qDG3IfsS02PS938QMMEGUOuX05Oitie0xucJP6ko7ktRYbRRn50o1z2Rs7_k0cqOaPGHzpJi6q0P0FAAL08PnZD',
+            ],
+            notification: {
+              title: 'Consulta rapida',
+              body: 'Hay un nuevo mensaje en el chat.',
+            },
+          })
+          .subscribe((data) => {
+            console.log(data);
+          });
+
+          //---------------------------------------------------------
+          
+          //Limpio el input
+          this.mensajeRedactado = "";
+        } 
       }
     }
     else

@@ -29,6 +29,8 @@
     "@capacitor/core": "4.4.0",
     "@capacitor/haptics": "4.0.1",
     "@capacitor/keyboard": "4.0.1",
+    "@capacitor/local-notifications": "^4.1.2",
+    "@capacitor/push-notifications": "^4.1.1",
     "@capacitor/splash-screen": "^4.1.1",
     "@capacitor/status-bar": "4.0.1",
     "@emailjs/browser": "^3.9.1",

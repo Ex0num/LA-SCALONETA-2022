@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Servicios/auth.service';
 import { FirebaseService } from 'src/app/Servicios/firebase.service';
+import { PushNotificationsService } from 'src/app/Servicios/push-notifications.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,8 @@ export class HomeComponent implements OnInit
   constructor(
     public srvAuth:AuthService, 
     public srvFirebase:FirebaseService,
-    public router:Router) 
+    public router:Router,
+    public srvPushNotif:PushNotificationsService) 
     {
       let observableAutoridades = this.srvFirebase.listar_autoridades();
       observableAutoridades.subscribe( (data) => { this.arrayAutoridades = data});
@@ -24,6 +26,37 @@ export class HomeComponent implements OnInit
 
       let observableClientes = this.srvFirebase.listar_clientesNormales();
       observableClientes.subscribe( (data) => { this.arrayClientes = data});
+
+     this.srvAuth.afAuth.user.subscribe( (userData) =>
+     {
+        if (userData.email != undefined)
+        {
+          this.srvPushNotif.getUser(); //Hago la superposicion de TOKEN ya que es un usuario con mail. Si es anonimo, no
+        }
+     });
+
+    //  // ------- Aca envio el push notification -------------
+    //     //
+    //     // VA PARA EL CELULAR METRE
+    //     // 
+    //     this.srvPushNotif
+    //     .sendPushNotification({
+    //       // eslint-disable-next-line @typescript-eslint/naming-convention
+    //       registration_ids: [
+    //         // eslint-disable-next-line max-len
+    //         'fmrRqEWjTYGym_FbSRO-dM:APA91bHh3UOdRYH2OOrP__mmQVAL9oykFH0LVSkHerdfnq4NLdr67aznT13jUo3kh-8d4MjLh_D8FsxeTseyPZJT5mH14NtovUXuahS78ZVjGeQ86Q-QgoVBmj3Tr6ZJpjkri1KP3ccU',
+    //       ],
+    //       notification: {
+    //         title: 'HUBO LOGEO ',
+    //         body: 'Hubo un logeo.',
+    //       },
+    //     })
+    //     .subscribe((data) => {
+    //       console.log(data);
+    //     });
+
+    //     //---------------------------------------------------------
+      
     }
 
   //------------------------ Atributos ---------------------------- //

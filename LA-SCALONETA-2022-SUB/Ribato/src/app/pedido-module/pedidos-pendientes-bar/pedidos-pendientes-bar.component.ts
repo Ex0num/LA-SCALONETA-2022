@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Servicios/auth.service';
 import { FirebaseService } from 'src/app/Servicios/firebase.service';
+import { PushNotificationsService } from 'src/app/Servicios/push-notifications.service';
 import { SonidosPersonalizadosService } from 'src/app/Servicios/sonidos-personalizados.service';
 import { ToastMsgService } from 'src/app/Servicios/toast-msg.service';
 
@@ -16,7 +17,8 @@ export class PedidosPendientesBarComponent implements OnInit {
     public srvFirebase:FirebaseService,
     public srvToast:ToastMsgService, 
     public srvSonidos:SonidosPersonalizadosService,
-    public srvAuth:AuthService) 
+    public srvAuth:AuthService,
+    public srvPushNotif:PushNotificationsService) 
   {
     this.srvFirebase.listar_pedidos().subscribe((data)=>
     {
@@ -52,6 +54,28 @@ export class PedidosPendientesBarComponent implements OnInit {
     if (pedidoTerminado.estado_cocina_finalizado == true)
     {
       pedidoTerminado.estado = 'preparado';
+
+      // ------- Aca envio el push notification -------------
+      //
+      // VA PARA EL CELULAR MOZO (NADIA)
+      // 
+      this.srvPushNotif
+      .sendPushNotification({
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        registration_ids: [
+          // eslint-disable-next-line max-len
+          'dlsUeiVMQEqe_HbeaoFYqT:APA91bFM3TjHo8VicJXsefO-Hq8omdkcKSkSE-ftS3eubQ3mUM4h6qDG3IfsS02PS938QMMEGUOuX05Oitie0xucJP6ko7ktRYbRRn50o1z2Rs7_k0cqOaPGHzpJi6q0P0FAAL08PnZD',
+        ],
+        notification: {
+          title: 'Preparacion del pedido finalizada',
+          body: 'Hay un nuevo pedido que se tiene que entregar.',
+        },
+      })
+      .subscribe((data) => {
+        console.log(data);
+      });
+
+      //---------------------------------------------------------
     }
 
     this.srvFirebase.modificar_pedido(pedidoTerminado, pedidoTerminado.id);

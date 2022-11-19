@@ -29,8 +29,8 @@ export class AppComponent {
     this.platform.ready().then(()=>
     {
       SplashScreen.hide();
-      this.router.navigateByUrl("login");
-      //this.router.navigateByUrl("cuenta-generada");
+      this.router.navigateByUrl("splash");
+      //this.router.navigateByUrl("chat-mozos");
       
     })
   }

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { ToastMsgService } from './toast-msg.service';
 import { SonidosPersonalizadosService } from './sonidos-personalizados.service';
+import { FirebaseService } from './firebase.service';
 // import { getAuth, onAuthStateChanged } from '@angular/fire/auth';
 
 @Injectable({
@@ -18,8 +19,14 @@ export class AuthService
     public afAuth: AngularFireAuth, 
     private router : Router,
     public srvToast:ToastMsgService,
-    public srvSonidos:SonidosPersonalizadosService) 
-    {}
+    public srvSonidos:SonidosPersonalizadosService,
+    public srvFirebase:FirebaseService) 
+    {
+      this.srvFirebase.listar_usuarios().subscribe( (data) => 
+      {
+        this.arrayUsuarios = data;
+      });
+    }
 
     // public dataConsumidor;
 
@@ -28,12 +35,25 @@ export class AuthService
     public nombreDelAnonimo;
     public tipoUserloged;
 
+    private arrayUsuarios:any = [];
+    public dataUsuarioLogeado:any;
+
   async login(email: string, password:string, sonidoActivadoRecibido:boolean)
   {
     try 
     {
       const userCredential = await this.afAuth.signInWithEmailAndPassword(email, password);      
       this.userLogedData = userCredential.user;
+
+      this.arrayUsuarios.forEach(usuario => 
+      {
+        if (usuario.correo == email)
+        {
+          this.dataUsuarioLogeado = usuario;
+          console.log(this.dataUsuarioLogeado);
+        }
+      });
+
       return this.userLogedData;
     } 
     catch (error) 

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Servicios/auth.service';
 import { FirebaseService } from 'src/app/Servicios/firebase.service';
 import { MailSendingService } from 'src/app/Servicios/mail-sending.service';
+import { PushNotificationsService } from 'src/app/Servicios/push-notifications.service';
 import { ScannerQrService } from 'src/app/Servicios/scanner-qr.service';
 import { SonidosPersonalizadosService } from 'src/app/Servicios/sonidos-personalizados.service';
 import { ToastMsgService } from 'src/app/Servicios/toast-msg.service';
@@ -21,7 +22,8 @@ export class AltaClienteComponent implements OnInit {
     public srvLectorQR:ScannerQrService,
     public srvFirebase:FirebaseService,
     public srvAuth:AuthService,
-    public srvMailSending:MailSendingService) 
+    public srvMailSending:MailSendingService,
+    public srvPushNotif:PushNotificationsService) 
   {
     this.srvFirebase.listar_clientesAnonimos().subscribe((data)=>
     {
@@ -93,9 +95,27 @@ export class AltaClienteComponent implements OnInit {
           "Su cuenta está pendiente de ser aprobada. Nuestro equipo la verificará y aprobará lo antes posible.");
           //---------------------------------------------------------------------------------------------------------------------------
 
-          //Aca envio el push notification
-          // TO DO
-          //----------------------------
+          // ------- Aca envio el push notification -------------
+          //
+          // VA PARA EL CELULAR SUPERVISOR (NADIA)
+          // 
+          this.srvPushNotif
+          .sendPushNotification({
+            // eslint-disable-next-line @typescript-eslint/naming-convention
+            registration_ids: [
+              // eslint-disable-next-line max-len
+              'dlsUeiVMQEqe_HbeaoFYqT:APA91bFM3TjHo8VicJXsefO-Hq8omdkcKSkSE-ftS3eubQ3mUM4h6qDG3IfsS02PS938QMMEGUOuX05Oitie0xucJP6ko7ktRYbRRn50o1z2Rs7_k0cqOaPGHzpJi6q0P0FAAL08PnZD',
+            ],
+            notification: {
+              title: 'Habilitacion cliente',
+              body: 'Hay un nuevo cliente esperando a ser habilitado.',
+            },
+          })
+          .subscribe((data) => {
+            console.log(data);
+          });
+
+          // //---------------------------------------------------------
 
           //Acciones finales
           this.srvToast.mostrarToast("bottom","La cuenta fue creada satisfactoriamente.",3000,"success");
